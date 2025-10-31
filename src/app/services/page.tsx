@@ -11,7 +11,7 @@ export default function ServicesPage() {
       features: [
         "Pipeline CI/CD automatizado",
         "Infrastructure as Code (IaC)",
-        "Containerização com Docker/Kubernetes", 
+        "Containerização com Docker/Kubernetes",
         "Monitoramento e observabilidade",
         "GitOps e versionamento de infra"
       ],
@@ -24,7 +24,7 @@ export default function ServicesPage() {
       ]
     },
     {
-      icon: "☁️", 
+      icon: "☁️",
       name: "Cloud Architecture",
       description: "Projetamos e implementamos arquiteturas cloud escaláveis, seguras e cost-effective",
       features: [
@@ -44,7 +44,7 @@ export default function ServicesPage() {
     },
     {
       icon: "🔒",
-      name: "Security Operations", 
+      name: "Security Operations",
       description: "Implementamos DevSecOps com segurança integrada em todo o ciclo de desenvolvimento",
       features: [
         "SIEM e SOC automatizado",
@@ -71,13 +71,13 @@ export default function ServicesPage() {
       </div>
 
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="relative z-50 p-6"
       >
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
-          <motion.a 
+          <motion.a
             href="/"
             className="text-2xl font-mono font-bold text-primary"
             whileHover={{ scale: 1.05 }}
@@ -90,21 +90,21 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="relative z-10 pt-20 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-7xl font-mono font-bold mb-8"
           >
             <span className="text-primary"># Core Services</span>
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             className="text-xl text-light/80 max-w-4xl mx-auto mb-16 font-mono"
           >
-            $ cat /etc/avilaops/mission.txt <br/>
+            $ cat /etc/avilaops/mission.txt <br />
             {`> Transformamos infraestrutura legacy em arquiteturas cloud-native escaláveis`}
           </motion.p>
         </div>
@@ -113,23 +113,23 @@ export default function ServicesPage() {
       {/* Services Detailed */}
       <section className="relative z-10 py-20 px-6">
         <div className="max-w-7xl mx-auto space-y-20">
-          {serviceDetails.map((service, index) => (
+          {serviceDetails.map((service) => (
             <motion.div
-              key={index}
+              key={`service-detail-${service.name.toLowerCase().replaceAll(' ', '-')}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="grid md:grid-cols-2 gap-12 items-start"
             >
               {/* Service Info */}
-              <div className={index % 2 === 1 ? "md:order-2" : ""}>
+              <div className={serviceDetails.indexOf(service) % 2 === 1 ? "md:order-2" : ""}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="text-6xl">{service.icon}</div>
                   <div>
                     <h2 className="text-3xl font-mono font-bold text-primary">{service.name}</h2>
                   </div>
                 </div>
-                
+
                 <p className="text-light/80 text-lg mb-8 leading-relaxed">
                   {service.description}
                 </p>
@@ -138,8 +138,8 @@ export default function ServicesPage() {
                   <div>
                     <h3 className="text-xl font-mono font-bold text-primary mb-4">{`// Features`}</h3>
                     <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-3 text-light/70">
+                      {service.features.map((feature) => (
+                        <li key={`feature-${service.name}-${feature.substring(0, 20).toLowerCase().replaceAll(' ', '-')}`} className="flex items-center gap-3 text-light/70">
                           <span className="text-primary">{'>'}</span>
                           {feature}
                         </li>
@@ -150,8 +150,8 @@ export default function ServicesPage() {
                   <div>
                     <h3 className="text-xl font-mono font-bold text-primary mb-4">{`// Deliverables`}</h3>
                     <ul className="space-y-2">
-                      {service.deliverables.map((deliverable, delIndex) => (
-                        <li key={delIndex} className="flex items-center gap-3 text-light/70">
+                      {service.deliverables.map((deliverable) => (
+                        <li key={`deliverable-${service.name}-${deliverable.substring(0, 20).toLowerCase().replaceAll(' ', '-')}`} className="flex items-center gap-3 text-light/70">
                           <span className="text-secondary">✓</span>
                           {deliverable}
                         </li>
@@ -162,7 +162,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Tech Stack */}
-              <div className={index % 2 === 1 ? "md:order-1" : ""}>
+              <div className={serviceDetails.indexOf(service) % 2 === 1 ? "md:order-1" : ""}>
                 <div className="bg-terminal-bg/50 backdrop-blur-sm border border-terminal-border rounded-lg p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="flex gap-2">
@@ -172,26 +172,26 @@ export default function ServicesPage() {
                     </div>
                     <span className="text-terminal-text/60 font-mono">tech-stack.sh</span>
                   </div>
-                  
+
                   <div className="font-mono text-sm">
                     <div className="text-primary mb-2">$ ./list-technologies.sh</div>
                     <div className="text-secondary mb-4">Loading tech stack...</div>
-                    
+
                     <div className="grid grid-cols-2 gap-3">
-                      {service.technologies.map((tech, techIndex) => (
+                      {service.technologies.map((tech) => (
                         <motion.div
-                          key={techIndex}
+                          key={`tech-${service.name}-${tech.toLowerCase().replaceAll(' ', '-')}`}
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
-                          transition={{ delay: techIndex * 0.1 }}
+                          transition={{ delay: service.technologies.indexOf(tech) * 0.1 }}
                           className="bg-terminal-bg border border-primary/30 rounded px-3 py-2 text-center hover:border-primary transition-colors"
                         >
                           <span className="text-light">{tech}</span>
                         </motion.div>
                       ))}
                     </div>
-                    
+
                     <div className="text-primary mt-4">{`$ echo "Ready for deployment"`}</div>
                     <div className="text-light/60">Ready for deployment ✓</div>
                   </div>
@@ -205,7 +205,7 @@ export default function ServicesPage() {
       {/* Methodology */}
       <section className="relative z-10 py-20 px-6 bg-terminal-bg/20">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -224,7 +224,7 @@ export default function ServicesPage() {
                 activities: ["Infrastructure audit", "Security assessment", "Performance analysis", "Cost optimization"]
               },
               {
-                step: "02", 
+                step: "02",
                 command: "design",
                 title: "Design",
                 description: "Arquitetura otimizada para suas necessidades",
@@ -232,7 +232,7 @@ export default function ServicesPage() {
               },
               {
                 step: "03",
-                command: "implement", 
+                command: "implement",
                 title: "Implementation",
                 description: "Implementação com zero downtime",
                 activities: ["Phased migration", "Testing automation", "Monitoring setup", "Team training"]
@@ -240,17 +240,17 @@ export default function ServicesPage() {
               {
                 step: "04",
                 command: "optimize",
-                title: "Optimization", 
+                title: "Optimization",
                 description: "Melhoria contínua e suporte 24/7",
                 activities: ["Performance tuning", "Cost optimization", "Security hardening", "Incident response"]
               }
-            ].map((phase, index) => (
+            ].map((phase) => (
               <motion.div
-                key={index}
+                key={`phase-${phase.command}`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
+                transition={{ delay: Number.parseInt(phase.step) * 0.15 }}
                 className="bg-terminal-bg/50 backdrop-blur-sm border border-terminal-border p-6 rounded-lg"
               >
                 <div className="font-mono text-primary text-3xl font-bold mb-2">{phase.step}</div>
@@ -258,8 +258,8 @@ export default function ServicesPage() {
                 <h3 className="text-xl font-mono font-bold text-light mb-3">{phase.title}</h3>
                 <p className="text-light/70 mb-4 text-sm">{phase.description}</p>
                 <ul className="space-y-1 text-xs text-light/60">
-                  {phase.activities.map((activity, actIndex) => (
-                    <li key={actIndex} className="flex items-center gap-2">
+                  {phase.activities.map((activity) => (
+                    <li key={`activity-${phase.command}-${activity.substring(0, 15).toLowerCase().replaceAll(' ', '-')}`} className="flex items-center gap-2">
                       <span className="text-primary">•</span>
                       {activity}
                     </li>
@@ -285,7 +285,7 @@ export default function ServicesPage() {
               Ready to Transform Your Infrastructure?
             </h2>
             <p className="text-light/80 mb-8">
-              Entre em contato para uma consultoria gratuita e veja como podemos 
+              Entre em contato para uma consultoria gratuita e veja como podemos
               otimizar sua infraestrutura para máxima performance e eficiência.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -311,7 +311,7 @@ export default function ServicesPage() {
       {/* Footer */}
       <footer className="relative z-10 py-12 px-6 border-t border-terminal-border">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.a 
+          <motion.a
             href="/"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

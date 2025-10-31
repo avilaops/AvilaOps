@@ -1,12 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [terminalText, setTerminalText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
-  
   const services = [
     {
       icon: "⚙️",
@@ -36,7 +32,7 @@ export default function Home() {
   ];
 
   const techStack = [
-    "Kubernetes", "Docker", "Terraform", "AWS", "Azure", "Jenkins", 
+    "Kubernetes", "Docker", "Terraform", "AWS", "Azure", "Jenkins",
     "GitLab", "Prometheus", "Grafana", "ELK Stack", "Ansible", "Helm"
   ];
 
@@ -61,71 +57,30 @@ export default function Home() {
     }
   ];
 
-  useEffect(() => {
-    const text = "$ avilaops --initialize --cloud-transformation";
-    let i = 0;
-    
-    const typeWriter = () => {
-      if (i < text.length) {
-        setTerminalText(text.slice(0, i + 1));
-        i++;
-        setTimeout(typeWriter, 100);
-      }
-    };
-    
-    typeWriter();
-    
-    const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 500);
-    
-    return () => clearInterval(cursorInterval);
-  }, []);
-
   return (
     <div className="min-h-screen bg-dark font-roboto text-light overflow-hidden">
-      {/* Matrix Background Effect */}
-      <div className="fixed inset-0 bg-gradient-terminal">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(16,185,129,0.1),transparent)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(16,185,129,0.05),transparent)]" />
-        
-        {/* Matrix rain effect */}
+      {/* Minimal Background - Jobs Style */}
+      <div className="fixed inset-0 bg-gradient-to-br from-dark via-dark-800 to-dark-900">
         <div className="absolute inset-0 opacity-20">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-primary text-xs font-mono"
-              style={{ left: `${i * 5}%` }}
-              animate={{ y: ["-100vh", "100vh"] }}
-              transition={{
-                duration: 10 + Math.random() * 10,
-                repeat: Infinity,
-                ease: "linear",
-                delay: Math.random() * 5,
-              }}
-            >
-              {Array.from({ length: 20 }, () => 
-                Math.random() > 0.5 ? "1" : "0"
-              ).join("")}
-            </motion.div>
-          ))}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
       </div>
 
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="relative z-50 p-6"
       >
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
-          <motion.div 
+          <motion.div
             className="text-2xl font-mono font-bold text-primary"
             whileHover={{ scale: 1.05 }}
           >
             [ávila@ops ~]$
           </motion.div>
-          
+
           <div className="hidden md:flex space-x-8">
             {["Serviços", "Stack", "Cases", "Contato"].map((item) => (
               <motion.a
@@ -149,94 +104,77 @@ export default function Home() {
         </nav>
       </motion.header>
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-20 pb-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="bg-terminal-bg/80 backdrop-blur-sm border border-terminal-border rounded-lg p-8 mb-12 font-mono"
+      {/* Hero Section - Ultra Minimal Style */}
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              </div>
-              <span className="text-terminal-text/60">avilaops-terminal</span>
-            </div>
-            <div className="text-primary">
-              {terminalText}<span className={showCursor ? "opacity-100" : "opacity-0"}>|</span>
-            </div>
-          </motion.div>
-
-          <div className="text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="text-6xl md:text-8xl font-mono font-bold mb-8"
+            {/* Single Powerful Message */}
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-7xl md:text-9xl font-mono font-bold mb-12 leading-tight tracking-tight"
             >
-              <span className="text-light">Operações que</span>
+              <span className="text-light">Infrastructure</span>
               <br />
-              <span className="text-primary">Escalam</span>
-              <br />
-              <span className="text-light">Tecnologia que</span>
-              <br />
-              <motion.span 
-                className="text-primary"
-                animate={{ 
-                  textShadow: [
-                    "0 0 10px #10B981", 
-                    "0 0 20px #10B981", 
-                    "0 0 10px #10B981"
-                  ] 
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                Transforma
-              </motion.span>
+              <span className="text-primary">That Scales</span>
             </motion.h1>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-xl md:text-2xl text-light/80 mb-12 max-w-4xl mx-auto leading-relaxed"
+            {/* Minimal Subtext */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="text-2xl md:text-4xl text-light/60 mb-16 font-light max-w-4xl mx-auto"
             >
-              DevOps Engineering, Cloud Architecture e Automação para empresas que precisam escalar
+              From chaos to cloud-native.
+              <br />
+              <span className="text-light/40">In weeks, not years.</span>
             </motion.p>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+            {/* Single Clear CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              transition={{ delay: 1.2, duration: 0.8 }}
             >
               <motion.button
-                className="bg-primary text-dark px-8 py-4 rounded font-mono font-semibold text-lg hover:scale-105 transition-transform"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="bg-primary text-dark px-16 py-6 rounded-lg font-mono font-bold text-xl hover:shadow-2xl hover:shadow-primary/50 transition-all"
               >
-                ./view-cases
+                Start Transformation
               </motion.button>
-              
-              <motion.button
-                className="bg-terminal-bg border border-primary text-primary px-8 py-4 rounded font-mono font-semibold text-lg hover:bg-primary hover:text-dark transition-all"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+
+              {/* Scroll Indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2, duration: 1 }}
+                className="mt-20 text-light/30 text-sm font-mono flex flex-col items-center gap-3"
               >
-                ./free-consultation
-              </motion.button>
+                <span>Scroll to explore</span>
+                <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="text-2xl"
+                >
+                  ↓
+                </motion.div>
+              </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Resultados */}
       <section className="relative z-10 py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -245,7 +183,7 @@ export default function Home() {
             # Resultados Comprovados
           </motion.h2>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -275,7 +213,7 @@ export default function Home() {
       {/* Serviços */}
       <section id="servicos" className="relative z-10 py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -300,7 +238,7 @@ export default function Home() {
                   {service.name}
                 </h3>
                 <p className="text-light/60 mb-6 leading-relaxed">{service.description}</p>
-                
+
                 <div className="space-y-2">
                   {service.stack.map((tech, techIndex) => (
                     <motion.span
@@ -321,7 +259,7 @@ export default function Home() {
       {/* Tech Stack */}
       <section id="stack" className="relative z-10 py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -330,7 +268,7 @@ export default function Home() {
             # Technology Stack
           </motion.h2>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -360,7 +298,7 @@ export default function Home() {
       {/* Cases */}
       <section id="cases" className="relative z-10 py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -409,7 +347,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 py-12 px-6 border-t border-terminal-border">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -421,22 +359,22 @@ export default function Home() {
             # Infrastructure that scales, technology that transforms
           </p>
           <div className="flex justify-center space-x-6 font-mono">
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-light/60 hover:text-primary transition-colors"
               whileHover={{ y: -3 }}
             >
               ./linkedin
             </motion.a>
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-light/60 hover:text-primary transition-colors"
               whileHover={{ y: -3 }}
             >
               ./github
             </motion.a>
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-light/60 hover:text-primary transition-colors"
               whileHover={{ y: -3 }}
             >
