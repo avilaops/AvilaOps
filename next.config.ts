@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
+  output: 'standalone',
 
   // Allow cross-origin requests from local network during development
   allowedDevOrigins: [
