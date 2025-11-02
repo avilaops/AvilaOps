@@ -48,15 +48,16 @@ const config: Config = {
         roboto: ["Roboto", "sans-serif"],
       },
       backgroundImage: {
-        "gradient-matrix": 
+        "gradient-matrix":
           "linear-gradient(135deg, #10B981 0%, #047857 50%, #064E3B 100%)",
-        "gradient-terminal": 
+        "gradient-terminal":
           "linear-gradient(135deg, #0D1117 0%, #161B22 100%)",
       },
       animation: {
         "typing": "typing 3.5s steps(40, end), blink 0.5s step-end infinite alternate",
         "matrix-rain": "matrix-rain 20s linear infinite",
         "pulse-green": "pulse-green 2s ease-in-out infinite",
+        "loading": "loading 2s ease-in-out infinite",
       },
       keyframes: {
         typing: {
@@ -73,6 +74,11 @@ const config: Config = {
         "pulse-green": {
           "0%, 100%": { boxShadow: "0 0 5px #10B981" },
           "50%": { boxShadow: "0 0 20px #10B981, 0 0 30px #10B981" },
+        },
+        loading: {
+          "0%": { width: "0%" },
+          "50%": { width: "100%" },
+          "100%": { width: "0%" },
         },
       },
     },

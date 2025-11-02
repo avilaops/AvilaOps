@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvilaOps - SVG Assets Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #10B981;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(16, 185, 129, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .card h2 {
+            color: #10B981;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card-info {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .preview {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .preview img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .og-preview {
+            min-height: auto;
+        }
+
+        .og-preview img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .favicon-preview {
+            background: white;
+            padding: 40px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status.ready {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+        }
+
+        .status.optional {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        .features {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .features h2 {
+            color: #10B981;
+            margin-bottom: 20px;
+        }
+
+        .features ul {
+            list-style: none;
+            color: #cbd5e1;
+            line-height: 2;
+        }
+
+        .features li::before {
+            content: "✓ ";
+            color: #10B981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta code {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎨 AvilaOps SVG Assets</h1>
+        <p class="subtitle">Todos os assets visuais criados e prontos para uso</p>
+
+        <div class="grid">
+            <!-- Logo Principal -->
+            <div class="card">
+                <h2>Logo Principal</h2>
+                <div class="card-info">
+                    <strong>logo.svg</strong> (200x200)<br>
+                    Animado · Pipeline infinito + Cloud<br>
+                    Uso: Site, docs, apresentações
+                </div>
+                <div class="preview">
+                    <img src="/logo.svg" alt="Logo AvilaOps" width="200" height="200">
+                </div>
+                <span class="status ready">✓ Pronto para usar</span>
+            </div>
+
+            <!-- Ícone PWA -->
+            <div class="card">
+                <h2>Ícone PWA</h2>
+                <div class="card-info">
+                    <strong>icon.svg</strong> (512x512)<br>
+                    Base para conversão PNG<br>
+                    Uso: Progressive Web App
+                </div>
+                <div class="preview">
+                    <img src="/icon.svg" alt="Ícone PWA" width="200" height="200">
+                </div>
+                <span class="status ready">✓ Pronto (converter para PNG)</span>
+            </div>
+
+            <!-- Favicon -->
+            <div class="card">
+                <h2>Favicon</h2>
+                <div class="card-info">
+                    <strong>favicon.svg</strong> (32x32)<br>
+                    Minimalista · Otimizado para tabs<br>
+                    Uso: Browser tab icon
+                </div>
+                <div class="preview favicon-preview">
+                    <img src="/favicon.svg" alt="Favicon" width="64" height="64">
+                </div>
+                <span class="status ready">✓ Funcional em browsers modernos</span>
+            </div>
+        </div>
+
+        <!-- Open Graph em destaque -->
+        <div class="card">
+            <h2>Open Graph Image</h2>
+            <div class="card-info">
+                <strong>og-image.svg</strong> (1200x630)<br>
+                Design: Logo + texto + gradiente · Ratio 1.91:1<br>
+                Uso: Compartilhamento social (LinkedIn, Twitter, Facebook)
+            </div>
+            <div class="preview og-preview">
+                <img src="/og-image.svg" alt="Open Graph Image">
+            </div>
+            <span class="status ready">✓ Criado (converter para PNG para redes sociais)</span>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <h2>⚡ Características dos SVGs</h2>
+            <ul>
+                <li><strong>Escaláveis</strong> - Perfeitos em qualquer resolução (4K, mobile, print)</li>
+                <li><strong>Leves</strong> - 10x menores que PNG equivalente (~3KB vs ~30KB)</li>
+                <li><strong>Animados</strong> - Logo com rotação de anéis e pulso dos nós</li>
+                <li><strong>Modernos</strong> - Suporte em 95%+ dos browsers atuais</li>
+                <li><strong>Acessíveis</strong> - Metadata semântico incluído</li>
+                <li><strong>Performance</strong> - Zero HTTP requests quando inline</li>
+            </ul>
+        </div>
+
+        <!-- Design Concept -->
+        <div class="features">
+            <h2>🎯 Conceito de Design</h2>
+            <ul>
+                <li><strong>Pipeline Circular</strong> - Representa CI/CD contínuo e iteração infinita</li>
+                <li><strong>Nuvem Central</strong> - Cloud-native architecture e modernização</li>
+                <li><strong>Nós de Integração</strong> - Microservices distribuídos conectados</li>
+                <li><strong>Fluxo de Dados</strong> - Setas indicam automação e observability</li>
+                <li><strong>Verde Emerald</strong> - #10B981 simboliza crescimento e inovação tech</li>
+                <li><strong>Dark Slate</strong> - #0f172a transmite profissionalismo e expertise</li>
+            </ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <p style="color: #94a3b8; margin-bottom: 20px;">
+                Para gerar versões PNG (opcional, para máxima compatibilidade):
+            </p>
+            <code>npm run generate:images</code>
+        </div>
+    </div>
+</body>
+
+</html>

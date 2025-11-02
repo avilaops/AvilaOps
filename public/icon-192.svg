@@ -1,0 +1,33 @@
+<svg width="192" height="192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="192" height="192" fill="#0B0F17"/>
+  
+  <!-- Terminal bracket -->
+  <text 
+    x="50%" 
+    y="50%" 
+    dominant-baseline="middle" 
+    text-anchor="middle" 
+    font-family="monospace" 
+    font-size="115.19999999999999" 
+    font-weight="bold" 
+    fill="url(#grad)"
+  >[A]</text>
+  
+  <!-- Terminal cursor -->
+  <rect 
+    x="130.56" 
+    y="67.19999999999999" 
+    width="15.36" 
+    height="57.599999999999994" 
+    fill="#10B981"
+    opacity="0.8"
+  />
+</svg>

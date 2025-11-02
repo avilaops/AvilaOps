@@ -1,0 +1,27 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Favicon otimizado 32x32 -->
+  <rect width="32" height="32" rx="6" fill="#0f172a"/>
+  
+  <g transform="translate(16, 16)">
+    <!-- Pipeline simplificado -->
+    <circle r="11" stroke="#10B981" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <circle r="9" stroke="#10B981" stroke-width="1.2" fill="none" opacity="0.6" stroke-dasharray="3 1.5"/>
+    
+    <!-- Cloud core minimalista -->
+    <ellipse cx="0" cy="0" rx="6" ry="4" fill="#10B981"/>
+    
+    <!-- Pipeline hint -->
+    <line x1="-4" y1="-1" x2="-2" y2="-1" stroke="#0f172a" stroke-width="0.8" stroke-linecap="round"/>
+    <line x1="-4" y1="1" x2="-2" y2="1" stroke="#0f172a" stroke-width="0.8" stroke-linecap="round"/>
+    
+    <!-- Arrow -->
+    <path d="M 2 0 L 4 0 L 3.2 -0.8 M 4 0 L 3.2 0.8" stroke="#0f172a" stroke-width="0.8" 
+          stroke-linecap="round" fill="none"/>
+    
+    <!-- Nodes -->
+    <circle cx="0" cy="-11" r="1.5" fill="#10B981"/>
+    <circle cx="11" cy="0" r="1.5" fill="#10B981"/>
+    <circle cx="0" cy="11" r="1.5" fill="#10B981"/>
+    <circle cx="-11" cy="0" r="1.5" fill="#10B981"/>
+  </g>
+</svg>
