@@ -19,18 +19,20 @@ const MAX_CONVERSATION_ID_LENGTH = 128;
 /**
  * Valida e sanitiza requisições do chat
  */
-export function validateChatRequest(body: any): ValidationResult {
+export function validateChatRequest(body: unknown): ValidationResult {
     // Verificar se body existe
     if (!body || typeof body !== 'object') {
         return { valid: false, error: 'Invalid request body' };
     }
 
+    const raw = body as Record<string, unknown>;
+
     // Validar message
-    if (!body.message || typeof body.message !== 'string') {
+    if (!('message' in raw) || typeof raw.message !== 'string') {
         return { valid: false, error: 'Message is required and must be a string' };
     }
 
-    if (body.message.length > MAX_MESSAGE_LENGTH) {
+    if (raw.message.length > MAX_MESSAGE_LENGTH) {
         return {
             valid: false,
             error: `Message too long (max ${MAX_MESSAGE_LENGTH} characters)`
@@ -38,7 +40,7 @@ export function validateChatRequest(body: any): ValidationResult {
     }
 
     // Sanitizar message: remover caracteres de controle, preservar Unicode
-    const sanitizedMessage = body.message
+    const sanitizedMessage = raw.message
         .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Remove control chars (exceto \n, \r, \t)
         .trim();
 
@@ -47,25 +49,26 @@ export function validateChatRequest(body: any): ValidationResult {
     }
 
     // Validar userId
-    if (!body.userId || typeof body.userId !== 'string') {
+    if (!('userId' in raw) || typeof raw.userId !== 'string') {
         return { valid: false, error: 'UserId is required and must be a string' };
     }
 
-    if (body.userId.length > MAX_USER_ID_LENGTH) {
+    if (raw.userId.length > MAX_USER_ID_LENGTH) {
         return {
             valid: false,
             error: `UserId too long (max ${MAX_USER_ID_LENGTH} characters)`
         };
     }
 
-    const sanitizedUserId = body.userId.trim();
+    const sanitizedUserId = raw.userId.trim();
     if (!sanitizedUserId) {
         return { valid: false, error: 'UserId cannot be empty' };
     }
 
     // Validar conversationId (opcional)
-    let sanitizedConversationId = body.conversationId || 'default';
-    if (typeof sanitizedConversationId !== 'string') {
+    const conversationIdRaw = (raw as { conversationId?: unknown }).conversationId;
+    let sanitizedConversationId = typeof conversationIdRaw === 'string' ? conversationIdRaw : 'default';
+    if (typeof sanitizedConversationId !== 'string') { // narrow again for TS
         return { valid: false, error: 'ConversationId must be a string' };
     }
 
@@ -79,8 +82,9 @@ export function validateChatRequest(body: any): ValidationResult {
     sanitizedConversationId = sanitizedConversationId.trim() || 'default';
 
     // Validar language (opcional)
-    const language = body.language || 'pt';
-    if (typeof language !== 'string' || !VALID_LANGUAGES.includes(language as any)) {
+    const languageUnknown = (raw as { language?: unknown }).language;
+    const language = (typeof languageUnknown === 'string' ? languageUnknown : 'pt');
+    if (typeof language !== 'string' || !VALID_LANGUAGES.some(l => l === language)) {
         return {
             valid: false,
             error: `Invalid language. Valid options: ${VALID_LANGUAGES.join(', ')}`

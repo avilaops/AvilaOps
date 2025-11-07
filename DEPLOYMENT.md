@@ -1,6 +1,7 @@
 ## Deploy em Azure – avilaops.com
 
 Este guia cobre:
+
 1. Escolha de serviço
 2. Provisionamento do Static Web App
 3. Workflow CI/CD
@@ -9,12 +10,15 @@ Este guia cobre:
 6. Infra as Code (Bicep opcional)
 
 ### 1. Serviço Escolhido
+
 Usamos **Azure Static Web Apps (SWA)** com suporte a **Next.js SSR**. Benefícios:
+
 - Build automático e edge global
 - Easy custom domain e certificados gerenciados
 - Futuro: APIs (Functions) na mesma superfície
 
 Alternativas se requisitos mudarem:
+
 - App Service (mais controle de runtime e WebSockets pesados)
 - Container Apps (microserviços, Dapr, escala horizontal dinâmica)
 
@@ -23,6 +27,7 @@ Alternativas se requisitos mudarem:
 Via Portal: Criar recurso "Static Web App" (SKU Standard) apontando para o repositório GitHub `avilaops/avilaops-com`, branch `main`, localização próxima aos usuários (ex: East US ou Brazil South quando disponível para SWA).
 
 Via CLI:
+
 ```powershell
 az staticwebapp create `
   --name avilaops-com `
@@ -35,12 +40,31 @@ az staticwebapp create `
   --app-location . `
   --output-location .next
 ```
+
 Observação: `--output-location .next` para Next.js SSR.
 
 ### 3. CI/CD
 
-Arquivo criado: `.github/workflows/azure-static-web-apps.yml`.
-Secret necessário: `AZURE_STATIC_WEB_APPS_API_TOKEN` (Portal SWA > Deployment Token).
+Arquivos de workflow:
+
+- `.github/workflows/azure-static-web-apps.yml` — build + deploy do site Next.js para o Static Web Apps.
+- `.github/workflows/azure-infra-deploy.yml` — provisionamento IaC (Bicep) com What-If + Deploy.
+
+Secrets necessários no GitHub:
+
+- `AZURE_STATIC_WEB_APPS_API_TOKEN`: token de implantação do SWA (Portal do recurso > Deployment Token).
+- `AZURE_CREDENTIALS`: credenciais do Service Principal em JSON (para a etapa de IaC), no formato:
+
+  ```json
+  {
+    "clientId": "<APP_ID>",
+    "clientSecret": "<PASSWORD>",
+    "subscriptionId": "<SUBSCRIPTION_ID>",
+    "tenantId": "<TENANT_ID>"
+  }
+  ```
+
+Observação: O workflow gerado automaticamente pelo Portal (`azure-static-web-apps-nice-dune-*.yml`) foi desativado para evitar deploy duplo. Use apenas `azure-static-web-apps.yml`.
 
 #### 3A. Azure DevOps (Alternativa sem GitHub Actions)
 
@@ -93,11 +117,20 @@ Integração básica futura (dotenv): ver `.env.local.example`.
 
 ### 6. Infra as Code (Opcional Bicep)
 
-Arquivo: `infra/staticwebapp.bicep` cria o recurso base. Deployment:
+Arquivos:
+
+- `infra/staticwebapp.bicep` cria o recurso base do SWA (repo URL e branch já parametrizados)
+- `infra/azure-ai-resources.bicep` prepara recursos de suporte (Storage, Key Vault, Insights, Cosmos, OpenAI)
+
+Deployment manual via CLI:
 
 ```powershell
 az group create -n rg-avilaops -l eastus2
 az deployment group create -g rg-avilaops -f infra/staticwebapp.bicep -p repoUrl="https://github.com/avilaops/avilaops-com" branch="main"
+
+# (Opcional) Recursos de suporte:
+TENANT_ID=$(az account show --query tenantId -o tsv)
+az deployment group create -g rg-avilaops -f infra/azure-ai-resources.bicep -p prefix="avilaops" tenantId="$TENANT_ID"
 ```
 
 ### 7. Variáveis de Ambiente
