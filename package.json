@@ -7,6 +7,9 @@
         "build": "next build",
         "start": "next start",
         "lint": "eslint",
+        "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+        "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+        "type-check": "tsc --noEmit",
         "generate:images": "node scripts/generate-images.js",
         "generate:icons": "node scripts/convert-icons.mjs"
     },

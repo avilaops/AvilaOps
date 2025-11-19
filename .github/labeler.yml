@@ -1,0 +1,46 @@
+# Label configuration for PRs
+# Format: label-name: file-patterns
+
+'documentation':
+  - '**/*.md'
+  - 'docs/**/*'
+
+'dependencies':
+  - 'package.json'
+  - 'package-lock.json'
+  - 'pnpm-lock.yaml'
+  - 'yarn.lock'
+
+'github-actions':
+  - '.github/workflows/**/*'
+  - '.github/**/*.yml'
+
+'api':
+  - 'src/app/api/**/*'
+
+'components':
+  - 'src/app/components/**/*'
+
+'styling':
+  - '**/*.css'
+  - 'tailwind.config.ts'
+  - 'postcss.config.mjs'
+
+'configuration':
+  - '*.config.*'
+  - '.editorconfig'
+  - '.prettierrc'
+  - '.eslintrc*'
+  - 'tsconfig.json'
+
+'security':
+  - 'SECURITY.md'
+  - '.github/workflows/codeql.yml'
+  - '.github/workflows/dependency-review.yml'
+
+'infrastructure':
+  - 'infra/**/*'
+  - '*.bicep'
+
+'scripts':
+  - 'scripts/**/*'
