@@ -1,63 +1,58 @@
-name: Deploy to Azure Static Web Apps
+name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+concurrency:
+    group: "pages"
+    cancel-in-progress: false
 
 jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    runs-on: ubuntu-latest
-    name: Build and Deploy
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-          lfs: false
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-          cache: 'npm'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20.x"
+                  cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
+            - name: Setup Pages
+              uses: actions/configure-pages@v4
 
-      - name: Lint code
-        run: npm run lint
-        continue-on-error: true
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Build application
-        run: npm run build
-        env:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+            - name: Build with Next.js
+              run: npm run build
+              env:
+                  MONGODB_URI: ${{ secrets.MONGODB_URI }}
+                  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+                  OPENAI_MODEL: gpt-4o-mini
+                  NEXT_PUBLIC_SITE_URL: https://avilaops.github.io/AvilaOps
 
-      - name: Deploy to Azure Static Web Apps
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
-          app_location: "/"
-          api_location: ""
-          output_location: ".next"
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: ./out
 
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request
-    steps:
-      - name: Close Pull Request
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          action: "close"
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
