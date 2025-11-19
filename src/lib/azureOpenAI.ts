@@ -1,25 +1,22 @@
-import ModelClient from '@azure-rest/ai-inference';
-import { AzureKeyCredential } from '@azure/core-auth';
+import OpenAI from 'openai';
 
 /**
- * Azure OpenAI client configuration
- * Uses @azure-rest/ai-inference for better type safety
+ * OpenAI client configuration
  */
 
-const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
-const apiKey = process.env.AZURE_OPENAI_API_KEY || process.env.AZURE_OPENAI_KEY;
-const modelName = process.env.AZURE_OPENAI_MODEL || process.env.AZURE_OPENAI_DEPLOYMENT || 'gpt-35-turbo';
+const apiKey = process.env.OPENAI_API_KEY;
+const modelName = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 
-if (!endpoint || !apiKey) {
-  console.warn('Azure OpenAI not configured. Set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY');
+if (!apiKey) {
+    console.warn('[OpenAI] Configuration missing. Set OPENAI_API_KEY in environment variables.');
 }
 
 /**
- * Azure AI Inference client instance
+ * OpenAI client instance
  */
-export const azureClient = endpoint && apiKey 
-  ? ModelClient(endpoint, new AzureKeyCredential(apiKey))
-  : null;
+export const openaiClient = apiKey
+    ? new OpenAI({ apiKey })
+    : null;
 
 /**
  * Get current model name
@@ -27,6 +24,6 @@ export const azureClient = endpoint && apiKey
 export const getModelName = () => modelName;
 
 /**
- * Check if Azure OpenAI is configured
+ * Check if OpenAI is configured
  */
-export const isConfigured = () => Boolean(endpoint && apiKey);
+export const isConfigured = () => Boolean(apiKey);

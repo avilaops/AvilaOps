@@ -93,16 +93,21 @@ export function InteractiveTerminal({
         return "pt";
     });
 
-    const [history, setHistory] = useState<HistoryEntry[]>([
+    const [history, setHistory] = useState<HistoryEntry[]>(() => [
         {
-            id: crypto.randomUUID(),
+            id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `entry-${Date.now()}`,
             output: MESSAGES[language].welcome,
             type: "system",
         },
     ]);
     const [input, setInput] = useState("");
     const [show, setShow] = useState(true);
-    const [userId] = useState(() => crypto.randomUUID());
+    const [userId] = useState(() => {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return crypto.randomUUID();
+        }
+        return `user-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+    });
     const [isAILoading, setIsAILoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -110,7 +115,10 @@ export function InteractiveTerminal({
     useEffect(() => { inputRef.current?.focus(); }, []);
 
     const pushHistory = useCallback((entry: Omit<HistoryEntry, "id">) => {
-        setHistory(h => [...h, { id: crypto.randomUUID(), ...entry }]);
+        const id = typeof crypto !== 'undefined' && crypto.randomUUID
+            ? crypto.randomUUID()
+            : `entry-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+        setHistory(h => [...h, { id, ...entry }]);
     }, []);
 
     const execute = useCallback(
@@ -145,6 +153,9 @@ export function InteractiveTerminal({
                         questionLength: question.length
                     });
 
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
+
                     const response = await fetch("/api/chat", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -154,7 +165,10 @@ export function InteractiveTerminal({
                             conversationId: "terminal",
                             language,
                         }),
+                        signal: controller.signal,
                     });
+
+                    clearTimeout(timeoutId);
 
                     if (!response.ok) {
                         const error = await response.json();
@@ -184,11 +198,19 @@ export function InteractiveTerminal({
                     });
                 } catch (error) {
                     const err = error instanceof Error ? error : new Error('Unknown error');
+                    const isTimeout = err.name === 'AbortError';
+                    const errorMessage = isTimeout
+                        ? 'Request timeout - AI took too long to respond'
+                        : `Network Error: ${err.message || "Failed to reach AI"}`;
+
                     pushHistory({
-                        output: `Network Error: ${err.message || "Failed to reach AI"}`,
+                        output: errorMessage,
                         type: "error",
                     });
-                    trackException(err, { context: 'Terminal_AI_Request' });
+                    trackException(err, {
+                        context: 'Terminal_AI_Request',
+                        isTimeout
+                    });
                 } finally {
                     setIsAILoading(false);
                 }
