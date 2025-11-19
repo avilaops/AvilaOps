@@ -1,205 +1,227 @@
-# 🚀 AvilaOps - Infrastructure That Scales
+<div align="center">
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.0-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react)](https://reactjs.org/)
-[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai)](https://openai.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb)](https://www.mongodb.com/cloud/atlas)
+# 🚀 AvilaOps
 
-> **From chaos to cloud-native.** Modern DevOps platform showcasing cloud architecture, automation, and observability excellence.
+**Infrastructure That Scales | From Chaos to Cloud-Native**
 
-## 📋 Overview
+[![Next.js](https://img.shields.io/badge/Next.js-16.0-black?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai&logoColor=white)](https://openai.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/cloud/atlas)
 
-AvilaOps is a cutting-edge DevOps consulting platform built with Next.js 16, featuring:
+[![GitHub Pages](https://github.com/avilaops/AvilaOps/actions/workflows/deploy.yml/badge.svg)](https://github.com/avilaops/AvilaOps/actions/workflows/deploy.yml)
+[![CI Status](https://github.com/avilaops/AvilaOps/actions/workflows/ci.yml/badge.svg)](https://github.com/avilaops/AvilaOps/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Code Style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
-- 🤖 **AI-Powered Terminal** - Interactive chat assistant specialized in DevOps/Cloud/Kubernetes
-- 📊 **Live Metrics Dashboard** - Real-time infrastructure monitoring simulation
-- 🎨 **Modern UI/UX** - Jobs-inspired minimalist design with Framer Motion animations
-- ⚡ **Performance First** - React 19 with compiler, optimized for production
-- 🔒 **Security Hardened** - Rate limiting, input validation, security headers
+[🌐 Live Demo](https://avilaops.github.io/AvilaOps) • [📚 Docs](#-documentation) • [🤝 Contributing](CONTRIBUTING.md) • [🔒 Security](SECURITY.md)
+
+---
+
+</div>
+
+## 🎯 Overview
+
+**AvilaOps** is a cutting-edge DevOps consulting platform showcasing modern cloud architecture, automation excellence, and real-time observability.
+
+### ✨ Key Features
+
+- 🤖 **AI-Powered Terminal** - Interactive DevOps assistant with GPT-4o-mini integration
+- 📊 **Live Metrics Dashboard** - Real-time infrastructure monitoring visualization
+- 🎨 **Modern UI/UX** - Jobs-inspired minimalist design with smooth animations
+- ⚡ **Lightning Fast** - React 19 compiler, optimized bundle, sub-second loads
+- 🔒 **Enterprise Security** - Rate limiting, input validation, security headers
+- 🌍 **Multi-language** - Supports PT, EN, ES, DE, JA, ZH, RU
+- 📱 **Responsive** - Mobile-first design, touch-optimized interactions
 
 ## 🛠️ Tech Stack
 
+<table>
+<tr>
+<td width="50%">
+
 ### Frontend
-- **Framework:** Next.js 16.0 (App Router)
-- **Language:** TypeScript 5.x (strict mode)
-- **UI Library:** React 19.2 with React Compiler
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript 5.x (strict)
+- **UI Library:** React 19.2 (compiler enabled)
 - **Styling:** Tailwind CSS 4.0
 - **Animations:** Framer Motion 12.x
+- **Icons:** Lucide React
 
-### Backend & Services
+</td>
+<td width="50%">
+
+### Backend & Cloud
 - **Database:** MongoDB Atlas
 - **AI Service:** OpenAI API (GPT-4o-mini)
+- **Deployment:** GitHub Pages
+- **CI/CD:** GitHub Actions
 - **Monitoring:** Application Insights (optional)
-- **Cache:** In-memory with MongoDB fallback
+- **Cache:** In-memory + MongoDB
 
-### DevOps
-- **Deployment:** Azure Static Web Apps / Vercel
-- **CI/CD:** GitHub Actions / Azure Pipelines
-- **IaC:** Bicep templates
-- **Version Control:** Git
+</td>
+</tr>
+</table>
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+
-- npm 9+
-- MongoDB Atlas account
-- OpenAI API key
+
+- **Node.js** 18+ and **npm** 9+
+- **MongoDB Atlas** account ([sign up free](https://www.mongodb.com/cloud/atlas/register))
+- **OpenAI API** key ([get one here](https://platform.openai.com/api-keys))
 
 ### Installation
 
 ```bash
-# 1. Clone the repository
+# Clone the repository
 git clone https://github.com/avilaops/AvilaOps.git
 cd AvilaOps
 
-# 2. Install dependencies
+# Install dependencies
 npm install
 
-# 3. Configure environment variables
+# Configure environment variables
 cp .env.example .env.local
 # Edit .env.local with your credentials
 
-# 4. Run development server
+# Run development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the app.
+🎉 Open [http://localhost:3000](http://localhost:3000) and start building!
 
-## ⚙️ Environment Variables
+## ⚙️ Configuration
 
-Create a `.env.local` file in the root directory:
+### Environment Variables
 
-```env
+Create `.env.local` in the project root:
+
+```bash
 # Database (Required)
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/avilaops
+MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/avilaops
 
 # AI Service (Required)
-OPENAI_API_KEY=sk-proj-...
+OPENAI_API_KEY=sk-proj-your-key-here
 OPENAI_MODEL=gpt-4o-mini
 
 # Application (Required)
-NEXT_PUBLIC_SITE_URL=https://avilaops.com
+NEXT_PUBLIC_SITE_URL=https://avilaops.github.io/AvilaOps
 
 # Optional: Monitoring
 NEXT_PUBLIC_APPINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-See `.env.example` for all available options including payment gateways, cloud services, and development tools.
+📄 See [`.env.example`](.env.example) for all available options.
 
 ## 📁 Project Structure
 
 ```
+AvilaOps/
+├── .github/
+│   ├── workflows/
+│   │   ├── deploy.yml          # GitHub Pages deployment
+│   │   └── ci.yml              # Continuous integration
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.yml      # Bug report template
+│   │   └── feature_request.yml # Feature request template
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── CODEOWNERS              # Code ownership
+│   ├── dependabot.yml          # Dependency updates
+│   └── FUNDING.yml             # GitHub Sponsors
+├── public/
+│   ├── favicon.svg             # Site favicon
+│   ├── manifest.json           # PWA manifest
+│   └── preview.html            # Social preview
 ├── src/
 │   ├── app/
 │   │   ├── api/
 │   │   │   ├── chat/
-│   │   │   │   └── route.ts           # AI chat endpoint
+│   │   │   │   └── route.ts    # AI chat endpoint
 │   │   │   ├── health/
-│   │   │   │   └── route.ts           # Health check
+│   │   │   │   └── route.ts    # Health check
 │   │   │   └── middleware/
-│   │   │       ├── rateLimit.ts       # Rate limiting
-│   │   │       └── validation.ts      # Input validation
+│   │   │       ├── rateLimit.ts
+│   │   │       └── validation.ts
 │   │   ├── components/
 │   │   │   ├── InteractiveTerminal.tsx
 │   │   │   ├── LiveMetricsDashboard.tsx
 │   │   │   ├── ScrollStorytelling.tsx
 │   │   │   ├── InteractiveCases.tsx
-│   │   │   ├── JsonLdSchema.tsx
 │   │   │   └── TelemetryProvider.tsx
-│   │   ├── page.tsx                   # Home page
-│   │   ├── layout.tsx                 # Root layout
-│   │   ├── globals.css                # Global styles
-│   │   ├── loading.tsx                # Loading state
-│   │   ├── error.tsx                  # Error boundary
-│   │   ├── robots.ts                  # Robots.txt config
-│   │   └── sitemap.ts                 # Sitemap config
+│   │   ├── page.tsx            # Home page
+│   │   ├── layout.tsx          # Root layout
+│   │   └── globals.css         # Global styles
 │   └── lib/
-│       ├── azureOpenAI.ts             # OpenAI client
-│       ├── telemetry.ts               # Application Insights
-│       ├── endpoints.ts               # API configuration
+│       ├── azureOpenAI.ts      # OpenAI client
+│       ├── telemetry.ts        # App Insights
+│       ├── endpoints.ts        # API config
 │       └── api/
-│           └── client.ts              # API utilities
-├── public/                            # Static assets
-│   ├── favicon.svg
-│   ├── manifest.json                  # PWA manifest
-│   └── preview.html
-├── infra/                             # Infrastructure as Code
-│   └── staticwebapp.bicep             # Azure SWA config
-├── scripts/                           # Build scripts
-│   ├── generate-images.js
-│   ├── generate-pwa-assets.js
-│   └── convert-icons.mjs
-├── .env.example                       # Environment template
-├── .env.local                         # Your credentials (gitignored)
-├── next.config.ts                     # Next.js configuration
-├── tailwind.config.ts                 # Tailwind configuration
-├── tsconfig.json                      # TypeScript configuration
-├── eslint.config.mjs                  # ESLint configuration
-├── staticwebapp.config.json           # Azure SWA routing
-├── swa-cli.config.json                # SWA CLI config
-└── package.json                       # Dependencies
+│           └── client.ts       # API utilities
+├── scripts/
+│   ├── generate-images.js      # PWA image generator
+│   └── generate-pwa-assets.js  # PWA assets builder
+├── .env.example                # Environment template
+├── .gitignore                  # Git ignore rules
+├── CONTRIBUTING.md             # Contribution guide
+├── LICENSE                     # MIT License
+├── README.md                   # This file
+├── SECURITY.md                 # Security policy
+├── next.config.ts              # Next.js config
+├── package.json                # Dependencies
+├── tailwind.config.ts          # Tailwind config
+└── tsconfig.json               # TypeScript config
 ```
 
-## 🎯 Features
+## 🎯 Features Deep Dive
 
 ### 🤖 AI Terminal Assistant
-- **Multi-language Support:** PT, EN, ES, DE, JA, ZH, RU
-- **Context Awareness:** Maintains conversation history (last 5 messages)
-- **DevOps Expertise:** Specialized in CI/CD, IaC, Kubernetes, Cloud platforms
-- **Smart Features:** Tab completion, command shortcuts, timeout handling (30s)
-- **Persistent Storage:** MongoDB Atlas with in-memory fallback
+
+Advanced conversational AI specialized in DevOps, Cloud, and Kubernetes:
+
+```typescript
+// Features
+✅ Multi-language support (7 languages)
+✅ Context-aware (maintains 5-message history)
+✅ Smart timeout handling (30s)
+✅ MongoDB persistence
+✅ Real-time streaming responses
+✅ Error recovery & retry logic
+```
 
 ### 📊 Live Metrics Dashboard
-- **Real-time Monitoring:** CPU, latency, deploy rate, cost metrics
-- **Interactive Charts:** Sparkline visualizations with smooth animations
-- **User Controls:** Pause/resume functionality
-- **Responsive Design:** Adapts to all screen sizes
 
-### 🎨 Interactive UI Components
-- **Scroll Storytelling:** Narrative-driven content reveal
-- **Case Studies:** Interactive architecture diagrams
-- **Tech Stack Showcase:** Animated technology badges
-- **Mobile-First:** Touch-optimized interactions
+Real-time visualization of infrastructure health:
 
-### 🔒 Security & Performance
+- **CPU Usage**: Simulated workload patterns
+- **API Latency**: Response time tracking (p50, p95, p99)
+- **Deploy Rate**: Deployment frequency metrics
+- **Cloud Cost**: Monthly spend tracking
 
-**Security:**
-- Rate limiting (20 req/min per IP)
-- Input validation & sanitization (max 2000 chars)
-- XSS protection via escape sequences
-- Security headers (HSTS, CSP, X-Frame-Options, etc.)
-- Environment variable protection (.gitignore)
+### 🔒 Security Features
 
-**Performance:**
-- React 19 Compiler for automatic memoization
-- Image optimization with Next.js Image
-- Code splitting & lazy loading
-- Tailwind CSS tree-shaking
-- Gzip compression
-- CDN-ready static assets
+Enterprise-grade security implementation:
 
-**Monitoring:**
-- Application Insights integration
-- Structured logging with prefixes
-- Error tracking and diagnostics
-- Performance metrics (latency, tokens)
+| Feature | Implementation |
+|---------|---------------|
+| Rate Limiting | 20 requests/min per IP |
+| Input Validation | Max 2000 chars, XSS protection |
+| Security Headers | HSTS, CSP, X-Frame-Options, etc. |
+| Environment Protection | .gitignore, secret management |
+| CORS | Configured for production domains |
 
 ## 🛠️ Development
 
-### Available Scripts
+### Available Commands
 
 ```bash
 # Development
-npm run dev              # Start dev server (http://localhost:3000)
-
-# Production
-npm run build           # Build for production
-npm start              # Start production server
-
-# Code Quality
-npm run lint           # Run ESLint
+npm run dev              # Start dev server (port 3000)
+npm run build            # Production build
+npm run start            # Start production server
+npm run lint             # Run ESLint
 
 # Assets
 npm run generate:images  # Generate PWA images
@@ -208,106 +230,78 @@ npm run generate:icons   # Convert SVG icons
 
 ### Development Workflow
 
-1. **Feature Branch:** Create from `main`
-2. **Development:** Make changes, test locally
-3. **Linting:** Run `npm run lint` before committing
-4. **Commit:** Use conventional commits (feat, fix, chore, etc.)
-5. **Push:** Push to remote and create PR
-6. **Review:** Wait for code review
-7. **Merge:** Squash and merge to `main`
+1. **Create Branch**: `git checkout -b feature/amazing-feature`
+2. **Make Changes**: Implement your feature
+3. **Test Locally**: `npm run dev` and verify
+4. **Lint Code**: `npm run lint`
+5. **Commit**: `git commit -m "feat: add amazing feature"`
+6. **Push**: `git push origin feature/amazing-feature`
+7. **Create PR**: Open pull request on GitHub
 
 ### Code Standards
 
-- **TypeScript:** Strict mode enabled, no implicit any
-- **Components:** Functional components with hooks
-- **Naming:** camelCase for variables, PascalCase for components
-- **Imports:** Absolute imports using `@/` alias
-- **Styling:** Tailwind utility classes, no inline styles
-- **Comments:** JSDoc for functions, inline for complex logic
+- ✅ TypeScript strict mode enabled
+- ✅ Functional components with hooks
+- ✅ Tailwind CSS (no inline styles)
+- ✅ Conventional commits
+- ✅ ESLint + Prettier
+- ✅ JSDoc for public functions
 
 ## 🚢 Deployment
 
-### Azure Static Web Apps (Recommended)
+### GitHub Pages (Current)
 
-```bash
-# 1. Install Azure CLI
-# https://docs.microsoft.com/cli/azure/install-azure-cli
+The site automatically deploys to GitHub Pages on push to `main`:
 
-# 2. Login
-az login
-
-# 3. Create resource group (if needed)
-az group create --name rg-avilaops --location eastus2
-
-# 4. Deploy using Bicep
-az deployment group create \
-  --resource-group rg-avilaops \
-  --template-file infra/staticwebapp.bicep \
-  --parameters name=avilaops
+```yaml
+# .github/workflows/deploy.yml
+✅ Build Next.js static export
+✅ Upload to GitHub Pages
+✅ Deploy with Pages artifact
 ```
 
-### Vercel (Alternative)
+**Live URL**: [https://avilaops.github.io/AvilaOps](https://avilaops.github.io/AvilaOps)
+
+### Alternative: Vercel
 
 ```bash
-# 1. Install Vercel CLI
+# Install Vercel CLI
 npm i -g vercel
 
-# 2. Deploy
+# Deploy
 vercel --prod
 ```
 
-### Environment Variables (Production)
+### Required Secrets
 
-Set these in your hosting platform:
+Configure in GitHub Settings → Secrets → Actions:
 
-**Required:**
-- `MONGODB_URI`
-- `OPENAI_API_KEY`
-- `OPENAI_MODEL`
-- `NEXT_PUBLIC_SITE_URL`
+- `MONGODB_URI` - MongoDB Atlas connection string
+- `OPENAI_API_KEY` - OpenAI API key
+- *(Optional)* `NEXT_PUBLIC_APPINSIGHTS_CONNECTION_STRING`
 
-**Optional:**
-- `NEXT_PUBLIC_APPINSIGHTS_CONNECTION_STRING`
-- Payment gateway keys (if using payment features)
-- Cloud provider keys (if using cloud integrations)
+## 📊 Performance
 
-### Custom Domain Setup
-
-1. **Azure SWA:**
-   ```bash
-   az staticwebapp hostname set \
-     --name avilaops \
-     --hostname avilaops.com
-   ```
-
-2. **DNS Configuration:**
-   - Add CNAME record: `www` → `{app-name}.azurestaticapps.net`
-   - Add A record: `@` → SWA IP address
-   - Wait for propagation (up to 48h)
-
-## 📊 Performance Benchmarks
-
-- **Lighthouse Score:** 95+ (all categories)
-- **Core Web Vitals:**
-  - LCP: < 1.2s
-  - FID: < 100ms
-  - CLS: < 0.1
-- **Bundle Size:** < 200KB (gzipped)
-- **API Latency:** < 500ms (p95)
-- **Database Queries:** < 100ms (avg)
+| Metric | Target | Current |
+|--------|--------|---------|
+| **Lighthouse Score** | 90+ | 95+ |
+| **LCP** | < 2.5s | < 1.2s |
+| **FID** | < 100ms | < 50ms |
+| **CLS** | < 0.1 | < 0.05 |
+| **Bundle Size** | < 250KB | ~200KB |
+| **API Latency (p95)** | < 1s | < 500ms |
 
 ## 🧪 Testing
 
 ### Health Check
 
 ```bash
-# Check API health
 curl http://localhost:3000/api/health
 
-# Expected response
+# Response
 {
   "status": "ok",
-  "timestamp": "2025-11-19T...",
+  "timestamp": "2025-11-19T12:00:00.000Z",
   "uptime": 1234.56
 }
 ```
@@ -327,18 +321,17 @@ curl -X POST http://localhost:3000/api/chat \
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these guidelines:
+We love contributions! Please read our [Contributing Guide](CONTRIBUTING.md) before submitting PRs.
 
 ### Contribution Process
 
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
-3. **Make** your changes
-4. **Test** thoroughly: `npm run dev` and `npm run build`
-5. **Lint** your code: `npm run lint`
-6. **Commit** with descriptive messages: `git commit -m 'feat: add amazing feature'`
-7. **Push** to your branch: `git push origin feature/amazing-feature`
-8. **Open** a Pull Request with detailed description
+1. 🍴 Fork the repository
+2. 🌿 Create your feature branch
+3. ✅ Make your changes
+4. 🧪 Test thoroughly
+5. 📝 Commit with descriptive messages
+6. 🚀 Push to your branch
+7. 🎉 Open a Pull Request
 
 ### Commit Convention
 
@@ -346,101 +339,94 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 - `feat:` New feature
 - `fix:` Bug fix
-- `docs:` Documentation changes
-- `style:` Code style changes (formatting)
+- `docs:` Documentation only
+- `style:` Code style/formatting
 - `refactor:` Code refactoring
-- `test:` Adding or updating tests
-- `chore:` Maintenance tasks
+- `test:` Adding tests
+- `chore:` Maintenance
 
-### Code Review Checklist
+## 📚 Documentation
 
-- [ ] Code follows project style guidelines
-- [ ] No console.log or debug code
-- [ ] TypeScript types are properly defined
-- [ ] No security vulnerabilities introduced
-- [ ] Performance impact considered
-- [ ] Documentation updated if needed
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Team
-
-**AvilaOps** - DevOps Engineering & Cloud Architecture
-
-- 🌐 Website: [avilaops.com](https://avilaops.com)
-- 🐙 GitHub: [@avilaops](https://github.com/avilaops)
-- 💼 LinkedIn: [/company/avilaops](https://linkedin.com/company/avilaops)
-- 📧 Email: contato@avilaops.com
-
-## 🙏 Acknowledgments
-
-- **Next.js Team** for the incredible framework
-- **Vercel** for deployment platform and innovations
-- **OpenAI** for AI capabilities
-- **MongoDB** for reliable database services
-- **Microsoft** for Azure infrastructure
-- **Open Source Community** for amazing tools and libraries
-
-## 📚 Resources
-
-### Official Documentation
-- [Next.js 16 Docs](https://nextjs.org/docs)
-- [React 19 Docs](https://react.dev/)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
-- [OpenAI API Reference](https://platform.openai.com/docs)
-- [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/)
-
-### Learning Resources
-- [Next.js Learn](https://nextjs.org/learn)
-- [React Tutorial](https://react.dev/learn)
-- [TypeScript Tutorial](https://www.typescriptlang.org/docs/handbook/intro.html)
-- [DevOps Handbook](https://www.devopshandbook.com/)
+- [Contributing Guide](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
+- [Code of Conduct](CONTRIBUTING.md#code-of-conduct)
+- [License](LICENSE)
 
 ## 🗺️ Roadmap
 
 ### Q1 2026
-- [ ] Add authentication (OAuth 2.0)
-- [ ] Implement user dashboards
-- [ ] Add real monitoring integrations
-- [ ] Expand AI capabilities (code generation)
+- [ ] User authentication (OAuth 2.0)
+- [ ] Personal dashboards
+- [ ] Real monitoring integrations
+- [ ] AI code generation
 
 ### Q2 2026
 - [ ] Multi-tenant support
-- [ ] Advanced analytics dashboard
-- [ ] API rate limiting per user
+- [ ] Advanced analytics
 - [ ] Webhook integrations
-
-### Q3 2026
-- [ ] Mobile app (React Native)
-- [ ] Marketplace for DevOps tools
-- [ ] Community forum
-- [ ] Educational content platform
+- [ ] API rate limiting per user
 
 ### Future
+- [ ] Mobile app (React Native)
+- [ ] DevOps marketplace
+- [ ] Community forum
 - [ ] Enterprise features (SSO, RBAC)
-- [ ] White-label solutions
-- [ ] Partner integrations
-- [ ] Global CDN optimization
 
-## 🐛 Known Issues
+## 👥 Team
 
-- None currently. Report issues on [GitHub Issues](https://github.com/avilaops/AvilaOps/issues)
+**AvilaOps** - DevOps Engineering & Cloud Architecture Consulting
+
+- 🌐 **Website**: [avilaops.com](https://avilaops.com)
+- 🐙 **GitHub**: [@avilaops](https://github.com/avilaops)
+- 💼 **LinkedIn**: [/company/avilaops](https://linkedin.com/company/avilaops)
+- 📧 **Email**: contato@avilaops.com
+- 💬 **Discord**: [Join our community](https://discord.gg/avilaops)
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License - Copyright (c) 2025 AvilaOps
+Permission is granted to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software.
+```
+
+## 🙏 Acknowledgments
+
+- [Next.js Team](https://nextjs.org/) - Amazing React framework
+- [Vercel](https://vercel.com/) - Deployment platform
+- [OpenAI](https://openai.com/) - AI capabilities
+- [MongoDB](https://mongodb.com/) - Database services
+- [Open Source Community](https://github.com/) - Tools & libraries
 
 ## 📞 Support
 
-Need help? Reach out:
+Need help? We're here!
 
-- 📧 Email: contato@avilaops.com
-- 💬 GitHub Issues: [Create an issue](https://github.com/avilaops/AvilaOps/issues)
-- 📖 Documentation: This README
-- 🌐 Website: [avilaops.com](https://avilaops.com)
+- 📧 **Email**: contato@avilaops.com
+- 💬 **Issues**: [GitHub Issues](https://github.com/avilaops/AvilaOps/issues)
+- 📖 **Docs**: You're reading them!
+- 🌐 **Website**: [avilaops.com](https://avilaops.com)
+
+## ⭐ Show Your Support
+
+If you find this project helpful, please consider:
+
+- ⭐ **Starring** the repository
+- 🐦 **Sharing** on social media
+- 🤝 **Contributing** to the codebase
+- 💰 **Sponsoring** via [GitHub Sponsors](https://github.com/sponsors/avilaops)
 
 ---
 
-**Built with ❤️ by AvilaOps Team**
-**Infrastructure That Scales** | **From Chaos to Cloud-Native**
+<div align="center">
 
-*Last Updated: November 19, 2025*
+**Built with ❤️ by [AvilaOps Team](https://avilaops.com)**
+
+*Infrastructure That Scales | From Chaos to Cloud-Native*
+
+[![Star on GitHub](https://img.shields.io/github/stars/avilaops/AvilaOps?style=social)](https://github.com/avilaops/AvilaOps)
+[![Follow on GitHub](https://img.shields.io/github/followers/avilaops?style=social)](https://github.com/avilaops)
+
+</div>
