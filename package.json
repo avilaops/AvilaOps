@@ -16,7 +16,7 @@
     "dependencies": {
         "@microsoft/applicationinsights-web": "^3.3.10",
         "framer-motion": "^12.23.24",
-        "mongodb": "^6.20.0",
+        "mongodb": "^7.0.0",
         "nanoid": "^5.1.6",
         "next": "16.0.0",
         "openai": "^4.73.0",
