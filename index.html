@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Suite completa de produtos de AI, Data, Cloud e Security. Tecnologia de ponta para seu negócio.">
+    <title>Product Suite - AI, Data, Cloud & Security</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #667eea; --secondary: #764ba2; --accent: #f093fb; --success: #22c55e; --dark: #0a0b0d; --dark-light: #1a1d26; --text: #e4e4e7; --text-muted: #a1a1aa; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a0b0d 0%, #1a1d26 100%); color: var(--text); line-height: 1.6; }
+        header { background: rgba(10, 11, 13, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(102, 126, 234, 0.1); padding: 2rem; text-align: center; }
+        .logo { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, white, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .tagline { color: var(--text-muted); font-size: 1.25rem; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+        .category { margin-bottom: 5rem; }
+        .category-header { margin-bottom: 2rem; }
+        .category-title { font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+        .category-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+        .product-card { background: rgba(26, 29, 38, 0.5); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 16px; padding: 2rem; transition: all 0.3s; text-decoration: none; display: block; }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); }
+        .product-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .product-icon { font-size: 2.5rem; }
+        .product-title { font-size: 1.5rem; font-weight: 600; color: white; }
+        .product-status { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-left: auto; }
+        .status-ready { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .status-beta { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .product-description { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6; }
+        .product-features { list-style: none; margin-bottom: 1rem; }
+        .product-features li { color: var(--text-muted); font-size: 0.9rem; padding: 0.25rem 0; }
+        .product-features li:before { content: "✓ "; color: var(--success); font-weight: bold; margin-right: 0.5rem; }
+        .product-price { font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+        footer { background: rgba(10, 11, 13, 0.95); padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(102, 126, 234, 0.1); }
+        @media (max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">🚀 Product Suite</h1>
+        <p class="tagline">Tecnologia de ponta para transformar seu negócio</p>
+        <div style="margin-top:1rem;">
+            <label for="langSelect" style="margin-right:0.5rem;">Idioma:</label>
+            <select id="langSelect" aria-label="Selecionar idioma">
+                <option value="pt-BR">PT</option>
+                <option value="en-US">EN</option>
+                <option value="es-ES">ES</option>
+                <option value="uk-UA">UA</option>
+                <option value="ru-RU">RU</option>
+            </select>
+        </div>
+    </header>
+            
+        <section class="category">
+            <div class="category-header">
+                <h2 class="category-title">🤖 AI Suite</h2>
+                <p class="category-subtitle">Inteligência Artificial e Machine Learning</p>
+            </div>
+            <div class="products-grid">
+                <a href="ai-vision-pro.html" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">👁️</span>
+                        <div>
+                            <h3 class="product-title">AI Vision Pro</h3>
+                            <span class="product-status status-ready">✓ Ready</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Computer Vision completo com detecção de objetos, reconhecimento facial e tracking em tempo real.</p>
+                    <ul class="product-features">
+                        <li>YOLO, EfficientDet, DETR</li>
+                        <li>Face Recognition + Anti-spoofing</li>
+                        <li>Real-time Object Tracking</li>
+                    </ul>
+                    <div class="product-price">$299/mês</div>
+                </a>
+
+                <a href="deep-learning-studio.html" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">🧠</span>
+                        <div>
+                            <h3 class="product-title">Deep Learning Studio</h3>
+                            <span class="product-status status-ready">✓ Ready</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Framework completo de Deep Learning com CNN, RNN, LSTM, Transformer e GPU acceleration.</p>
+                    <ul class="product-features">
+                        <li>Autograd Engine</li>
+                        <li>CUDA Support</li>
+                        <li>ONNX Export</li>
+                    </ul>
+                    <div class="product-price">$399/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">🎯</span>
+                        <div>
+                            <h3 class="product-title">Smart Clustering</h3>
+                            <span class="product-status status-ready">✓ Ready</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Clustering inteligente com K-Means, DBSCAN, HDBSCAN e GPU acceleration.</p>
+                    <ul class="product-features">
+                        <li>8+ Algoritmos</li>
+                        <li>Time Series Clustering</li>
+                        <li>GPU Accelerated</li>
+                    </ul>
+                    <div class="product-price">$199/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">📝</span>
+                        <div>
+                            <h3 class="product-title">Text Processor</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">NLP completo com tokenizers BERT, GPT-2, WordPiece e SentencePiece.</p>
+                    <ul class="product-features">
+                        <li>Multi-language Support</li>
+                        <li>Custom Vocabularies</li>
+                        <li>Fast Processing</li>
+                    </ul>
+                    <div class="product-price">$149/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">🤖</span>
+                        <div>
+                            <h3 class="product-title">AI Copilot</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Assistente AI para código, chat e automação. Multi-model support.</p>
+                    <ul class="product-features">
+                        <li>Code Completion</li>
+                        <li>Chat Interface</li>
+                        <li>Plugin System</li>
+                    </ul>
+                    <div class="product-price">$99/mês</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- DATA SUITE -->
+        <section class="category">
+            <div class="category-header">
+                <h2 class="category-title">📊 Data Suite</h2>
+                <p class="category-subtitle">Análise e Processamento de Dados</p>
+            </div>
+            <div class="products-grid">
+                <a href="datagrid-pro.html" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">📊</span>
+                        <div>
+                            <h3 class="product-title">DataGrid Pro</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">DataFrames ultra-rápidos. Alternativa moderna ao Pandas com SQL-like queries.</p>
+                    <ul class="product-features">
+                        <li>10x Mais Rápido que Pandas</li>
+                        <li>SQL Queries</li>
+                        <li>Qualquer Formato</li>
+                    </ul>
+                    <div class="product-price">$249/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">📈</span>
+                        <div>
+                            <h3 class="product-title">Analytics Engine</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Time series, telemetria e forecasting em tempo real.</p>
+                    <ul class="product-features">
+                        <li>Real-time Streaming</li>
+                        <li>Anomaly Detection</li>
+                        <li>ARIMA, Prophet</li>
+                    </ul>
+                    <div class="product-price">$299/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">🗺️</span>
+                        <div>
+                            <h3 class="product-title">Geo Analytics</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Análise geoespacial com GeoJSON, spatial queries e mapas interativos.</p>
+                    <ul class="product-features">
+                        <li>GeoJSON & Shapefile</li>
+                        <li>Spatial Queries</li>
+                        <li>Distance Calculations</li>
+                    </ul>
+                    <div class="product-price">$199/mês</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECURITY SUITE -->
+        <section class="category">
+            <div class="category-header">
+                <h2 class="category-title">🔐 Security Suite</h2>
+                <p class="category-subtitle">Criptografia e Segurança</p>
+            </div>
+            <div class="products-grid">
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">🔒</span>
+                        <div>
+                            <h3 class="product-title">Secure Vault</h3>
+                            <span class="product-status status-ready">✓ Ready</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Suite completa de criptografia: AES, RSA, ECC, hashing e muito mais.</p>
+                    <ul class="product-features">
+                        <li>AES, ChaCha20, RSA, ECC</li>
+                        <li>SHA-2, SHA-3, BLAKE3</li>
+                        <li>AEAD, MAC, KDF</li>
+                    </ul>
+                    <div class="product-price">$499/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">🛡️</span>
+                        <div>
+                            <h3 class="product-title">Privacy Shield</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Zero-Knowledge Proofs e privacidade avançada (zk-SNARKs, stealth addresses).</p>
+                    <ul class="product-features">
+                        <li>zk-SNARKs & zk-STARKs</li>
+                        <li>Stealth Addresses</li>
+                        <li>Confidential TX</li>
+                    </ul>
+                    <div class="product-price">$599/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">⚛️</span>
+                        <div>
+                            <h3 class="product-title">Quantum Safe Crypto</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Criptografia pós-quântica com algoritmos aprovados pelo NIST.</p>
+                    <ul class="product-features">
+                        <li>Kyber, Dilithium</li>
+                        <li>NIST-Approved</li>
+                        <li>Quantum-Resistant</li>
+                    </ul>
+                    <div class="product-price">$799/mês</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CLOUD SUITE -->
+        <section class="category">
+            <div class="category-header">
+                <h2 class="category-title">☁️ Cloud Suite</h2>
+                <p class="category-subtitle">Infraestrutura e Cloud Computing</p>
+            </div>
+            <div class="products-grid">
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">☁️</span>
+                        <div>
+                            <h3 class="product-title">CloudOS Platform</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Sistema operacional cloud completo com container orchestration.</p>
+                    <ul class="product-features">
+                        <li>Multi-cloud Support</li>
+                        <li>Auto-scaling</li>
+                        <li>Container Orchestration</li>
+                    </ul>
+                    <div class="product-price">$999/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">⚖️</span>
+                        <div>
+                            <h3 class="product-title">LoadBalance Pro</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Load balancer inteligente com health checks e SSL termination.</p>
+                    <ul class="product-features">
+                        <li>Layer 4/7 Balancing</li>
+                        <li>Health Checks</li>
+                        <li>SSL/TLS Termination</li>
+                    </ul>
+                    <div class="product-price">$399/mês</div>
+                </a>
+
+                <a href="#" class="product-card">
+                    <div class="product-header">
+                        <span class="product-icon">💾</span>
+                        <div>
+                            <h3 class="product-title">DataStore DB</h3>
+                            <span class="product-status status-beta">Beta</span>
+                        </div>
+                    </div>
+                    <p class="product-description">Database distribuído com SQL + NoSQL, sharding e replicação.</p>
+                    <ul class="product-features">
+                        <li>SQL + NoSQL</li>
+                        <li>ACID Transactions</li>
+                        <li>Auto Sharding</li>
+                    </ul>
+                    <div class="product-price">$599/mês</div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Product Suite. All rights reserved.</p>
+        <p style="margin-top: 1rem; color: var(--text-muted);">
+            <a href="/docs" style="color: var(--primary); text-decoration: none;">Documentation</a> •
+            <a href="/pricing" style="color: var(--primary); text-decoration: none;">Pricing</a> •
+            <a href="/contact" style="color: var(--primary); text-decoration: none;">Contact</a>
+        </p>
+    </footer>
+    <script>
+        (function() {
+            const supported = ["pt-BR","en-US","es-ES","uk-UA","ru-RU"];
+            const select = document.getElementById('langSelect');
+            // Load saved language or default to pt-BR
+            let saved = localStorage.getItem('lang') || document.documentElement.lang || 'pt-BR';
+            if (!supported.includes(saved)) saved = 'pt-BR';
+            document.documentElement.lang = saved;
+            if (select) select.value = saved;
+
+            // Persist selection and update html lang
+            select?.addEventListener('change', (e) => {
+                const lang = e.target.value;
+                const normalized = supported.includes(lang) ? lang : 'pt-BR';
+                localStorage.setItem('lang', normalized);
+                document.documentElement.lang = normalized;
+            });
+        })();
+    </script>
+ </body>
+ </html>

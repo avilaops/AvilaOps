@@ -1,0 +1,36 @@
+{
+  "brand": "Deep Learning Studio",
+  "nav.cta_trial": "Trial 30 Dias",
+
+  "hero.badge": "Usado por 300+ Data Scientists • 60 Testes • ROI Médio: 8 Meses",
+  "hero.title": "Treine Modelos 10x Mais Rápido",
+  "hero.subtitle": "Reduza tempo de desenvolvimento de 6 meses para 3 semanas. Economize 78% em custos de infraestrutura.<br>Framework completo que empresas como Nubank e iFood usam em produção.",
+  "hero.primary_cta": "Testar Grátis por 30 Dias",
+  "hero.secondary_cta": "Ver Case Studies",
+  "hero.note": "💳 Sem cartão de crédito • 🚀 Deploy em 10 min • 📊 GPU/TPU inclusos no trial",
+
+  "cases.title": "Casos de Sucesso",
+  "cases.subtitle": "Veja como empresas estão acelerando AI com Deep Learning Studio",
+
+  "features.title": "Tudo Que Você Precisa Para Produção",
+  "features.subtitle": "Framework completo testado em produção por 300+ empresas",
+
+  "code.title": "Integre em Minutos",
+  "code.subtitle": "API simples e intuitiva. Da prototipagem à produção sem refatorar código.",
+
+  "testimonials.title": "O Que Data Scientists Dizem",
+
+  "pricing.title": "Planos Para Cada Necessidade",
+  "pricing.subtitle": "Comece grátis. Escale quando precisar.",
+  "pricing.starter.title": "Starter",
+  "pricing.pro.title": "Professional",
+  "pricing.enterprise.title": "Enterprise",
+  "pricing.period.month": "por mês",
+  "pricing.period.custom": "sob consulta",
+
+  "roi.title": "💰 Calculadora de Economia",
+  "roi.desc": "Se você treina 10 modelos/mês com AWS SageMaker (custo médio: $2.500/modelo), você gasta <strong style='color: white;'>$300.000/ano</strong>.<br>Com Deep Learning Studio ($399/mês = $4.788/ano), você economiza <strong style='color: var(--success);'>$295.212/ano</strong>.",
+  "roi.cta": "Calcule sua economia →",
+
+  "footer.copy": "&copy; 2025 Deep Learning Studio. Todos os direitos reservados."
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deep Learning Studio - Treine modelos 10x mais rápido. Framework usado por Nubank, iFood e 300+ empresas">
+    <title>Deep Learning Studio - Framework ML Enterprise</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <meta property="og:title" content="Deep Learning Studio - Treine modelos 10x mais rápido">
+    <meta property="og:description" content="Framework ML enterprise, trial 30 dias, ROI médio 8 meses">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avilaops.com/deep-learning-studio">
+    <meta property="og:image" content="https://avilaops.com/og-dls.jpg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #667eea; --secondary: #764ba2; --accent: #f093fb; --success: #22c55e; --dark: #0a0b0d; --dark-light: #1a1d26; --text: #e4e4e7; --text-muted: #a1a1aa; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%); color: var(--text); line-height: 1.6; }
+                /* Theme light */
+                [data-theme="light"] {
+                    --dark: #f7f7f9;
+                    --dark-light: #ffffff;
+                    --text: #0f172a;
+                    --text-muted: #475569;
+                }
+                .select-lang, .theme-toggle { background: rgba(26, 29, 38, 0.5); color: var(--text); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 8px; padding: 0.5rem 0.75rem; font: inherit; }
+                .theme-toggle { cursor: pointer; }
+        header { background: rgba(10, 11, 13, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(102, 126, 234, 0.1); position: sticky; top: 0; z-index: 1000; padding: 1.5rem 2rem; }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .cta-button { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .hero { padding: 8rem 2rem 6rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; color: var(--success); margin-bottom: 2rem; }
+        .hero-title { font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(135deg, white, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 3rem; line-height: 1.8; }
+        .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .primary-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 1rem 2.5rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .primary-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        .secondary-btn { background: rgba(102, 126, 234, 0.1); color: white; padding: 1rem 2.5rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: 2px solid rgba(102, 126, 234, 0.3); }
+        .features { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white; }
+        .section-subtitle { font-size: 1.25rem; color: var(--text-muted); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .feature-card { background: rgba(26, 29, 38, 0.5); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 16px; padding: 2.5rem; transition: transform 0.3s, border-color 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .feature-icon { font-size: 3rem; margin-bottom: 1.5rem; display: block; }
+        .feature-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: white; }
+        .feature-description { color: var(--text-muted); line-height: 1.7; }
+        .pricing { padding: 6rem 2rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05)); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1200px; margin: 4rem auto 0; }
+        .pricing-card { background: rgba(26, 29, 38, 0.5); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 16px; padding: 3rem; position: relative; }
+        .pricing-card.featured { border-color: var(--primary); border-width: 2px; }
+        .pricing-tier { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .pricing-price { font-size: 3.5rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+        .pricing-period { color: var(--text-muted); margin-bottom: 2rem; }
+        .pricing-features { list-style: none; margin-bottom: 2rem; }
+        .pricing-features li { padding: 0.75rem 0; border-bottom: 1px solid rgba(102, 126, 234, 0.1); color: var(--text); }
+        .pricing-features li:before { content: '✓ '; color: var(--success); font-weight: bold; margin-right: 0.5rem; }
+        footer { background: rgba(10, 11, 13, 0.95); padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(102, 126, 234, 0.1); }
+        @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .features-grid, .pricing-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Navegação principal">
+            <a href="/" class="logo" aria-label="Home">🧠 <span data-i18n="brand">Deep Learning Studio</span></a>
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <select id="langSelect" class="select-lang" aria-label="Idioma">
+                    <option value="pt-BR">PT</option>
+                    <option value="en-US">EN</option>
+                    <option value="es-ES">ES</option>
+                    <option value="uk-UA">UA</option>
+                    <option value="ru-RU">RU</option>
+                </select>
+                <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">🌗</button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#cases">Casos de Uso</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="/docs">Docs</a></li>
+            </ul>
+            <a href="#pricing" class="cta-button" data-i18n="nav.cta_trial">Trial 30 Dias</a>
+        </nav>
+    </header>
+
+    <!-- ... content ... -->
+
+    <footer>
+        <p><span data-i18n="footer.copy">&copy; 2025 Deep Learning Studio. All rights reserved.</span></p>
+    </footer>
+
+    <script>
+    // i18n loader
+    const i18nCache = {};
+    async function loadLocale(locale) {
+        if (i18nCache[locale]) return i18nCache[locale];
+        try {
+            const res = await fetch(`/i18n/deep-learning-studio.${locale}.json`);
+            if (!res.ok) throw new Error('Failed to load DLS locale');
+            const json = await res.json();
+            i18nCache[locale] = json;
+            return json;
+        } catch (e) {
+            console.warn('DLS i18n fallback to pt-BR', e);
+            const res = await fetch(`/i18n/deep-learning-studio.pt-BR.json`);
+            const json = await res.json();
+            i18nCache['pt-BR'] = json;
+            return json;
+        }
+    }
+
+    async function applyTranslations(locale) {
+        const dict = await loadLocale(locale);
+        document.documentElement.lang = locale;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) el.innerHTML = dict[key];
+        });
+    }
+
+    function applyTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
+
+    window.addEventListener('load', () => {
+        const savedLang = localStorage.getItem('lang') || (navigator.language || 'pt-BR');
+        const normalizedLang = ['pt-BR','en-US','es-ES','uk-UA','ru-RU'].includes(savedLang) ? savedLang : 'pt-BR';
+        const langSelect = document.getElementById('langSelect');
+        if (langSelect) { langSelect.value = normalizedLang; applyTranslations(normalizedLang); }
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+    });
+
+    const langSelectEl = document.getElementById('langSelect');
+    if (langSelectEl) {
+        langSelectEl.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            localStorage.setItem('lang', lang);
+            applyTranslations(lang);
+        });
+    }
+
+    const themeToggleEl = document.getElementById('themeToggle');
+    if (themeToggleEl) {
+        themeToggleEl.addEventListener('click', () => {
+            const current = document.body.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            themeToggleEl.textContent = next === 'dark' ? '🌗' : '🌞';
+        });
+    }
+    </script>
+</body>
+</html>

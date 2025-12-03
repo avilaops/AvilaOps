@@ -1,0 +1,59 @@
+{
+  "nav.products": "Produtos",
+  "nav.segments": "Segmentos",
+  "nav.metrics": "Métricas",
+  "nav.pulse": "Pulse Demo",
+  "brand": "AVILAOPS",
+
+  "hero.tag": "💡 TECNOLOGIA BRASILEIRA DE PONTA",
+  "hero.title": "Transforme Seu Negócio com Tecnologia de Classe Mundial",
+  "hero.subtitle": "Soluções completas em gestão empresarial, e-commerce e analytics que impulsionam o crescimento e a eficiência do seu negócio",
+  "hero.cta_solutions": "Conheça Nossas Soluções",
+  "hero.cta_demo": "Agendar Demonstração",
+
+  "segments.title": "Escolha Seu <span>Segmento</span>",
+  "segments.subtitle": "Soluções especializadas para cada tipo de negócio",
+  "segment.agro": "Agro",
+  "segment.construction": "Construção",
+  "segment.distribution": "Distribuição",
+  "segment.education": "Educacional",
+  "segment.financial": "Financial",
+  "segment.hospitality": "Hotelaria",
+  "segment.legal": "Jurídico",
+  "segment.logistics": "Logística",
+  "segment.manufacturing": "Manufatura",
+  "segment.services": "Serviços",
+  "segment.health": "Saúde",
+  "segment.retail": "Varejo",
+
+  "products.title": "Nossas <span>Soluções</span>",
+  "products.subtitle": "Tecnologia de ponta para digitalizar e otimizar seu negócio",
+  "product.arcsat.title": "ArcSat ERP",
+  "product.arcsat.desc": "Sistema de gestão empresarial completo que integra todos os processos do seu negócio. Controle financeiro, estoque, vendas, RH e muito mais em uma única plataforma.",
+  "product.market.title": "Avila Marketplace",
+  "product.market.desc": "Plataforma completa de e-commerce e marketplace. Venda online com uma solução escalável, segura e totalmente integrada ao seu ERP.",
+  "product.pulse.title": "Pulse Platform",
+  "product.pulse.desc": "Plataforma de analytics e business intelligence. Transforme dados em decisões estratégicas com dashboards em tempo real e IA integrada.",
+  "product.pulse.demo": "Ver Demo Interativa",
+
+  "common.learn_more": "Saiba Mais",
+
+  "stats.title": "Performance de <span>Classe Mundial</span>",
+  "stats.subtitle": "Números que comprovam nossa excelência",
+
+  "cta.title": "Comece Sua Transformação Digital Hoje",
+  "cta.desc": "Junte-se a milhares de empresas que já transformaram seus negócios com AvilaOps. Nossa equipe está pronta para ajudar você.",
+
+  "form.name_label": "Nome Completo *",
+  "form.company_label": "Empresa *",
+  "form.email_label": "E-mail *",
+  "form.phone_label": "Telefone *",
+  "form.interest_label": "Interesse em *",
+  "form.select_placeholder": "Selecione uma opção...",
+  "form.opt_full": "Solução Completa (ERP + Marketplace + Pulse)",
+  "form.opt_info": "Apenas informações",
+  "form.message_label": "Mensagem",
+  "form.submit": "Enviar Mensagem",
+
+  "footer.copy": "&copy; 2025 AvilaOps. Todos os direitos reservados. | Feito com ❤️ no Brasil"
+}

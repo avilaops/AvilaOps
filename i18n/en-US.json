@@ -1,0 +1,59 @@
+{
+  "nav.products": "Products",
+  "nav.segments": "Segments",
+  "nav.metrics": "Metrics",
+  "nav.pulse": "Pulse Demo",
+  "brand": "AVILAOPS",
+
+  "hero.tag": "💡 CUTTING-EDGE BRAZILIAN TECHNOLOGY",
+  "hero.title": "Transform Your Business with World-Class Technology",
+  "hero.subtitle": "Complete solutions in business management, e-commerce, and analytics that boost growth and efficiency",
+  "hero.cta_solutions": "Explore Our Solutions",
+  "hero.cta_demo": "Schedule a Demo",
+
+  "segments.title": "Choose Your <span>Segment</span>",
+  "segments.subtitle": "Specialized solutions for every type of business",
+  "segment.agro": "Agro",
+  "segment.construction": "Construction",
+  "segment.distribution": "Distribution",
+  "segment.education": "Education",
+  "segment.financial": "Financial",
+  "segment.hospitality": "Hospitality",
+  "segment.legal": "Legal",
+  "segment.logistics": "Logistics",
+  "segment.manufacturing": "Manufacturing",
+  "segment.services": "Services",
+  "segment.health": "Health",
+  "segment.retail": "Retail",
+
+  "products.title": "Our <span>Solutions</span>",
+  "products.subtitle": "Cutting-edge technology to digitize and optimize your business",
+  "product.arcsat.title": "ArcSat ERP",
+  "product.arcsat.desc": "A complete business management system integrating all your processes. Finance, inventory, sales, HR, and more — in a single platform.",
+  "product.market.title": "Avila Marketplace",
+  "product.market.desc": "A full e-commerce and marketplace platform. Sell online with a scalable, secure solution fully integrated into your ERP.",
+  "product.pulse.title": "Pulse Platform",
+  "product.pulse.desc": "Analytics and BI platform. Turn data into strategic decisions with real-time dashboards and integrated AI.",
+  "product.pulse.demo": "See Interactive Demo",
+
+  "common.learn_more": "Learn More",
+
+  "stats.title": "World-Class <span>Performance</span>",
+  "stats.subtitle": "Numbers that prove our excellence",
+
+  "cta.title": "Start Your Digital Transformation Today",
+  "cta.desc": "Join thousands of companies that have already transformed their business with AvilaOps. Our team is ready to help.",
+
+  "form.name_label": "Full Name *",
+  "form.company_label": "Company *",
+  "form.email_label": "Email *",
+  "form.phone_label": "Phone *",
+  "form.interest_label": "Interested in *",
+  "form.select_placeholder": "Select an option...",
+  "form.opt_full": "Full Solution (ERP + Marketplace + Pulse)",
+  "form.opt_info": "Information only",
+  "form.message_label": "Message",
+  "form.submit": "Send Message",
+
+  "footer.copy": "&copy; 2025 AvilaOps. All rights reserved. | Made with ❤️ in Brazil"
+}
