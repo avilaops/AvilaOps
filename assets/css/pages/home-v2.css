@@ -1,0 +1,280 @@
+/* ========================================
+   HOME V2 LANDING STYLES
+   ======================================== */
+
+body.landing-alt {
+    background: var(--bg-primary);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.landing-alt header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1.5rem 2rem;
+}
+
+body.landing-alt header.glass {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+body.landing-alt[data-theme="dark"] header.glass {
+    background: rgba(10, 10, 10, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.landing-alt nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+body.landing-alt .logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.landing-alt .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+body.landing-alt .nav-links a {
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.landing-alt .nav-links a:hover {
+    color: var(--primary);
+}
+
+body.landing-alt .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+body.landing-alt select[data-lang-select] {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+body.landing-alt .hero {
+    position: relative;
+    padding: 8rem 2rem 6rem;
+    text-align: center;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+body.landing-alt .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 50%, var(--primary-light), transparent 55%);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+body.landing-alt .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+body.landing-alt .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    color: var(--success);
+    margin-bottom: 2rem;
+}
+
+body.landing-alt .hero-title {
+    font-size: clamp(2.75rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+body.landing-alt .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+body.landing-alt .hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+body.landing-alt .hero-meta {
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+body.landing-alt .landing-main.container {
+    padding: 4rem 2rem;
+}
+
+body.landing-alt .category {
+    margin-bottom: 5rem;
+}
+
+body.landing-alt .category-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+body.landing-alt .category-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+body.landing-alt .category-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+body.landing-alt .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+body.landing-alt .product-card {
+    display: block;
+    color: inherit;
+}
+
+body.landing-alt .product-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+body.landing-alt .product-icon {
+    font-size: 2.5rem;
+}
+
+body.landing-alt .product-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+body.landing-alt .product-description {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+body.landing-alt .product-features {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+body.landing-alt .product-features li {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    padding: 0.25rem 0;
+}
+
+body.landing-alt .product-features li::before {
+    content: "\2713\0020";
+    color: var(--success);
+    font-weight: 700;
+}
+
+body.landing-alt .product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+body.landing-alt footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+body.landing-alt footer a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+body.landing-alt .footer-links {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+body.landing-alt .footer-links a {
+    color: var(--primary);
+}
+
+@media (max-width: 992px) {
+    body.landing-alt nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    body.landing-alt .nav-controls {
+        order: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    body.landing-alt header {
+        padding: 1.25rem 1.5rem;
+    }
+
+    body.landing-alt .nav-links {
+        display: none;
+    }
+
+    body.landing-alt .hero {
+        padding: 6rem 1.5rem 4rem;
+    }
+
+    body.landing-alt .hero-title {
+        font-size: 2.5rem;
+    }
+
+    body.landing-alt .products-grid {
+        grid-template-columns: 1fr;
+    }
+}

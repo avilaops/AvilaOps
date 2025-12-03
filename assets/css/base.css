@@ -1,0 +1,200 @@
+/* ========================================
+   AVILAOPS BASE THEME
+   Reset, variables and generic components
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --accent: #f093fb;
+    --success: #22c55e;
+    --dark: #0a0b0d;
+    --dark-light: #1a1d26;
+    --text: #e4e4e7;
+    --text-muted: #a1a1aa;
+    --card-bg: rgba(26, 29, 38, 0.5);
+    --card-border: rgba(102, 126, 234, 0.2);
+    --border-light: rgba(102, 126, 234, 0.1);
+    --surface: rgba(10, 11, 13, 0.95);
+    --transition: 0.3s ease;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+header {
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text);
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.cta-button {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(102, 126, 234, 0.35);
+}
+
+footer {
+    background: var(--surface);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.25);
+}
+
+.status-ready {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--success);
+}
+
+.status-beta {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+}
+
+.tagline {
+    color: var(--text-muted);
+}
+
+select[data-lang-select] {
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+}
+
+.theme-toggle,
+.button-round {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform var(--transition), border-color var(--transition);
+}
+
+.theme-toggle:hover,
+.button-round:hover {
+    transform: rotate(10deg);
+    border-color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .cta-button {
+        padding: 0.75rem 1.25rem;
+    }
+}

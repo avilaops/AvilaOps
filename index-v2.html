@@ -34,7 +34,9 @@
     <link rel="canonical" href="https://avilaops.com/">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages/home-v2.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
 
     <!-- Analytics - Plausible (Privacy-focused) -->
@@ -45,270 +47,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollToPlugin.min.js" defer></script>
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header styles */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1.5rem 2rem;
-        }
-
-        header.glass {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .logo {
-            font-size: 1.75rem;
-            font-weight: 800;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        select {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--bg-secondary);
-            color: var(--text);
-            font-size: 0.9rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 8rem 2rem 6rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: var(--bg-primary);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, var(--primary-light), transparent 50%);
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            color: var(--success);
-            margin-bottom: 2rem;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Category Section */
-        .category {
-            margin-bottom: 5rem;
-        }
-
-        .category-header {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .category-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .category-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .product-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-icon {
-            font-size: 2.5rem;
-        }
-
-        .product-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .product-status {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: auto;
-        }
-
-        .status-ready {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--success);
-        }
-
-        .status-beta {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--warning);
-        }
-
-        .product-description {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 1rem;
-        }
-
-        .product-features li {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding: 0.25rem 0;
-        }
-
-        .product-features li:before {
-            content: "✓ ";
-            color: var(--success);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        .product-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .products-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-        }
-    </style>
 </head>
-<body>
+<body class="landing-alt">
     <header class="glass">
         <nav>
             <a href="/" class="logo gradient-text">
@@ -324,7 +64,7 @@
             </ul>
 
             <div class="nav-controls">
-                <select id="langSelect" aria-label="Selecionar idioma">
+                <select id="langSelect" data-lang-select aria-label="Selecionar idioma">
                     <option value="pt-BR">🇧🇷 PT</option>
                     <option value="en-US">🇺🇸 EN</option>
                     <option value="es-ES">🇪🇸 ES</option>
@@ -332,9 +72,7 @@
                     <option value="ru-RU">🇷🇺 RU</option>
                 </select>
 
-                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
-                    <span id="themeIcon">🌙</span>
-                </button>
+                <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">🌗</button>
 
                 <a href="/pricing" class="btn btn-primary" data-cta="header-cta">
                     Começar Agora
@@ -538,46 +276,12 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/assets/js/performance.js"></script>
-    <script src="/assets/js/animations.js"></script>
-    <script src="/assets/js/analytics.js"></script>
-    <script src="/assets/js/seo.js"></script>
-    <script src="/assets/js/chat.js"></script>
-
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const html = document.documentElement;
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-        themeToggle?.addEventListener('click', () => {
-            const current = html.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            themeIcon.textContent = next === 'dark' ? '☀️' : '🌙';
-        });
-
-        // Language Selector
-        const langSelect = document.getElementById('langSelect');
-        const savedLang = localStorage.getItem('lang') || 'pt-BR';
-        if (langSelect) {
-            langSelect.value = savedLang;
-            html.lang = savedLang;
-        }
-
-        langSelect?.addEventListener('change', (e) => {
-            const lang = e.target.value;
-            localStorage.setItem('lang', lang);
-            html.lang = lang;
-            // Reload page with new language
-            // window.location.reload();
-        });
-    </script>
+    <script src="assets/js/core/app.js" defer></script>
+    <script src="assets/js/core/theme.js" defer></script>
+    <script src="assets/js/performance.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/seo.js"></script>
+    <script src="assets/js/chat.js"></script>
 </body>
 </html>
