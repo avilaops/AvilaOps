@@ -1,0 +1,276 @@
+/* ========================================
+   THEME SYSTEM - Light & Dark Mode
+   Light: Branco + Laranja + Amarelo
+   Dark: Preto + Branco + Roxo
+   ======================================== */
+
+:root {
+    /* Light Theme (Default) - Branco/Laranja/Amarelo */
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-tertiary: #f5f5f5;
+
+    --primary: #FF6B35;      /* Laranja vibrante */
+    --primary-hover: #FF5722;
+    --primary-light: #FFB4A2;
+
+    --secondary: #FDB833;    /* Amarelo dourado */
+    --secondary-hover: #FFCA28;
+    --secondary-light: #FFE082;
+
+    --accent: #FFAA00;       /* Laranja-amarelo */
+
+    --text: #1a1a1a;
+    --text-muted: #666666;
+    --text-light: #999999;
+
+    --border: #e5e5e5;
+    --border-light: #f0f0f0;
+
+    --shadow-sm: 0 2px 4px rgba(255, 107, 53, 0.08);
+    --shadow-md: 0 4px 12px rgba(255, 107, 53, 0.12);
+    --shadow-lg: 0 8px 24px rgba(255, 107, 53, 0.16);
+
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+}
+
+/* Dark Theme - Preto/Branco/Roxo */
+[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+
+    --primary: #8B5CF6;      /* Roxo vibrante */
+    --primary-hover: #7C3AED;
+    --primary-light: #A78BFA;
+
+    --secondary: #C084FC;    /* Roxo claro */
+    --secondary-hover: #A855F7;
+    --secondary-light: #DDD6FE;
+
+    --accent: #E879F9;       /* Rosa-roxo */
+
+    --text: #ffffff;
+    --text-muted: #a1a1aa;
+    --text-light: #71717a;
+
+    --border: #27272a;
+    --border-light: #3f3f46;
+
+    --shadow-sm: 0 2px 4px rgba(139, 92, 246, 0.1);
+    --shadow-md: 0 4px 12px rgba(139, 92, 246, 0.15);
+    --shadow-lg: 0 8px 24px rgba(139, 92, 246, 0.2);
+
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS
+   ======================================== */
+
+* {
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text);
+}
+
+/* ========================================
+   GRADIENT UTILITIES
+   ======================================== */
+
+.gradient-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .gradient-text {
+    background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ========================================
+   CARD STYLES
+   ======================================== */
+
+.card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    filter: brightness(1.1);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON
+   ======================================== */
+
+.theme-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   ANIMATIONS & EFFECTS
+   ======================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ========================================
+   GLASS MORPHISM
+   ======================================== */
+
+.glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .glass {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles */
+*:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}

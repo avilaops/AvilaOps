@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0b0d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1d26;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Logo mark -->
+  <rect x="80" y="80" width="80" height="80" rx="12" fill="url(#accent)"/>
+  <text x="120" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="800" fill="white" text-anchor="middle">DL</text>
+
+  <!-- Title -->
+  <text x="180" y="135" font-family="system-ui, -apple-system, sans-serif" font-size="54" font-weight="800" fill="white">Deep Learning Studio</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="500" fill="#a1a1aa">Framework de Deep Learning que escala</text>
+
+  <!-- Features -->
+  <g transform="translate(80, 280)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#667eea">✓ GPU Acceleration</text>
+    <text x="0" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#667eea">✓ Transformers & CNN</text>
+    <text x="0" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#667eea">✓ ONNX Export</text>
+  </g>
+
+  <g transform="translate(450, 280)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#667eea">✓ Autograd Engine</text>
+    <text x="0" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#667eea">✓ Mixed Precision</text>
+    <text x="0" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#667eea">✓ Production Ready</text>
+  </g>
+
+  <!-- Code snippet -->
+  <rect x="80" y="450" width="1040" height="130" rx="12" fill="rgba(10, 11, 13, 0.8)" stroke="#667eea" stroke-width="2"/>
+  <text x="110" y="495" font-family="ui-monospace, monospace" font-size="18" fill="#e4e4e7">let model = Sequential::new()</text>
+  <text x="130" y="525" font-family="ui-monospace, monospace" font-size="18" fill="#e4e4e7">.add(Dense::new(784, 128, Activation::ReLU))</text>
+  <text x="130" y="555" font-family="ui-monospace, monospace" font-size="18" fill="#e4e4e7">.add(Dense::new(128, 10, Activation::Softmax));</text>
+</svg>

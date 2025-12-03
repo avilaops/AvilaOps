@@ -1,0 +1,44 @@
+# robots.txt for avilaops.com
+# Updated: 2025-12-03
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*lang=
+
+# Allow CSS and JS for rendering
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /i18n/
+
+# Sitemap
+Sitemap: https://avilaops.com/sitemap.xml
+
+# Crawl-delay (optional, adjust as needed)
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
