@@ -1,0 +1,27 @@
+{
+    "github.copilot.enable": {
+        "plaintext": true
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.chat.localeOverride": "en",
+    "github.copilot.chat.model": "claude-sonnet",
+    "github.copilot.advanced": {
+        "debug.overrideEngine": "claude-sonnet",
+        "debug.testOverrideProxyUrl": "",
+        "authProvider": "github",
+        "length": 4000,
+        "temperature": 0.2,
+        "top_p": 1,
+        "stops": {
+            "javascript": [
+                "\n\n"
+            ],
+            "python": [
+                "\n\n"
+            ],
+            "rust": [
+                "\n\n"
+            ]
+        }
+    }
+}
