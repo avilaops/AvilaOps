@@ -1,0 +1,102 @@
+{
+    "brand": "DataGrid Pro",
+    "nav": {
+        "features": "Características",
+        "demo": "Demo",
+        "pricing": "Precios",
+        "docs": "Documentación",
+        "cta": "Comenzar Gratis"
+    },
+    "hero": {
+        "badge": "⚡ Análisis de Datos de Alto Rendimiento",
+        "title": "Pandas/Polars, Pero Mejor",
+        "subtitle": "Procesa miles de millones de filas en segundos. API familiar para Python. 100x más rápido que Pandas. Cero configuración para comenzar.",
+        "cta_primary": "Comenzar Gratuitamente",
+        "cta_secondary": "Ver Benchmarks",
+        "trusted_by": "Usado por 150+ equipos de datos"
+    },
+    "features": {
+        "title": "Rendimiento Sin Compromisos",
+        "subtitle": "Todo lo que amas de Pandas, con velocidad de Rust",
+        "feature1_title": "API Familiar",
+        "feature1_desc": "Sintaxis idéntica a Pandas. Migra tu código en minutos. Cero curva de aprendizaje para científicos de datos.",
+        "feature2_title": "100x Más Rápido",
+        "feature2_desc": "Motor Rust optimizado. Procesamiento paralelo automático. Maneja datasets que no caben en memoria.",
+        "feature3_title": "SQL Integrado",
+        "feature3_desc": "Consulta tus DataFrames con SQL puro. Optimizador de consultas inteligente. Soporte para JOINs complejos.",
+        "feature4_title": "Streaming",
+        "feature4_desc": "Procesa archivos gigantes sin cargar en memoria. Soporte para CSV, Parquet, Arrow, JSON. Lectura lazy nativa.",
+        "feature5_title": "Aceleración GPU",
+        "feature5_desc": "Operaciones automáticas en GPU cuando está disponible. Integración con CUDA/ROCm. Transparente para el usuario.",
+        "feature6_title": "Cero Configuración",
+        "feature6_desc": "Instala vía pip. Funciona out-of-the-box. Sin dependencias pesadas. Binary wheels para todas las plataformas."
+    },
+    "benchmarks": {
+        "title": "Benchmarks Reales",
+        "subtitle": "Comparación con Pandas y Polars en datasets de 10 millones de filas",
+        "bench1_title": "GroupBy + Aggregation",
+        "bench1_pandas": "45s",
+        "bench1_polars": "3.2s",
+        "bench1_datagrid": "0.8s",
+        "bench2_title": "Filter + Sort",
+        "bench2_pandas": "18s",
+        "bench2_polars": "1.5s",
+        "bench2_datagrid": "0.4s",
+        "bench3_title": "Join (2 tablas)",
+        "bench3_pandas": "67s",
+        "bench3_polars": "4.8s",
+        "bench3_datagrid": "1.2s",
+        "note": "Mediciones en Intel Xeon 16 cores, 64GB RAM. Dataset: NYC Taxi."
+    },
+    "code": {
+        "title": "Código Que Ya Conoces",
+        "subtitle": "API 100% compatible con Pandas"
+    },
+    "pricing": {
+        "title": "Precios Simples",
+        "subtitle": "Usa gratuitamente para siempre, escala cuando necesites",
+        "plan1_name": "Open Source",
+        "plan1_price": "Gratis",
+        "plan1_desc": "Para uso personal y proyectos",
+        "plan1_feat1": "Uso ilimitado",
+        "plan1_feat2": "Todas las características",
+        "plan1_feat3": "Soporte comunitario",
+        "plan1_feat4": "Licencia MIT",
+        "plan2_name": "Pro",
+        "plan2_price": "$49",
+        "plan2_period": "/mes por usuario",
+        "plan2_desc": "Para equipos profesionales",
+        "plan2_feat1": "Todo de Open Source",
+        "plan2_feat2": "Aceleración GPU",
+        "plan2_feat3": "Soporte prioritario",
+        "plan2_feat4": "SLA 99.9%",
+        "plan3_name": "Enterprise",
+        "plan3_price": "Personalizado",
+        "plan3_desc": "Para grandes organizaciones",
+        "plan3_feat1": "Todo de Pro",
+        "plan3_feat2": "Implementación on-premise",
+        "plan3_feat3": "Soporte 24x7",
+        "plan3_feat4": "Entrenamiento dedicado",
+        "plan3_feat5": "SLA 99.99%",
+        "cta_button": "Comenzar"
+    },
+    "stats": {
+        "stat1_value": "100x",
+        "stat1_label": "Más rápido que Pandas",
+        "stat2_value": "150+",
+        "stat2_label": "Equipos usando",
+        "stat3_value": "1B+",
+        "stat3_label": "Filas procesadas/día",
+        "stat4_value": "0ms",
+        "stat4_label": "Latencia de configuración"
+    },
+    "cta": {
+        "title": "¿Listo para acelerar tu análisis de datos?",
+        "subtitle": "Comienza gratis. Sin tarjeta de crédito.",
+        "button": "pip install datagrid-pro"
+    },
+    "footer": {
+        "copy": "&copy; 2025 DataGrid Pro. Todos los derechos reservados.",
+        "product": "Producto de la Plataforma ARXIS"
+    }
+}

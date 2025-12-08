@@ -1,0 +1,96 @@
+{
+    "brand": "AI Vision Pro",
+    "nav": {
+        "features": "Recursos",
+        "cases": "Casos de Uso",
+        "pricing": "Preços",
+        "docs": "Documentação",
+        "demo": "Demo",
+        "cta_trial": "Teste Grátis por 30 Dias"
+    },
+    "hero": {
+        "badge": "🚀 Computer Vision Enterprise",
+        "title": "Detecção e Tracking em Tempo Real",
+        "subtitle": "Plataforma completa de Computer Vision com detecção de objetos, reconhecimento facial e análise de vídeo. Usado por 200+ empresas em segurança, varejo e indústria.",
+        "cta_primary": "Começar Teste Grátis",
+        "cta_secondary": "Ver Demo ao Vivo",
+        "trusted_by": "Confiado por empresas líderes"
+    },
+    "features": {
+        "title": "Tudo o Necessário para Visão Computacional",
+        "subtitle": "API REST, SDKs em 5 linguagens, modelos pré-treinados e edge deployment",
+        "feature1_title": "Detecção de Objetos",
+        "feature1_desc": "YOLO v8 otimizado com 80+ classes. Processamento em tempo real até 120 FPS. Deploy em edge devices com TensorRT.",
+        "feature2_title": "Reconhecimento Facial",
+        "feature2_desc": "Precisão 99.8% em identificação 1:N. Detecção de landmarks faciais, idade, gênero e emoções. LGPD compliant.",
+        "feature3_title": "Tracking Multi-Objeto",
+        "feature3_desc": "DeepSORT e ByteTrack integrados. Rastreamento em cenários complexos com oclusões. Análise de trajetórias.",
+        "feature4_title": "Análise de Vídeo",
+        "feature4_desc": "Processamento batch e streaming. Detecção de eventos, contagem de pessoas, análise de comportamento.",
+        "feature5_title": "Edge Deployment",
+        "feature5_desc": "Otimizado para NVIDIA Jetson, Intel NUC, Raspberry Pi. Modelos quantizados INT8 com mínima perda de precisão.",
+        "feature6_title": "APIs e SDKs",
+        "feature6_desc": "REST API completa. SDKs em Python, JavaScript, Java, C++ e Go. Webhooks para eventos em tempo real."
+    },
+    "cases": {
+        "title": "Casos de Uso em Produção",
+        "subtitle": "Implementações reais em diversos setores",
+        "case1_title": "Segurança e Vigilância",
+        "case1_desc": "Detecção de intrusões, reconhecimento facial de suspeitos, análise de comportamentos anormais em ambientes monitorados.",
+        "case2_title": "Varejo Inteligente",
+        "case2_desc": "Contagem de clientes, heatmaps de movimentação, análise de filas, detecção de produtos em prateleiras.",
+        "case3_title": "Controle de Qualidade",
+        "case3_desc": "Inspeção visual automatizada, detecção de defeitos, classificação de produtos na linha de produção industrial.",
+        "case4_title": "Smart Cities",
+        "case4_desc": "Monitoramento de tráfego, detecção de infrações, contagem de veículos, análise de fluxo urbano."
+    },
+    "pricing": {
+        "title": "Planos Transparentes",
+        "subtitle": "Comece grátis, escale quando precisar",
+        "plan1_name": "Starter",
+        "plan1_price": "Grátis",
+        "plan1_desc": "Para testes e desenvolvimento",
+        "plan1_feat1": "1.000 requisições/mês",
+        "plan1_feat2": "3 modelos pré-treinados",
+        "plan1_feat3": "API REST",
+        "plan1_feat4": "Suporte por email",
+        "plan2_name": "Professional",
+        "plan2_price": "$299",
+        "plan2_period": "/mês",
+        "plan2_desc": "Para produção de pequeno/médio porte",
+        "plan2_feat1": "100.000 requisições/mês",
+        "plan2_feat2": "Todos os modelos",
+        "plan2_feat3": "SDKs completos",
+        "plan2_feat4": "Edge deployment",
+        "plan2_feat5": "Suporte prioritário 12x5",
+        "plan3_name": "Enterprise",
+        "plan3_price": "Customizado",
+        "plan3_desc": "Para grandes operações",
+        "plan3_feat1": "Volume ilimitado",
+        "plan3_feat2": "Modelos customizados",
+        "plan3_feat3": "On-premise deployment",
+        "plan3_feat4": "SLA 99.99%",
+        "plan3_feat5": "Suporte 24x7",
+        "plan3_feat6": "Treinamento dedicado",
+        "cta_button": "Começar Agora"
+    },
+    "stats": {
+        "stat1_value": "200+",
+        "stat1_label": "Empresas usando",
+        "stat2_value": "120 FPS",
+        "stat2_label": "Processamento em tempo real",
+        "stat3_value": "99.8%",
+        "stat3_label": "Precisão facial",
+        "stat4_value": "50ms",
+        "stat4_label": "Latência média"
+    },
+    "cta": {
+        "title": "Pronto para implementar Computer Vision?",
+        "subtitle": "Teste grátis por 30 dias. Sem cartão de crédito.",
+        "button": "Começar Teste Grátis"
+    },
+    "footer": {
+        "copy": "&copy; 2025 AI Vision Pro. Todos os direitos reservados.",
+        "product": "Produto da Plataforma ARXIS"
+    }
+}

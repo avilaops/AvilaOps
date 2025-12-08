@@ -1,0 +1,96 @@
+{
+    "brand": "AI Vision Pro",
+    "nav": {
+        "features": "Features",
+        "cases": "Use Cases",
+        "pricing": "Pricing",
+        "docs": "Docs",
+        "demo": "Demo",
+        "cta_trial": "Start Free Trial"
+    },
+    "hero": {
+        "badge": "🚀 Enterprise Computer Vision",
+        "title": "Real-Time Detection and Tracking",
+        "subtitle": "Complete Computer Vision platform with object detection, facial recognition, and video analysis. Trusted by 200+ companies in security, retail, and industry.",
+        "cta_primary": "Start Free Trial",
+        "cta_secondary": "Watch Live Demo",
+        "trusted_by": "Trusted by leading companies"
+    },
+    "features": {
+        "title": "Everything You Need for Computer Vision",
+        "subtitle": "REST API, SDKs in 5 languages, pre-trained models, and edge deployment",
+        "feature1_title": "Object Detection",
+        "feature1_desc": "Optimized YOLO v8 with 80+ classes. Real-time processing up to 120 FPS. Edge device deployment with TensorRT.",
+        "feature2_title": "Facial Recognition",
+        "feature2_desc": "99.8% accuracy in 1:N identification. Facial landmarks, age, gender, and emotion detection. GDPR compliant.",
+        "feature3_title": "Multi-Object Tracking",
+        "feature3_desc": "Integrated DeepSORT and ByteTrack. Tracking in complex scenarios with occlusions. Trajectory analysis.",
+        "feature4_title": "Video Analysis",
+        "feature4_desc": "Batch and streaming processing. Event detection, people counting, behavior analysis.",
+        "feature5_title": "Edge Deployment",
+        "feature5_desc": "Optimized for NVIDIA Jetson, Intel NUC, Raspberry Pi. INT8 quantized models with minimal accuracy loss.",
+        "feature6_title": "APIs and SDKs",
+        "feature6_desc": "Complete REST API. SDKs in Python, JavaScript, Java, C++, and Go. Webhooks for real-time events."
+    },
+    "cases": {
+        "title": "Production Use Cases",
+        "subtitle": "Real implementations across industries",
+        "case1_title": "Security & Surveillance",
+        "case1_desc": "Intrusion detection, facial recognition of suspects, anomaly behavior analysis in monitored environments.",
+        "case2_title": "Smart Retail",
+        "case2_desc": "Customer counting, movement heatmaps, queue analysis, shelf product detection.",
+        "case3_title": "Quality Control",
+        "case3_desc": "Automated visual inspection, defect detection, product classification on industrial production lines.",
+        "case4_title": "Smart Cities",
+        "case4_desc": "Traffic monitoring, violation detection, vehicle counting, urban flow analysis."
+    },
+    "pricing": {
+        "title": "Transparent Pricing",
+        "subtitle": "Start free, scale when you need",
+        "plan1_name": "Starter",
+        "plan1_price": "Free",
+        "plan1_desc": "For testing and development",
+        "plan1_feat1": "1,000 requests/month",
+        "plan1_feat2": "3 pre-trained models",
+        "plan1_feat3": "REST API",
+        "plan1_feat4": "Email support",
+        "plan2_name": "Professional",
+        "plan2_price": "$299",
+        "plan2_period": "/month",
+        "plan2_desc": "For small/medium production",
+        "plan2_feat1": "100,000 requests/month",
+        "plan2_feat2": "All models",
+        "plan2_feat3": "Complete SDKs",
+        "plan2_feat4": "Edge deployment",
+        "plan2_feat5": "Priority support 12x5",
+        "plan3_name": "Enterprise",
+        "plan3_price": "Custom",
+        "plan3_desc": "For large-scale operations",
+        "plan3_feat1": "Unlimited volume",
+        "plan3_feat2": "Custom models",
+        "plan3_feat3": "On-premise deployment",
+        "plan3_feat4": "99.99% SLA",
+        "plan3_feat5": "24x7 support",
+        "plan3_feat6": "Dedicated training",
+        "cta_button": "Get Started"
+    },
+    "stats": {
+        "stat1_value": "200+",
+        "stat1_label": "Companies using",
+        "stat2_value": "120 FPS",
+        "stat2_label": "Real-time processing",
+        "stat3_value": "99.8%",
+        "stat3_label": "Facial accuracy",
+        "stat4_value": "50ms",
+        "stat4_label": "Average latency"
+    },
+    "cta": {
+        "title": "Ready to implement Computer Vision?",
+        "subtitle": "Free 30-day trial. No credit card required.",
+        "button": "Start Free Trial"
+    },
+    "footer": {
+        "copy": "&copy; 2025 AI Vision Pro. All rights reserved.",
+        "product": "Product of ARXIS Platform"
+    }
+}

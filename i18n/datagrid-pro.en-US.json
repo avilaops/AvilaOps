@@ -1,0 +1,102 @@
+{
+    "brand": "DataGrid Pro",
+    "nav": {
+        "features": "Features",
+        "demo": "Demo",
+        "pricing": "Pricing",
+        "docs": "Docs",
+        "cta": "Start Free"
+    },
+    "hero": {
+        "badge": "⚡ High-Performance Data Analysis",
+        "title": "Pandas/Polars, But Better",
+        "subtitle": "Process billions of rows in seconds. Familiar Python API. 100x faster than Pandas. Zero configuration to start.",
+        "cta_primary": "Start Free",
+        "cta_secondary": "See Benchmarks",
+        "trusted_by": "Used by 150+ data teams"
+    },
+    "features": {
+        "title": "Performance Without Compromises",
+        "subtitle": "Everything you love about Pandas, with Rust speed",
+        "feature1_title": "Familiar API",
+        "feature1_desc": "Pandas-identical syntax. Migrate your code in minutes. Zero learning curve for data scientists.",
+        "feature2_title": "100x Faster",
+        "feature2_desc": "Optimized Rust engine. Automatic parallel processing. Handles datasets that don't fit in memory.",
+        "feature3_title": "Integrated SQL",
+        "feature3_desc": "Query your DataFrames with pure SQL. Intelligent query optimizer. Support for complex JOINs.",
+        "feature4_title": "Streaming",
+        "feature4_desc": "Process huge files without loading into memory. Support for CSV, Parquet, Arrow, JSON. Native lazy reading.",
+        "feature5_title": "GPU Acceleration",
+        "feature5_desc": "Automatic GPU operations when available. CUDA/ROCm integration. Transparent to the user.",
+        "feature6_title": "Zero Config",
+        "feature6_desc": "Install via pip. Works out-of-the-box. No heavy dependencies. Binary wheels for all platforms."
+    },
+    "benchmarks": {
+        "title": "Real Benchmarks",
+        "subtitle": "Comparison with Pandas and Polars on 10 million row datasets",
+        "bench1_title": "GroupBy + Aggregation",
+        "bench1_pandas": "45s",
+        "bench1_polars": "3.2s",
+        "bench1_datagrid": "0.8s",
+        "bench2_title": "Filter + Sort",
+        "bench2_pandas": "18s",
+        "bench2_polars": "1.5s",
+        "bench2_datagrid": "0.4s",
+        "bench3_title": "Join (2 tables)",
+        "bench3_pandas": "67s",
+        "bench3_polars": "4.8s",
+        "bench3_datagrid": "1.2s",
+        "note": "Measurements on Intel Xeon 16 cores, 64GB RAM. Dataset: NYC Taxi."
+    },
+    "code": {
+        "title": "Code You Already Know",
+        "subtitle": "100% Pandas-compatible API"
+    },
+    "pricing": {
+        "title": "Simple Pricing",
+        "subtitle": "Use for free forever, scale when you need",
+        "plan1_name": "Open Source",
+        "plan1_price": "Free",
+        "plan1_desc": "For personal use and projects",
+        "plan1_feat1": "Unlimited use",
+        "plan1_feat2": "All features",
+        "plan1_feat3": "Community support",
+        "plan1_feat4": "MIT License",
+        "plan2_name": "Pro",
+        "plan2_price": "$49",
+        "plan2_period": "/month per user",
+        "plan2_desc": "For professional teams",
+        "plan2_feat1": "Everything in Open Source",
+        "plan2_feat2": "GPU acceleration",
+        "plan2_feat3": "Priority support",
+        "plan2_feat4": "99.9% SLA",
+        "plan3_name": "Enterprise",
+        "plan3_price": "Custom",
+        "plan3_desc": "For large organizations",
+        "plan3_feat1": "Everything in Pro",
+        "plan3_feat2": "On-premise deployment",
+        "plan3_feat3": "24x7 support",
+        "plan3_feat4": "Dedicated training",
+        "plan3_feat5": "99.99% SLA",
+        "cta_button": "Get Started"
+    },
+    "stats": {
+        "stat1_value": "100x",
+        "stat1_label": "Faster than Pandas",
+        "stat2_value": "150+",
+        "stat2_label": "Teams using",
+        "stat3_value": "1B+",
+        "stat3_label": "Rows processed/day",
+        "stat4_value": "0ms",
+        "stat4_label": "Setup latency"
+    },
+    "cta": {
+        "title": "Ready to accelerate your data analysis?",
+        "subtitle": "Start for free. No credit card required.",
+        "button": "pip install datagrid-pro"
+    },
+    "footer": {
+        "copy": "&copy; 2025 DataGrid Pro. All rights reserved.",
+        "product": "Product of ARXIS Platform"
+    }
+}

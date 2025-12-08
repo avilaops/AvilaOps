@@ -452,3 +452,98 @@
         padding: 2.5rem 1.75rem;
     }
 }
+
+/* ========================================
+   CRATES SECTION
+   ======================================== */
+
+.crates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.crate-card {
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.crate-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.crate-card h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.crate-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.crate-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: var(--text);
+}
+
+.crate-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateX(4px);
+}
+
+.crate-name {
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.crate-version {
+    font-size: 0.875rem;
+    background: var(--secondary);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.crate-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .crates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .crate-card {
+        padding: 2rem;
+    }
+
+    .crate-link {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }

@@ -1,0 +1,102 @@
+{
+    "brand": "DataGrid Pro",
+    "nav": {
+        "features": "Возможности",
+        "demo": "Демо",
+        "pricing": "Цены",
+        "docs": "Документация",
+        "cta": "Начать бесплатно"
+    },
+    "hero": {
+        "badge": "⚡ Высокопроизводительный анализ данных",
+        "title": "Pandas/Polars, но лучше",
+        "subtitle": "Обрабатывайте миллиарды строк за секунды. Знакомый Python API. В 100 раз быстрее Pandas. Нулевая конфигурация для старта.",
+        "cta_primary": "Начать бесплатно",
+        "cta_secondary": "Посмотреть бенчмарки",
+        "trusted_by": "Используется 150+ командами данных"
+    },
+    "features": {
+        "title": "Производительность без компромиссов",
+        "subtitle": "Все, что вы любите в Pandas, со скоростью Rust",
+        "feature1_title": "Знакомый API",
+        "feature1_desc": "Синтаксис идентичный Pandas. Перенесите свой код за минуты. Нулевая кривая обучения для специалистов по данным.",
+        "feature2_title": "В 100 раз быстрее",
+        "feature2_desc": "Оптимизированный Rust engine. Автоматическая параллельная обработка. Обрабатывает датасеты, которые не помещаются в память.",
+        "feature3_title": "Интегрированный SQL",
+        "feature3_desc": "Запрашивайте свои DataFrames чистым SQL. Интеллектуальный оптимизатор запросов. Поддержка сложных JOIN'ов.",
+        "feature4_title": "Потоковая обработка",
+        "feature4_desc": "Обрабатывайте огромные файлы без загрузки в память. Поддержка CSV, Parquet, Arrow, JSON. Нативное отложенное чтение.",
+        "feature5_title": "Ускорение GPU",
+        "feature5_desc": "Автоматические операции на GPU когда доступно. Интеграция с CUDA/ROCm. Прозрачно для пользователя.",
+        "feature6_title": "Нулевая конфигурация",
+        "feature6_desc": "Установите через pip. Работает out-of-the-box. Без тяжелых зависимостей. Binary wheels для всех платформ."
+    },
+    "benchmarks": {
+        "title": "Реальные бенчмарки",
+        "subtitle": "Сравнение с Pandas и Polars на датасетах из 10 миллионов строк",
+        "bench1_title": "GroupBy + Aggregation",
+        "bench1_pandas": "45с",
+        "bench1_polars": "3.2с",
+        "bench1_datagrid": "0.8с",
+        "bench2_title": "Filter + Sort",
+        "bench2_pandas": "18с",
+        "bench2_polars": "1.5с",
+        "bench2_datagrid": "0.4с",
+        "bench3_title": "Join (2 таблицы)",
+        "bench3_pandas": "67с",
+        "bench3_polars": "4.8с",
+        "bench3_datagrid": "1.2с",
+        "note": "Измерения на Intel Xeon 16 ядер, 64GB RAM. Датасет: NYC Taxi."
+    },
+    "code": {
+        "title": "Код, который вы уже знаете",
+        "subtitle": "100% совместимый с Pandas API"
+    },
+    "pricing": {
+        "title": "Простые цены",
+        "subtitle": "Используйте бесплатно навсегда, масштабируйте когда нужно",
+        "plan1_name": "Open Source",
+        "plan1_price": "Бесплатно",
+        "plan1_desc": "Для личного использования и проектов",
+        "plan1_feat1": "Неограниченное использование",
+        "plan1_feat2": "Все функции",
+        "plan1_feat3": "Поддержка сообщества",
+        "plan1_feat4": "MIT лицензия",
+        "plan2_name": "Pro",
+        "plan2_price": "$49",
+        "plan2_period": "/месяц на пользователя",
+        "plan2_desc": "Для профессиональных команд",
+        "plan2_feat1": "Все из Open Source",
+        "plan2_feat2": "Ускорение GPU",
+        "plan2_feat3": "Приоритетная поддержка",
+        "plan2_feat4": "SLA 99.9%",
+        "plan3_name": "Enterprise",
+        "plan3_price": "Индивидуально",
+        "plan3_desc": "Для крупных организаций",
+        "plan3_feat1": "Все из Pro",
+        "plan3_feat2": "On-premise развертывание",
+        "plan3_feat3": "Поддержка 24x7",
+        "plan3_feat4": "Специальное обучение",
+        "plan3_feat5": "SLA 99.99%",
+        "cta_button": "Начать"
+    },
+    "stats": {
+        "stat1_value": "100x",
+        "stat1_label": "Быстрее Pandas",
+        "stat2_value": "150+",
+        "stat2_label": "Команд используют",
+        "stat3_value": "1B+",
+        "stat3_label": "Строк обработано/день",
+        "stat4_value": "0ms",
+        "stat4_label": "Задержка настройки"
+    },
+    "cta": {
+        "title": "Готовы ускорить анализ данных?",
+        "subtitle": "Начните бесплатно. Кредитная карта не требуется.",
+        "button": "pip install datagrid-pro"
+    },
+    "footer": {
+        "copy": "&copy; 2025 DataGrid Pro. Все права защищены.",
+        "product": "Продукт платформы ARXIS"
+    }
+}
