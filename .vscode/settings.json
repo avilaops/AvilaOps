@@ -23,5 +23,14 @@
                 "\n\n"
             ]
         }
-    }
+    },
+    "avilacopilot.enabled": true,
+    "avilacopilot.provider": "ollama",
+    "avilacopilot.autoComplete": true,
+    "avilacopilot.showInlineCompletions": true,
+    "avilacopilot.maxLatencyMs": 500,
+    "avilacopilot.ollama.baseUrl": "http://localhost:11434",
+    "avilacopilot.ollama.model": "codellama",
+    "avilacopilot.ollama.maxTokens": 2048,
+    "avilacopilot.ollama.temperature": 0.2
 }
