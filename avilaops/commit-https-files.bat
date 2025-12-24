@@ -40,13 +40,18 @@ git add status.html
 git add docs.html
 git add pricing.html
 git add use-cases.html
+git add components-demo.html
 git add index.html
 git add sitemap.xml
 git add README-NOVAS-FUNCIONALIDADES.md
+git add assets/js/newsletter.js
+git add assets/js/chat-widget.js
+git add assets/css/newsletter.css
+git add assets/css/chat-widget.css
 
 echo.
 echo ╔════════════════════════════════════════════════════════╗
-echo ║  PACOTE COMPLETO - 31 ARQUIVOS                        ║
+echo ║  PACOTE COMPLETO - 36 ARQUIVOS                        ║
 echo ║  Desenvolvido por: Nicolas Avila                      ║
 echo ╚════════════════════════════════════════════════════════╝
 echo.
@@ -82,11 +87,18 @@ echo  ✓ fix-github-actions.ps1 (Corrigir Actions)
 echo  ✓ fix-github-actions.bat (Corrigir batch)
 echo  ✓ commit-https-files.bat (Este script)
 echo.
-echo NOVAS PAGINAS WEB (7 arquivos):
+echo NOVAS PAGINAS WEB (8 arquivos):
 echo  ✓ trial-signup.html (Pagina de trial gratuito) [NOVO!]
 echo  ✓ status.html (Status em tempo real) [NOVO!]
 echo  ✓ docs.html (Portal de documentacao) [NOVO!]
 echo  ✓ pricing.html (Planos e precos) [NOVO!]
 echo  ✓ use-cases.html (Casos de uso reais) [NOVO!]
+echo  ✓ components-demo.html (Demo de componentes) [NOVO!]
 echo  ✓ index.html (Homepage atualizada) [ATUALIZADO!]
 echo  ✓ sitemap.xml (SEO otimizado) [ATUALIZADO!]
+echo.
+echo COMPONENTES INTERATIVOS (4 arquivos): [NOVO!]
+echo  ✓ assets/js/newsletter.js (Modal de newsletter)
+echo  ✓ assets/js/chat-widget.js (Chat widget)
+echo  ✓ assets/css/newsletter.css (Estilos newsletter)
+echo  ✓ assets/css/chat-widget.css (Estilos chat)
