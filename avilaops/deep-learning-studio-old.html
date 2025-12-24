@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deep Learning Studio — plataforma moderna para construir, treinar e implantar modelos de Deep Learning em escala, com suporte a CNN, RNN, LSTM, Transformers, GPU e exportação ONNX.">
+    <meta name="keywords" content="Deep Learning, AI, ML, GPU, ONNX, Transformers, CNN, RNN, LSTM, Framework">
+    <meta name="author" content="Deep Learning Studio">
+    <meta name="theme-color" content="#0a0b0d">
+    <title>Deep Learning Studio — Plataforma de ML</title>
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Deep Learning Studio — Plataforma de ML">
+    <meta property="og:description" content="Construa, treine e implante modelos de Deep Learning com facilidade e performance.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avilaops.github.io/deep-learning-studio">
+    <meta property="og:image" content="/assets/dls-og.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Deep Learning Studio — Plataforma de ML">
+    <meta name="twitter:description" content="Framework completo com GPU, Transformers e ONNX.">
+    <meta name="twitter:image" content="/assets/dls-og.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+
+    <!-- Preconnect para fontes (se necessário) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #667eea; --secondary: #764ba2; --accent: #f093fb; --success: #22c55e; --dark: #0a0b0d; --dark-light: #1a1d26; --text: #e4e4e7; --text-muted: #a1a1aa; }
+        body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a0b0d 0%, #1a1d26 100%); color: var(--text); line-height: 1.6; }
+        header { background: rgba(10, 11, 13, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(102, 126, 234, 0.1); position: sticky; top: 0; z-index: 1000; padding: 1.5rem 2rem; }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: white; text-decoration: none; display:flex; align-items:center; gap:0.5rem; }
+        .logo .mark { width: 28px; height: 28px; display:inline-grid; place-items:center; border-radius:6px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; font-weight:800; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .cta-button { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; border:0; }
+        .menu-toggle { display:none; background: none; border: 1px solid rgba(102,126,234,0.3); color: var(--text); padding: 0.5rem 0.75rem; border-radius: 8px; }
+        .hero { padding: 8rem 2rem 6rem; text-align: center; position: relative; }
+        .hero-content { max-width: 900px; margin: 0 auto; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; color: var(--success); margin-bottom: 2rem; }
+        .hero-title { font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(135deg, white, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 3rem; }
+        .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .primary-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 1rem 2.5rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s; }
+        .primary-btn:hover { transform: translateY(-3px); }
+        .secondary-btn { background: rgba(102, 126, 234, 0.1); color: white; padding: 1rem 2.5rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: 2px solid rgba(102, 126, 234, 0.3); }
+        .features { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white; }
+        .section-subtitle { font-size: 1.25rem; color: var(--text-muted); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .feature-card { background: rgba(26, 29, 38, 0.5); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 16px; padding: 2.5rem; transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .feature-icon { font-size: 3rem; margin-bottom: 1.5rem; display: block; }
+        .feature-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: white; }
+        .feature-description { color: var(--text-muted); line-height: 1.7; }
+        .code-example { background: rgba(10, 11, 13, 0.8); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 12px; padding: 2rem; margin: 4rem auto; max-width: 800px; }
+        .code-example pre { color: var(--text); overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 0.95rem; }
+        footer { background: rgba(10, 11, 13, 0.95); padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(102, 126, 234, 0.1); }
+        .footer-links { display:flex; gap:1rem; justify-content:center; margin-top:1rem; }
+        .footer-links a { color: var(--text-muted); text-decoration:none; }
+        .footer-links a:hover { color: #fff; }
+        .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+
+        /* Clients section */
+        .clients { padding: 4rem 2rem; text-align: center; background: rgba(26, 29, 38, 0.3); }
+        .clients-logos { display: flex; gap: 3rem; align-items: center; justify-content: center; flex-wrap: wrap; max-width: 1000px; margin: 2rem auto; opacity: 0.7; }
+        .clients-logos img { height: 40px; filter: grayscale(1) brightness(2); transition: all 0.3s; }
+        .clients-logos img:hover { filter: grayscale(0) brightness(1); opacity: 1; }
+
+        /* Testimonials carousel */
+        .testimonials { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; text-align: center; position: relative; }
+        .carousel-container { position: relative; overflow: hidden; }
+        .testimonial-card { background: rgba(26, 29, 38, 0.5); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 16px; padding: 3rem; margin: 2rem 0; }
+        .testimonial-text { font-size: 1.25rem; color: var(--text); margin-bottom: 2rem; line-height: 1.8; font-style: italic; }
+        .testimonial-author { font-weight: 600; color: white; font-size: 1.1rem; }
+        .testimonial-role { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem; }
+        .carousel-dots { display: flex; gap: 0.75rem; justify-content: center; margin-top: 2rem; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(102, 126, 234, 0.3); border: 0; cursor: pointer; transition: all 0.3s; }
+        .carousel-dot.active { background: var(--primary); width: 30px; border-radius: 5px; }
+
+        /* Integrations section */
+        .integrations { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .integrations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .integration-card { background: rgba(26, 29, 38, 0.5); border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.3s; }
+        .integration-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+        .integration-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .integration-name { color: white; font-weight: 600; font-size: 1rem; }
+
+        /* Language switcher */
+        .lang-switcher { display: flex; gap: 0.5rem; align-items: center; }
+        .lang-switcher button { background: rgba(102, 126, 234, 0.1); color: var(--text); border: 1px solid rgba(102, 126, 234, 0.3); padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+        .lang-switcher button.active { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-color: transparent; }
+        .lang-switcher button:hover { border-color: var(--primary); }
+
+        @media (max-width: 900px) {
+            .nav-links { display:none; }
+            .menu-toggle { display:inline-block; }
+            .lang-switcher { position: absolute; right: 1rem; top: 5rem; }
+        }
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .clients-logos { gap: 2rem; }
+            .clients-logos img { height: 32px; }
+            .integrations-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo" aria-label="Página inicial Deep Learning Studio"><span class="mark">DL</span><span>Deep Learning Studio</span></a>
+            <ul class="nav-links" role="list">
+                <li><a href="#features" data-i18n="nav.features">Recursos</a></li>
+                <li><a href="#code" data-i18n="nav.get_started">Começar</a></li>
+                <li><a href="#clients" data-i18n="nav.clients">Clientes</a></li>
+                <li><a href="#pricing" data-i18n="nav.pricing">Planos</a></li>
+                <li><a href="/docs" data-i18n="nav.docs">Docs</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button onclick="switchLanguage('pt-BR')" class="active" data-lang="pt-BR">🇧🇷</button>
+                <button onclick="switchLanguage('en-US')" data-lang="en-US">🇺🇸</button>
+            </div>
+            <button class="menu-toggle" aria-controls="primary-navigation" aria-expanded="false"><span class="sr-only">Abrir menu</span>☰</button>
+            <a href="#pricing" class="cta-button" data-i18n="cta.free_trial">Teste gratuito</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge" aria-label="status"><span aria-hidden="true">✓</span><span data-i18n="hero.badge">Pronto para Produção • 30 testes • GPU pronta</span></div>
+            <h1 class="hero-title" data-i18n="hero.title">Framework de Deep Learning que escala</h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">
+                Construa, treine e implante modelos de deep learning com facilidade.
+                Suporte a CNN, RNN, LSTM, Transformers e aceleração em GPU.
+            </p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="primary-btn" data-i18n="hero.primary_cta">Começar Gratuitamente</a>
+                <a href="#code" class="secondary-btn" data-i18n="hero.secondary_cta">Ver Exemplos</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="features.title">Tudo que você precisa</h2>
+            <p class="section-subtitle" data-i18n="features.subtitle">Framework completo para desenvolvimento de modelos de ML</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🔥</span>
+                <h3 class="feature-title" data-i18n="feature.autograd.title">Autograd Engine</h3>
+                <p class="feature-description" data-i18n="feature.autograd.desc">Diferenciação automática completa. Defina seu modelo e nós cuidamos dos gradientes.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🏗️</span>
+                <h3 class="feature-title" data-i18n="feature.nn.title">Redes Neurais</h3>
+                <p class="feature-description" data-i18n="feature.nn.desc">Dense, Conv2D, RNN, LSTM, GRU, Transformers: todas as arquiteturas que você precisa.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3 class="feature-title" data-i18n="feature.gpu.title">Aceleração por GPU</h3>
+                <p class="feature-description" data-i18n="feature.gpu.desc">Suporte nativo a CUDA. Treine até 100x mais rápido com GPU.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <h3 class="feature-title" data-i18n="feature.opt.title">Otimizadores</h3>
+                <p class="feature-description" data-i18n="feature.opt.desc">SGD, Adam, AdamW, RMSprop e mais — com agendamento de taxa de aprendizado integrado.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">💾</span>
+                <h3 class="feature-title" data-i18n="feature.onnx.title">Exportação ONNX</h3>
+                <p class="feature-description" data-i18n="feature.onnx.desc">Exporte modelos para ONNX. Faça deploy em qualquer plataforma.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3 class="feature-title" data-i18n="feature.mp.title">Precisão Mista</h3>
+                <p class="feature-description" data-i18n="feature.mp.desc">Treinamento com FP16/INT8. Economize memória e acelere o treinamento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="clients" aria-labelledby="clients-title">
+        <div class="section-header">
+            <h2 id="clients-title" class="section-title" data-i18n="clients.title">Confiança de empresas globais</h2>
+            <p class="section-subtitle" data-i18n="clients.subtitle">Usado por equipes de ML nas maiores empresas de tecnologia</p>
+        </div>
+        <div class="clients-logos">
+            <!-- Logos simplificados em texto (podem ser substituídos por SVGs reais) -->
+            <div style="font-size: 2rem; font-weight: 700; color: var(--text-muted);">TECHCORP</div>
+            <div style="font-size: 2rem; font-weight: 700; color: var(--text-muted);">DATAFLOW</div>
+            <div style="font-size: 2rem; font-weight: 700; color: var(--text-muted);">AI LABS</div>
+            <div style="font-size: 2rem; font-weight: 700; color: var(--text-muted);">CLOUDX</div>
+            <div style="font-size: 2rem; font-weight: 700; color: var(--text-muted);">NEURAL INC</div>
+        </div>
+    </section>
+
+    <section class="testimonials" aria-labelledby="testimonials-title">
+        <div class="section-header">
+            <h2 id="testimonials-title" class="section-title" data-i18n="testimonials.title">O Que Data Scientists Dizem</h2>
+        </div>
+        <div class="carousel-container">
+            <div class="testimonial-card" data-testimonial="1">
+                <p class="testimonial-text" data-i18n="testimonial.1.text">"Deep Learning Studio transformou nosso pipeline de ML. Reduzimos o tempo de treinamento em 70% e simplificamos o deploy."</p>
+                <div class="testimonial-author" data-i18n="testimonial.1.author">Sarah Chen</div>
+                <div class="testimonial-role" data-i18n="testimonial.1.role">ML Lead @ TechCorp</div>
+            </div>
+            <div class="testimonial-card" data-testimonial="2" style="display:none;">
+                <p class="testimonial-text" data-i18n="testimonial.2.text">"A exportação ONNX é perfeita. Conseguimos migrar modelos entre frameworks sem perder performance."</p>
+                <div class="testimonial-author" data-i18n="testimonial.2.author">Marcus Silva</div>
+                <div class="testimonial-role" data-i18n="testimonial.2.role">AI Engineer @ DataFlow</div>
+            </div>
+            <div class="testimonial-card" data-testimonial="3" style="display:none;">
+                <p class="testimonial-text" data-i18n="testimonial.3.text">"Suporte a GPU de primeira. Nossos modelos Transformer treinam 120x mais rápido que antes."</p>
+                <div class="testimonial-author" data-i18n="testimonial.3.author">Elena Rodriguez</div>
+                <div class="testimonial-role" data-i18n="testimonial.3.role">Research Scientist @ AI Labs</div>
+            </div>
+        </div>
+        <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="showTestimonial(1)" aria-label="Depoimento 1"></button>
+            <button class="carousel-dot" onclick="showTestimonial(2)" aria-label="Depoimento 2"></button>
+            <button class="carousel-dot" onclick="showTestimonial(3)" aria-label="Depoimento 3"></button>
+        </div>
+    </section>
+
+    <section id="integrations" class="integrations" aria-labelledby="integrations-title">
+        <div class="section-header">
+            <h2 id="integrations-title" class="section-title" data-i18n="integrations.title">Integra com suas ferramentas favoritas</h2>
+            <p class="section-subtitle" data-i18n="integrations.subtitle">Compatível com os principais frameworks e plataformas de ML</p>
+        </div>
+        <div class="integrations-grid">
+            <div class="integration-card">
+                <span class="integration-icon">🔥</span>
+                <div class="integration-name">PyTorch</div>
+            </div>
+            <div class="integration-card">
+                <span class="integration-icon">🧠</span>
+                <div class="integration-name">TensorFlow</div>
+            </div>
+            <div class="integration-card">
+                <span class="integration-icon">📦</span>
+                <div class="integration-name">ONNX</div>
+            </div>
+            <div class="integration-card">
+                <span class="integration-icon">☁️</span>
+                <div class="integration-name">AWS</div>
+            </div>
+            <div class="integration-card">
+                <span class="integration-icon">🌐</span>
+                <div class="integration-name">Azure</div>
+            </div>
+            <div class="integration-card">
+                <span class="integration-icon">🔷</span>
+                <div class="integration-name">GCP</div>
+            </div>
+            <div class="integration-card">
+                <span class="integration-icon">🐍</span>
+                <div class="integration-name">NumPy</div>
+            </div>
+            <div class="integration-card">
+                <span class="integration-icon">📊</span>
+                <div class="integration-name">Pandas</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="code" class="code-example">
+        <h3 style="color: white; margin-bottom: 1rem;" data-i18n="code.title">Simples de usar</h3>
+        <pre><code>// Crie um modelo em minutos
+use deep_learning_studio::prelude::*;
+
+let model = Sequential::new()
+    .add(Dense::new(784, 128, Activation::ReLU))
+    .add(Dense::new(128, 64, Activation::ReLU))
+    .add(Dense::new(64, 10, Activation::Softmax));
+
+// Treine com uma linha
+model.fit(x_train, y_train, epochs=10, batch_size=32);
+
+// Deploy em produção
+model.export_onnx("model.onnx");
+</code></pre>
+    </section>
+
+    <section id="pricing" class="features" aria-labelledby="pricing-title">
+        <div class="section-header">
+            <h2 id="pricing-title" class="section-title" data-i18n="pricing.title">Planos simples e transparentes</h2>
+            <p class="section-subtitle" data-i18n="pricing.subtitle">Comece grátis, escale quando precisar.</p>
+        </div>
+        <div class="features-grid" role="list">
+            <div class="feature-card" role="listitem" aria-label="Plano Starter">
+                <h3 class="feature-title" data-i18n="pricing.starter.title">Starter</h3>
+                <p class="feature-description" data-i18n="pricing.starter.desc">Gratuito • Projetos pessoais • Exportação ONNX</p>
+            </div>
+            <div class="feature-card" role="listitem" aria-label="Plano Pro">
+                <h3 class="feature-title" data-i18n="pricing.pro.title">Pro</h3>
+                <p class="feature-description" data-i18n="pricing.pro.desc">GPU • Precisão mista • Suporte prioritário</p>
+            </div>
+            <div class="feature-card" role="listitem" aria-label="Plano Enterprise">
+                <h3 class="feature-title" data-i18n="pricing.ent.title">Enterprise</h3>
+                <p class="feature-description" data-i18n="pricing.ent.desc">SSO • SLA • On-prem • Suporte dedicado</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p data-i18n="footer.copy">&copy; 2025 Deep Learning Studio. Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <a href="/terms" data-i18n="footer.terms">Termos</a>
+            <a href="/privacy" data-i18n="footer.privacy">Privacidade</a>
+            <a href="/security" data-i18n="footer.security">Segurança</a>
+        </div>
+    </footer>
+
+    <script>
+    // Testimonial carousel
+    let currentTestimonial = 1;
+    function showTestimonial(num) {
+        document.querySelectorAll('[data-testimonial]').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.carousel-dot').forEach(el => el.classList.remove('active'));
+        const target = document.querySelector(`[data-testimonial="${num}"]`);
+        const dot = document.querySelectorAll('.carousel-dot')[num - 1];
+        if (target) target.style.display = 'block';
+        if (dot) dot.classList.add('active');
+        currentTestimonial = num;
+    }
+    // Auto-rotate testimonials
+    setInterval(() => {
+        currentTestimonial = currentTestimonial >= 3 ? 1 : currentTestimonial + 1;
+        showTestimonial(currentTestimonial);
+    }, 5000);
+
+    // Menu mobile simples
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            const isOpen = nav.style.display === 'flex';
+            nav.style.display = isOpen ? 'none' : 'flex';
+            nav.style.flexDirection = 'column';
+            nav.style.gap = '1rem';
+            toggle.setAttribute('aria-expanded', String(!isOpen));
+        });
+    }
+
+    // i18n loader
+    let currentLang = 'pt-BR';
+    let translations = {};
+
+    async function loadTranslations(lang) {
+        try {
+            const response = await fetch(`/i18n/deep-learning-studio.${lang}.json`);
+            if (!response.ok) throw new Error('Translation file not found');
+            translations = await response.json();
+            applyTranslations();
+            currentLang = lang;
+            // Update active language button
+            document.querySelectorAll('.lang-switcher button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            // Store preference
+            localStorage.setItem('preferred-lang', lang);
+        } catch (error) {
+            console.warn(`Failed to load translations for ${lang}:`, error);
+        }
+    }
+
+    function applyTranslations() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[key];
+                } else {
+                    el.innerHTML = translations[key];
+                }
+            }
+        });
+    }
+
+    function switchLanguage(lang) {
+        loadTranslations(lang);
+    }
+
+    // Load preferred language on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const preferredLang = localStorage.getItem('preferred-lang') ||
+                             navigator.language.startsWith('en') ? 'en-US' : 'pt-BR';
+        loadTranslations(preferredLang);
+    });
+    </script>
+</body>
+</html>

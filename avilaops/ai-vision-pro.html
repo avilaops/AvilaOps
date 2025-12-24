@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Vision Pro - Plataforma completa de Computer Vision com detecção de objetos, reconhecimento facial e tracking em tempo real">
+    <meta name="keywords" content="computer vision, object detection, face recognition, AI, machine learning, YOLO, tracking">
+    <meta name="theme-color" content="#667eea">
+    <meta name="author" content="AvilaOps">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://avilaops.com/ai-vision-pro">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avilaops.com/ai-vision-pro">
+    <meta property="og:title" content="AI Vision Pro - Computer Vision Platform">
+    <meta property="og:description" content="Detecção de objetos, reconhecimento facial e análise de vídeo em tempo real. Usado por 200+ empresas.">
+    <meta property="og:image" content="https://avilaops.com/og-vision.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://avilaops.com/ai-vision-pro">
+    <meta property="twitter:title" content="AI Vision Pro - Computer Vision Platform">
+    <meta property="twitter:description" content="Detecção de objetos, reconhecimento facial e análise de vídeo em tempo real.">
+    <meta property="twitter:image" content="https://avilaops.com/og-vision.jpg">
+
+    <title>AI Vision Pro - Computer Vision Platform</title>
+
+    <!-- Preconnect to CDNs for performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages/vision.css">
+
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AI Vision Pro",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "200"
+      },
+      "description": "Plataforma completa de Computer Vision com detecção de objetos, reconhecimento facial e tracking em tempo real.",
+      "provider": {
+        "@type": "Organization",
+        "name": "AvilaOps",
+        "url": "https://avilaops.com"
+      }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav aria-label="Navegação principal">
+            <a href="/" class="logo" aria-label="Home">👁️ <span data-i18n="brand">AI Vision Pro</span></a>
+            <div class="page-toolbar">
+                <select id="langSelect" data-lang-select aria-label="Selecionar idioma">
+                    <option value="pt-BR">🇧🇷 PT</option>
+                    <option value="en-US">🇺🇸 EN</option>
+                    <option value="es-ES">🇪🇸 ES</option>
+                    <option value="uk-UA">🇺🇦 UA</option>
+                    <option value="ru-RU">🇷🇺 RU</option>
+                </select>
+                <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">🌗</button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features" data-i18n="nav.features">Features</a></li>
+                <li><a href="#cases" data-i18n="nav.cases">Use Cases</a></li>
+                <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="/docs" data-i18n="nav.docs">Docs</a></li>
+            </ul>
+            <a href="#pricing" class="cta-button" data-i18n="nav.cta_trial">Start Free Trial</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-badge" data-i18n="hero.badge">🚀 Computer Vision Enterprise</span>
+                <h1 class="hero-title" data-i18n="hero.title">Detecção e Tracking em Tempo Real</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Plataforma completa de Computer Vision com detecção de objetos, reconhecimento facial e análise de vídeo.</p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="cta-button primary" data-i18n="hero.cta_primary">Começar Teste Grátis</a>
+                    <a href="#demo" class="cta-button secondary" data-i18n="hero.cta_secondary">Ver Demo ao Vivo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section with Animated Counters -->
+        <section class="section stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" data-counter="200">0</div>
+                        <div class="stat-label" data-i18n="stats.stat1_label">Empresas usando</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-counter="120">0</div>
+                        <div class="stat-label" data-i18n="stats.stat2_label">FPS em tempo real</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">99.8<span class="stat-unit">%</span></div>
+                        <div class="stat-label" data-i18n="stats.stat3_label">Precisão facial</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-counter="50">0</div>
+                        <div class="stat-label" data-i18n="stats.stat4_label">ms latência média</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="features.title">Tudo o Necessário para Visão Computacional</h2>
+                <p class="section-subtitle" data-i18n="features.subtitle">API REST, SDKs em 5 linguagens, modelos pré-treinados e edge deployment</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3 data-i18n="features.feature1_title">Detecção de Objetos</h3>
+                        <p data-i18n="features.feature1_desc">YOLO v8 otimizado com 80+ classes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">👤</span>
+                        <h3 data-i18n="features.feature2_title">Reconhecimento Facial</h3>
+                        <p data-i18n="features.feature2_desc">Precisão 99.8% em identificação 1:N.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📍</span>
+                        <h3 data-i18n="features.feature3_title">Tracking Multi-Objeto</h3>
+                        <p data-i18n="features.feature3_desc">DeepSORT e ByteTrack integrados.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎬</span>
+                        <h3 data-i18n="features.feature4_title">Análise de Vídeo</h3>
+                        <p data-i18n="features.feature4_desc">Processamento batch e streaming.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚡</span>
+                        <h3 data-i18n="features.feature5_title">Edge Deployment</h3>
+                        <p data-i18n="features.feature5_desc">Otimizado para NVIDIA Jetson, Intel NUC.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔌</span>
+                        <h3 data-i18n="features.feature6_title">APIs e SDKs</h3>
+                        <p data-i18n="features.feature6_desc">REST API completa. SDKs em 5 linguagens.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section id="cases" class="section use-cases-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="cases.title">Casos de Uso em Produção</h2>
+                <p class="section-subtitle" data-i18n="cases.subtitle">Implementações reais em diversos setores</p>
+                <div class="cases-grid">
+                    <div class="case-card">
+                        <span class="case-icon">🔒</span>
+                        <h3 data-i18n="cases.case1_title">Segurança e Vigilância</h3>
+                        <p data-i18n="cases.case1_desc">Detecção de intrusões, reconhecimento facial de suspeitos, análise de comportamentos anormais.</p>
+                        <ul class="case-features">
+                            <li>Alertas em tempo real</li>
+                            <li>Integração com CFTV</li>
+                            <li>Relatórios de incidentes</li>
+                        </ul>
+                    </div>
+                    <div class="case-card">
+                        <span class="case-icon">🛒</span>
+                        <h3 data-i18n="cases.case2_title">Varejo Inteligente</h3>
+                        <p data-i18n="cases.case2_desc">Contagem de clientes, heatmaps de movimentação, análise de filas.</p>
+                        <ul class="case-features">
+                            <li>Analytics de tráfego</li>
+                            <li>Detecção de produtos</li>
+                            <li>Prevenção de perdas</li>
+                        </ul>
+                    </div>
+                    <div class="case-card">
+                        <span class="case-icon">🏭</span>
+                        <h3 data-i18n="cases.case3_title">Controle de Qualidade</h3>
+                        <p data-i18n="cases.case3_desc">Inspeção visual automatizada, detecção de defeitos na linha de produção.</p>
+                        <ul class="case-features">
+                            <li>Inspeção 24/7</li>
+                            <li>Precisão > 99%</li>
+                            <li>ROI em 6 meses</li>
+                        </ul>
+                    </div>
+                    <div class="case-card">
+                        <span class="case-icon">🏙️</span>
+                        <h3 data-i18n="cases.case4_title">Smart Cities</h3>
+                        <p data-i18n="cases.case4_desc">Monitoramento de tráfego, detecção de infrações, análise de fluxo urbano.</p>
+                        <ul class="case-features">
+                            <li>Gestão de tráfego</li>
+                            <li>Segurança pública</li>
+                            <li>Planejamento urbano</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="pricing.title">Planos Transparentes</h2>
+                <p class="section-subtitle" data-i18n="pricing.subtitle">Comece grátis, escale quando precisar</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 data-i18n="pricing.plan1_name">Starter</h3>
+                        <div class="price"><span data-i18n="pricing.plan1_price">Grátis</span></div>
+                        <p data-i18n="pricing.plan1_desc">Para testes e desenvolvimento</p>
+                        <ul>
+                            <li data-i18n="pricing.plan1_feat1">1.000 requisições/mês</li>
+                            <li data-i18n="pricing.plan1_feat2">3 modelos pré-treinados</li>
+                            <li data-i18n="pricing.plan1_feat3">API REST</li>
+                        </ul>
+                        <a href="#" class="cta-button" data-i18n="pricing.cta_button">Começar Agora</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 data-i18n="pricing.plan2_name">Professional</h3>
+                        <div class="price"><span data-i18n="pricing.plan2_price">$299</span><span data-i18n="pricing.plan2_period">/mês</span></div>
+                        <p data-i18n="pricing.plan2_desc">Para produção</p>
+                        <ul>
+                            <li data-i18n="pricing.plan2_feat1">100.000 requisições/mês</li>
+                            <li data-i18n="pricing.plan2_feat2">Todos os modelos</li>
+                            <li data-i18n="pricing.plan2_feat3">SDKs completos</li>
+                            <li data-i18n="pricing.plan2_feat4">Edge deployment</li>
+                        </ul>
+                        <a href="#" class="cta-button" data-i18n="pricing.cta_button">Começar Agora</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 data-i18n="pricing.plan3_name">Enterprise</h3>
+                        <div class="price"><span data-i18n="pricing.plan3_price">Customizado</span></div>
+                        <p data-i18n="pricing.plan3_desc">Para grandes operações</p>
+                        <ul>
+                            <li data-i18n="pricing.plan3_feat1">Volume ilimitado</li>
+                            <li data-i18n="pricing.plan3_feat2">Modelos customizados</li>
+                            <li data-i18n="pricing.plan3_feat3">On-premise deployment</li>
+                            <li data-i18n="pricing.plan3_feat4">Suporte 24x7</li>
+                        </ul>
+                        <a href="#" class="cta-button" data-i18n="pricing.cta_button">Começar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2 data-i18n="cta.title">Pronto para implementar Computer Vision?</h2>
+                    <p data-i18n="cta.subtitle">Teste grátis por 30 dias. Sem cartão de crédito.</p>
+                    <a href="#pricing" class="cta-button primary large" data-i18n="cta.button">Começar Teste Grátis</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><span data-i18n="footer.copy">&copy; 2025 AI Vision Pro. Todos os direitos reservados.</span></p>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Core Scripts -->
+    <script src="assets/js/core/app.js" defer></script>
+    <script src="assets/js/core/i18n.js" defer></script>
+    <script src="assets/js/core/theme.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/mobile-nav.js" defer></script>
+
+    <!-- Page-specific i18n initialization -->
+    <script>
+        document.addEventListener('avila:languagechange', (event) => {
+            const locale = event.detail.locale;
+            if (window.AvilaI18n) {
+                window.AvilaI18n.applyToDom('ai-vision-pro', locale).catch(console.error);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const locale = window.AvilaApp ? window.AvilaApp.getCurrentLocale() : 'pt-BR';
+            if (window.AvilaI18n) {
+                window.AvilaI18n.applyToDom('ai-vision-pro', locale).catch(console.error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DataGrid Pro - Plataforma de análise de dados moderna e rápida. 100x mais rápido que Pandas.">
+    <meta name="keywords" content="dataframe, pandas, polars, data analysis, rust, python, big data">
+    <meta name="theme-color" content="#667eea">
+    <meta name="author" content="AvilaOps">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://avilaops.com/datagrid-pro">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avilaops.com/datagrid-pro">
+    <meta property="og:title" content="DataGrid Pro - Data Analysis Platform">
+    <meta property="og:description" content="Processe bilhões de linhas em segundos. 100x mais rápido que Pandas. API familiar para Python.">
+    <meta property="og:image" content="https://avilaops.com/og-datagrid.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://avilaops.com/datagrid-pro">
+    <meta property="twitter:title" content="DataGrid Pro - Data Analysis Platform">
+    <meta property="twitter:description" content="Processe bilhões de linhas em segundos. 100x mais rápido que Pandas.">
+    <meta property="twitter:image" content="https://avilaops.com/og-datagrid.jpg">
+
+    <title>DataGrid Pro - Data Analysis Platform</title>
+
+    <!-- Preconnect to CDNs for performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages/datagrid.css">
+
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DataGrid Pro",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "name": "Open Source"
+        },
+        {
+          "@type": "Offer",
+          "price": "49",
+          "priceCurrency": "USD",
+          "name": "Professional"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "150"
+      },
+      "description": "Processe bilhões de linhas em segundos. 100x mais rápido que Pandas. API familiar para Python.",
+      "provider": {
+        "@type": "Organization",
+        "name": "AvilaOps",
+        "url": "https://avilaops.com"
+      }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav aria-label="Navegação principal">
+            <a href="/" class="logo" aria-label="Home">📊 <span data-i18n="brand">DataGrid Pro</span></a>
+            <div class="page-toolbar">
+                <select id="langSelect" data-lang-select aria-label="Selecionar idioma">
+                    <option value="pt-BR">🇧🇷 PT</option>
+                    <option value="en-US">🇺🇸 EN</option>
+                    <option value="es-ES">🇪🇸 ES</option>
+                    <option value="uk-UA">🇺🇦 UA</option>
+                    <option value="ru-RU">🇷🇺 RU</option>
+                </select>
+                <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">🌗</button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features" data-i18n="nav.features">Features</a></li>
+                <li><a href="/demo" data-i18n="nav.demo">Demo</a></li>
+                <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+            </ul>
+            <a href="/signup" class="cta-button" data-i18n="nav.cta">Start Free</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-badge" data-i18n="hero.badge">⚡ Análise de Dados de Alta Performance</span>
+                <h1 class="hero-title" data-i18n="hero.title">Pandas/Polars, Mas Melhor</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Processe bilhões de linhas em segundos. API familiar para Python. 100x mais rápido que Pandas.</p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="cta-button primary" data-i18n="hero.cta_primary">Começar Gratuitamente</a>
+                    <a href="#benchmarks" class="cta-button secondary" data-i18n="hero.cta_secondary">Ver Benchmarks</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section with Animated Counters -->
+        <section class="section stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">100<span class="stat-unit">x</span></div>
+                        <div class="stat-label" data-i18n="stats.stat1_label">Mais rápido que Pandas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-counter="150">0</div>
+                        <div class="stat-label" data-i18n="stats.stat2_label">Equipes usando</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1B<span class="stat-unit">+</span></div>
+                        <div class="stat-label" data-i18n="stats.stat3_label">Linhas processadas/dia</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-counter="0">0</div>
+                        <div class="stat-label" data-i18n="stats.stat4_label">ms latência de setup</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="features.title">Performance Sem Compromissos</h2>
+                <p class="section-subtitle" data-i18n="features.subtitle">Tudo que você ama em Pandas, com velocidade de Rust</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3 data-i18n="features.feature1_title">API Familiar</h3>
+                        <p data-i18n="features.feature1_desc">Sintaxe idêntica ao Pandas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚡</span>
+                        <h3 data-i18n="features.feature2_title">100x Mais Rápido</h3>
+                        <p data-i18n="features.feature2_desc">Engine Rust otimizado.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🗃️</span>
+                        <h3 data-i18n="features.feature3_title">SQL Integrado</h3>
+                        <p data-i18n="features.feature3_desc">Query seus DataFrames com SQL puro.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📡</span>
+                        <h3 data-i18n="features.feature4_title">Streaming</h3>
+                        <p data-i18n="features.feature4_desc">Processe arquivos gigantes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎮</span>
+                        <h3 data-i18n="features.feature5_title">GPU Acceleration</h3>
+                        <p data-i18n="features.feature5_desc">Operações automáticas em GPU.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚙️</span>
+                        <h3 data-i18n="features.feature6_title">Zero Config</h3>
+                        <p data-i18n="features.feature6_desc">Instale via pip. Funciona out-of-the-box.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benchmarks Section -->
+        <section id="benchmarks" class="section benchmarks-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="benchmarks.title">Benchmarks Reais</h2>
+                <p class="section-subtitle" data-i18n="benchmarks.subtitle">Comparação com Pandas e Polars em datasets de 10 milhões de linhas</p>
+                <div class="benchmarks-grid">
+                    <div class="benchmark-card">
+                        <h3 data-i18n="benchmarks.bench1_title">GroupBy + Aggregation</h3>
+                        <div class="benchmark-results">
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">Pandas</span>
+                                <span class="benchmark-time" data-i18n="benchmarks.bench1_pandas">45s</span>
+                            </div>
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">Polars</span>
+                                <span class="benchmark-time" data-i18n="benchmarks.bench1_polars">3.2s</span>
+                            </div>
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">DataGrid Pro</span>
+                                <span class="benchmark-time winner" data-i18n="benchmarks.bench1_datagrid">0.8s</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benchmark-card">
+                        <h3 data-i18n="benchmarks.bench2_title">Filter + Sort</h3>
+                        <div class="benchmark-results">
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">Pandas</span>
+                                <span class="benchmark-time" data-i18n="benchmarks.bench2_pandas">18s</span>
+                            </div>
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">Polars</span>
+                                <span class="benchmark-time" data-i18n="benchmarks.bench2_polars">1.5s</span>
+                            </div>
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">DataGrid Pro</span>
+                                <span class="benchmark-time winner" data-i18n="benchmarks.bench2_datagrid">0.4s</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benchmark-card">
+                        <h3 data-i18n="benchmarks.bench3_title">Join (2 tabelas)</h3>
+                        <div class="benchmark-results">
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">Pandas</span>
+                                <span class="benchmark-time" data-i18n="benchmarks.bench3_pandas">67s</span>
+                            </div>
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">Polars</span>
+                                <span class="benchmark-time" data-i18n="benchmarks.bench3_polars">4.8s</span>
+                            </div>
+                            <div class="benchmark-result">
+                                <span class="benchmark-name">DataGrid Pro</span>
+                                <span class="benchmark-time winner" data-i18n="benchmarks.bench3_datagrid">1.2s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="benchmark-note" data-i18n="benchmarks.note">Medições em Intel Xeon 16 cores, 64GB RAM. Dataset: NYC Taxi.</p>
+            </div>
+        </section>
+
+        <section id="pricing" class="section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="pricing.title">Preços Simples</h2>
+                <p class="section-subtitle" data-i18n="pricing.subtitle">Use gratuitamente para sempre, escale quando precisar</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 data-i18n="pricing.plan1_name">Open Source</h3>
+                        <div class="price"><span data-i18n="pricing.plan1_price">Grátis</span></div>
+                        <p data-i18n="pricing.plan1_desc">Para uso pessoal e projetos</p>
+                        <ul>
+                            <li data-i18n="pricing.plan1_feat1">Uso ilimitado</li>
+                            <li data-i18n="pricing.plan1_feat2">Todas as features</li>
+                            <li data-i18n="pricing.plan1_feat3">Suporte comunitário</li>
+                        </ul>
+                        <a href="#" class="cta-button" data-i18n="pricing.cta_button">Começar</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 data-i18n="pricing.plan2_name">Pro</h3>
+                        <div class="price"><span data-i18n="pricing.plan2_price">$49</span><span data-i18n="pricing.plan2_period">/mês</span></div>
+                        <p data-i18n="pricing.plan2_desc">Para equipes profissionais</p>
+                        <ul>
+                            <li data-i18n="pricing.plan2_feat1">Tudo do Open Source</li>
+                            <li data-i18n="pricing.plan2_feat2">GPU acceleration</li>
+                            <li data-i18n="pricing.plan2_feat3">Suporte prioritário</li>
+                        </ul>
+                        <a href="#" class="cta-button" data-i18n="pricing.cta_button">Começar</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 data-i18n="pricing.plan3_name">Enterprise</h3>
+                        <div class="price"><span data-i18n="pricing.plan3_price">Customizado</span></div>
+                        <p data-i18n="pricing.plan3_desc">Para grandes organizações</p>
+                        <ul>
+                            <li data-i18n="pricing.plan3_feat1">Tudo do Pro</li>
+                            <li data-i18n="pricing.plan3_feat2">On-premise deployment</li>
+                            <li data-i18n="pricing.plan3_feat3">Suporte 24x7</li>
+                        </ul>
+                        <a href="#" class="cta-button" data-i18n="pricing.cta_button">Começar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2 data-i18n="cta.title">Pronto para acelerar sua análise de dados?</h2>
+                    <p data-i18n="cta.subtitle">Começe gratuitamente. Sem cartão de crédito.</p>
+                    <div class="cta-command">
+                        <code data-i18n="cta.button">pip install datagrid-pro</code>
+                        <button class="copy-btn" aria-label="Copiar comando">📋</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><span data-i18n="footer.copy">&copy; 2025 DataGrid Pro. Todos os direitos reservados.</span></p>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Core Scripts -->
+    <script src="assets/js/core/app.js" defer></script>
+    <script src="assets/js/core/i18n.js" defer></script>
+    <script src="assets/js/core/theme.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/mobile-nav.js" defer></script>
+
+    <!-- Page-specific i18n initialization -->
+    <script>
+        document.addEventListener('avila:languagechange', (event) => {
+            const locale = event.detail.locale;
+            if (window.AvilaI18n) {
+                window.AvilaI18n.applyToDom('datagrid-pro', locale).catch(console.error);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const locale = window.AvilaApp ? window.AvilaApp.getCurrentLocale() : 'pt-BR';
+            if (window.AvilaI18n) {
+                window.AvilaI18n.applyToDom('datagrid-pro', locale).catch(console.error);
+            }
+        });
+    </script>
+</body>
+</html>
