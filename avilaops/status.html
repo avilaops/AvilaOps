@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Status em tempo real da Plataforma ARXIS - Uptime, performance e disponibilidade dos serviços.">
+    <title>Status da Plataforma | ARXIS - AvilaOps</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <style>
+        .status-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .status-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-indicator.operational {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-indicator.degraded {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .status-indicator.outage {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-dot.operational {
+            background: #4caf50;
+        }
+
+        .status-dot.degraded {
+            background: #ff9800;
+        }
+
+        .status-dot.outage {
+            background: #f44336;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .uptime-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .uptime-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .uptime-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4caf50;
+            margin-bottom: 0.25rem;
+        }
+
+        .uptime-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .services-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: #f5f5f5;
+        }
+
+        .service-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .service-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .service-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .status-badge.operational {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-badge.degraded {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .latency {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .uptime-chart {
+            display: flex;
+            gap: 2px;
+            height: 40px;
+            margin-top: 0.75rem;
+        }
+
+        .uptime-bar {
+            flex: 1;
+            background: #4caf50;
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .uptime-bar.degraded {
+            background: #ff9800;
+        }
+
+        .uptime-bar.outage {
+            background: #f44336;
+        }
+
+        .incidents-section {
+            margin-top: 3rem;
+        }
+
+        .incident-item {
+            background: white;
+            border-left: 4px solid #2196f3;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .incident-item.resolved {
+            border-left-color: #4caf50;
+        }
+
+        .incident-item.investigating {
+            border-left-color: #ff9800;
+        }
+
+        .incident-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .incident-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .incident-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .incident-status.resolved {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .incident-status.investigating {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .incident-time {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .incident-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .subscribe-section {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .subscribe-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 1.5rem auto 0;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .subscribe-form button {
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .subscribe-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .service-item {
+                flex-direction: column;
+                align-items: start;
+                gap: 1rem;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="index.html">
+                <span class="mark">AO</span>
+                <span>AvilaOps | Plataforma ARXIS</span>
+            </a>
+            <div class="header-actions">
+                <a class="btn btn-secondary" href="index.html">← Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="status-page">
+        <div class="status-header">
+            <div class="status-indicator operational">
+                <div class="status-dot operational"></div>
+                Todos os sistemas operacionais
+            </div>
+            <h1>Status da Plataforma ARXIS</h1>
+            <p>Monitoramento em tempo real da disponibilidade e performance dos serviços</p>
+        </div>
+
+        <div class="uptime-summary">
+            <div class="uptime-card">
+                <div class="uptime-value">99.99%</div>
+                <div class="uptime-label">Uptime (30 dias)</div>
+            </div>
+            <div class="uptime-card">
+                <div class="uptime-value">42ms</div>
+                <div class="uptime-label">Latência média</div>
+            </div>
+            <div class="uptime-card">
+                <div class="uptime-value">0</div>
+                <div class="uptime-label">Incidentes ativos</div>
+            </div>
+            <div class="uptime-card">
+                <div class="uptime-value">24/7</div>
+                <div class="uptime-label">Suporte ativo</div>
+            </div>
+        </div>
+
+        <section class="services-section">
+            <h2 class="section-title">
+                <span class="iconoir-brain"></span>
+                AI Suite
+            </h2>
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">🤖</div>
+                    <div>
+                        <div class="service-name">AI Vision Pro</div>
+                        <div class="service-description">Computer Vision & Deep Learning</div>
+                    </div>
+                </div>
+                <div class="service-status">
+                    <div class="latency">38ms</div>
+                    <div class="status-badge operational">
+                        <div class="status-dot operational"></div>
+                        Operacional
+                    </div>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">🧠</div>
+                    <div>
+                        <div class="service-name">Deep Learning Studio</div>
+                        <div class="service-description">Training & Inference Engine</div>
+                    </div>
+                </div>
+                <div class="service-status">
+                    <div class="latency">45ms</div>
+                    <div class="status-badge operational">
+                        <div class="status-dot operational"></div>
+                        Operacional
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <h2 class="section-title">
+                <span class="iconoir-database"></span>
+                Data Suite
+            </h2>
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">📊</div>
+                    <div>
+                        <div class="service-name">DataGrid Pro</div>
+                        <div class="service-description">High-performance DataFrames</div>
+                    </div>
+                </div>
+                <div class="service-status">
+                    <div class="latency">28ms</div>
+                    <div class="status-badge operational">
+                        <div class="status-dot operational"></div>
+                        Operacional
+                    </div>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">📈</div>
+                    <div>
+                        <div class="service-name">Analytics Engine</div>
+                        <div class="service-description">Real-time Analytics Pipeline</div>
+                    </div>
+                </div>
+                <div class="service-status">
+                    <div class="latency">52ms</div>
+                    <div class="status-badge operational">
+                        <div class="status-dot operational"></div>
+                        Operacional
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <h2 class="section-title">
+                <span class="iconoir-shield-check"></span>
+                Security Suite
+            </h2>
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">🔐</div>
+                    <div>
+                        <div class="service-name">Secure Vault</div>
+                        <div class="service-description">Encrypted Key Management</div>
+                    </div>
+                </div>
+                <div class="service-status">
+                    <div class="latency">35ms</div>
+                    <div class="status-badge operational">
+                        <div class="status-dot operational"></div>
+                        Operacional
+                    </div>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">🛡️</div>
+                    <div>
+                        <div class="service-name">Quantum Safe Crypto</div>
+                        <div class="service-description">Post-quantum Cryptography</div>
+                    </div>
+                </div>
+                <div class="service-status">
+                    <div class="latency">41ms</div>
+                    <div class="status-badge operational">
+                        <div class="status-dot operational"></div>
+                        Operacional
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <h2 class="section-title">
+                <span class="iconoir-cloud"></span>
+                Cloud Suite
+            </h2>
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">☁️</div>
+                    <div>
+                        <div class="service-name">CloudOS Platform</div>
+                        <div class="service-description">Sovereign Cloud Infrastructure</div>
+                    </div>
+                </div>
+                <div class="service-status">
+                    <div class="latency">67ms</div>
+                    <div class="status-badge operational">
+                        <div class="status-dot operational"></div>
+                        Operacional
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="incidents-section">
+            <h2 class="section-title">
+                <span class="iconoir-warning-triangle"></span>
+                Histórico de Incidentes
+            </h2>
+
+            <div class="incident-item resolved">
+                <div class="incident-header">
+                    <div>
+                        <div class="incident-title">Latência elevada - AI Vision Pro</div>
+                        <div class="incident-time">5 de Janeiro, 2025 - 14:23 BRT</div>
+                    </div>
+                    <div class="incident-status resolved">Resolvido</div>
+                </div>
+                <div class="incident-description">
+                    <strong>14:23</strong> - Identificamos latência 20% acima do normal no serviço AI Vision Pro.<br>
+                    <strong>14:35</strong> - Equipe investigando possível gargalo na rede.<br>
+                    <strong>14:52</strong> - Problema identificado e correção aplicada.<br>
+                    <strong>15:10</strong> - Latência normalizada. Incidente resolvido.
+                </div>
+            </div>
+
+            <div class="incident-item resolved">
+                <div class="incident-header">
+                    <div>
+                        <div class="incident-title">Manutenção programada - DataGrid Pro</div>
+                        <div class="incident-time">28 de Dezembro, 2024 - 02:00 BRT</div>
+                    </div>
+                    <div class="incident-status resolved">Concluído</div>
+                </div>
+                <div class="incident-description">
+                    <strong>02:00</strong> - Início da manutenção programada para upgrade de infraestrutura.<br>
+                    <strong>03:45</strong> - Manutenção concluída com sucesso. Serviço restaurado.
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #999; margin-top: 2rem;">
+                📊 Nenhum incidente nos últimos 30 dias
+            </p>
+        </section>
+
+        <div class="subscribe-section">
+            <h3>Receba notificações de status</h3>
+            <p>Seja alertado imediatamente sobre incidentes e manutenções programadas</p>
+            <form class="subscribe-form" id="subscribeForm">
+                <input type="email" placeholder="seu@email.com" required>
+                <button type="submit">Inscrever-se</button>
+            </form>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 3rem; color: #999;">
+        <p>&copy; 2025 AvilaOps | Plataforma ARXIS</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Última atualização: <span id="lastUpdate"></span>
+        </p>
+    </footer>
+
+    <script>
+        // Update timestamp
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString('pt-BR');
+
+        // Auto-refresh every 60 seconds
+        setInterval(() => {
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleString('pt-BR');
+            // TODO: Fetch real status from API
+            // fetchStatusData();
+        }, 60000);
+
+        // Subscribe form
+        document.getElementById('subscribeForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Inscrição confirmada! Você receberá notificações sobre o status da plataforma.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>

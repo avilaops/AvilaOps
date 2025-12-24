@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documentação técnica completa da Plataforma ARXIS - APIs, guias, exemplos e referências.">
+    <title>Documentação | Plataforma ARXIS - AvilaOps</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        .docs-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+            padding-top: 70px;
+        }
+
+        .docs-sidebar {
+            background: #1a1a2e;
+            color: white;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            width: 280px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .docs-sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .docs-sidebar::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .sidebar-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            color: #ccc;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-links a:hover {
+            background: rgba(102, 126, 234, 0.2);
+            color: white;
+        }
+
+        .sidebar-links a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .docs-content {
+            margin-left: 280px;
+            padding: 3rem;
+            max-width: 1000px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .doc-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .doc-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .doc-description {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .doc-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-version {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge-status {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-license {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .doc-section {
+            margin-bottom: 3rem;
+        }
+
+        .doc-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .doc-section h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+        }
+
+        .doc-section p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-language {
+            color: #999;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .copy-btn {
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.warning {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+
+        .info-box.success {
+            background: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a1a2e;
+        }
+
+        .api-endpoint {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .endpoint-method {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 1rem;
+        }
+
+        .endpoint-method.get {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .endpoint-method.post {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .endpoint-method.put {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .endpoint-method.delete {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .endpoint-path {
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .endpoint-description {
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .params-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .params-table th {
+            background: #f5f5f5;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .params-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .param-type {
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .param-required {
+            color: #f44336;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quick-link {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .quick-link:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-link-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .quick-link-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a2e;
+        }
+
+        .quick-link-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 1024px) {
+            .docs-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .docs-sidebar {
+                display: none;
+            }
+
+            .docs-content {
+                margin-left: 0;
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 100;">
+        <nav>
+            <a class="brand" href="index.html">
+                <span class="mark">AO</span>
+                <span>AvilaOps | Documentação</span>
+            </a>
+            <div class="header-actions">
+                <input type="search" placeholder="Buscar na documentação..." style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #ccc; margin-right: 1rem;">
+                <a class="btn btn-secondary" href="index.html">← Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="docs-layout">
+        <aside class="docs-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Começando</div>
+                <ul class="sidebar-links">
+                    <li><a href="#intro" class="active"><span class="iconoir-rocket"></span> Introdução</a></li>
+                    <li><a href="#quickstart"><span class="iconoir-flash"></span> Início Rápido</a></li>
+                    <li><a href="#installation"><span class="iconoir-download"></span> Instalação</a></li>
+                    <li><a href="#authentication"><span class="iconoir-lock"></span> Autenticação</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">AI Suite</div>
+                <ul class="sidebar-links">
+                    <li><a href="#ai-vision"><span class="iconoir-eye"></span> AI Vision Pro</a></li>
+                    <li><a href="#deep-learning"><span class="iconoir-brain"></span> Deep Learning Studio</a></li>
+                    <li><a href="#nlp"><span class="iconoir-chat-bubble"></span> Text Processor</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Data Suite</div>
+                <ul class="sidebar-links">
+                    <li><a href="#datagrid"><span class="iconoir-database"></span> DataGrid Pro</a></li>
+                    <li><a href="#analytics"><span class="iconoir-graph-up"></span> Analytics Engine</a></li>
+                    <li><a href="#geo"><span class="iconoir-map"></span> Geo Analytics</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Security Suite</div>
+                <ul class="sidebar-links">
+                    <li><a href="#vault"><span class="iconoir-shield-check"></span> Secure Vault</a></li>
+                    <li><a href="#quantum"><span class="iconoir-lock"></span> Quantum Crypto</a></li>
+                    <li><a href="#identity"><span class="iconoir-user"></span> Identity Manager</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Referências</div>
+                <ul class="sidebar-links">
+                    <li><a href="#api-reference"><span class="iconoir-code"></span> API Reference</a></li>
+                    <li><a href="#sdks"><span class="iconoir-package"></span> SDKs</a></li>
+                    <li><a href="#examples"><span class="iconoir-bookmark"></span> Exemplos</a></li>
+                    <li><a href="#changelog"><span class="iconoir-list"></span> Changelog</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="docs-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="docs.html">Documentação</a>
+                <span>/</span>
+                <span>Introdução</span>
+            </div>
+
+            <div class="doc-header">
+                <h1 class="doc-title">Plataforma ARXIS</h1>
+                <p class="doc-description">
+                    Infraestrutura soberana completa para AI, dados, segurança e cloud construída 100% em Rust. 
+                    33 produtos modulares organizados em 9 suites especializadas.
+                </p>
+                <div class="doc-badges">
+                    <span class="badge badge-version">v2.0.0</span>
+                    <span class="badge badge-status">Stable</span>
+                    <span class="badge badge-license">Enterprise</span>
+                </div>
+            </div>
+
+            <div class="quick-links">
+                <a href="#quickstart" class="quick-link">
+                    <div class="quick-link-icon">🚀</div>
+                    <div class="quick-link-title">Início Rápido</div>
+                    <div class="quick-link-desc">Comece em 5 minutos</div>
+                </a>
+                <a href="#api-reference" class="quick-link">
+                    <div class="quick-link-icon">📚</div>
+                    <div class="quick-link-title">API Reference</div>
+                    <div class="quick-link-desc">Documentação completa</div>
+                </a>
+                <a href="#examples" class="quick-link">
+                    <div class="quick-link-icon">💡</div>
+                    <div class="quick-link-title">Exemplos</div>
+                    <div class="quick-link-desc">Código pronto para usar</div>
+                </a>
+                <a href="trial-signup.html" class="quick-link">
+                    <div class="quick-link-icon">🎁</div>
+                    <div class="quick-link-title">Trial Gratuito</div>
+                    <div class="quick-link-desc">14 dias grátis</div>
+                </a>
+            </div>
+
+            <section class="doc-section" id="intro">
+                <h2>Introdução</h2>
+                <p>
+                    A Plataforma ARXIS é um ecossistema completo de infraestrutura soberana que une 33 produtos avançados 
+                    em um sistema integrado. Cada componente foi desenvolvido do zero em Rust, garantindo performance, 
+                    segurança e controle total da pilha tecnológica.
+                </p>
+
+                <h3>Características Principais</h3>
+                <ul>
+                    <li><strong>100% Soberana:</strong> Zero dependências externas, código auditável</li>
+                    <li><strong>Performance de Silício:</strong> Otimizações AVX-512 e SIMD</li>
+                    <li><strong>Segurança de Elite:</strong> Criptografia pós-quântica integrada</li>
+                    <li><strong>Enterprise Ready:</strong> SLA 99.99%, suporte 24/7</li>
+                    <li><strong>Multi-cloud:</strong> Deploy em AWS, Azure, GCP ou on-premise</li>
+                </ul>
+
+                <div class="info-box success">
+                    <strong>✓ Pronto para Produção</strong>
+                    Todos os produtos passaram por auditoria de segurança e estão em uso por clientes enterprise.
+                </div>
+            </section>
+
+            <section class="doc-section" id="quickstart">
+                <h2>Início Rápido</h2>
+                <p>Comece a usar a Plataforma ARXIS em poucos minutos. Este guia cobre a instalação básica e seu primeiro request.</p>
+
+                <h3>1. Instalação</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">bash</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+                    <pre><code class="language-bash"># Instalar CLI da ARXIS
+curl -sSL https://install.arxis.io | bash
+
+# Verificar instalação
+arxis --version
+
+# Login
+arxis login --api-key YOUR_API_KEY</code></pre>
+                </div>
+
+                <h3>2. Primeiro Request - AI Vision Pro</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">python</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+                    <pre><code class="language-python">from arxis import AIVision
+
+# Inicializar cliente
+vision = AIVision(api_key="YOUR_API_KEY")
+
+# Detectar objetos em imagem
+result = vision.detect_objects(
+    image_url="https://example.com/image.jpg",
+    confidence=0.8
+)
+
+print(f"Objetos detectados: {len(result.objects)}")
+for obj in result.objects:
+    print(f"- {obj.label}: {obj.confidence:.2%}")</code></pre>
+                </div>
+
+                <h3>3. Exemplo com DataGrid Pro</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">rust</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+                    <pre><code class="language-rust">use arxis::datagrid::DataFrame;
+
+fn main() {
+    // Criar DataFrame
+    let df = DataFrame::from_csv("data.csv").unwrap();
+    
+    // Filtrar dados
+    let filtered = df
+        .filter(|row| row["age"] > 25)
+        .select(&["name", "email"])
+        .sort_by("name");
+    
+    // Exportar resultado
+    filtered.to_parquet("output.parquet").unwrap();
+    
+    println!("Processado: {} linhas", filtered.len());
+}</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Dica</strong>
+                    Use o modo interativo do CLI para explorar as APIs: <code>arxis playground</code>
+                </div>
+            </section>
+
+            <section class="doc-section" id="api-reference">
+                <h2>API Reference</h2>
+                <p>Documentação completa das APIs REST da Plataforma ARXIS.</p>
+
+                <h3>Autenticação</h3>
+                <p>Todas as requisições devem incluir a API key no header:</p>
+                <div class="code-block">
+                    <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                </div>
+
+                <h3>Endpoints - AI Vision Pro</h3>
+
+                <div class="api-endpoint">
+                    <div>
+                        <span class="endpoint-method post">POST</span>
+                        <span class="endpoint-path">/api/v1/vision/detect</span>
+                    </div>
+                    <p class="endpoint-description">Detecta objetos, rostos e texto em imagens</p>
+                    
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Tipo</th>
+                                <th>Obrigatório</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>image_url</code></td>
+                                <td><span class="param-type">string</span></td>
+                                <td><span class="param-required">Sim</span></td>
+                                <td>URL da imagem a ser analisada</td>
+                            </tr>
+                            <tr>
+                                <td><code>confidence</code></td>
+                                <td><span class="param-type">float</span></td>
+                                <td>Não</td>
+                                <td>Threshold de confiança (0.0-1.0). Default: 0.5</td>
+                            </tr>
+                            <tr>
+                                <td><code>models</code></td>
+                                <td><span class="param-type">array</span></td>
+                                <td>Não</td>
+                                <td>Lista de modelos: objects, faces, text. Default: all</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="api-endpoint">
+                    <div>
+                        <span class="endpoint-method get">GET</span>
+                        <span class="endpoint-path">/api/v1/datagrid/query</span>
+                    </div>
+                    <p class="endpoint-description">Executa queries SQL em DataFrames distribuídos</p>
+                    
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Tipo</th>
+                                <th>Obrigatório</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>query</code></td>
+                                <td><span class="param-type">string</span></td>
+                                <td><span class="param-required">Sim</span></td>
+                                <td>Query SQL a ser executada</td>
+                            </tr>
+                            <tr>
+                                <td><code>format</code></td>
+                                <td><span class="param-type">string</span></td>
+                                <td>Não</td>
+                                <td>Formato de saída: json, csv, parquet. Default: json</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <strong>⚠️ Rate Limits</strong>
+                    Planos trial: 100 requests/hora. Planos enterprise: ilimitado.
+                </div>
+            </section>
+
+            <section class="doc-section" id="examples">
+                <h2>Exemplos Completos</h2>
+
+                <h3>Pipeline de Processamento de Imagens</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">python</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+                    <pre><code class="language-python">from arxis import AIVision, DataGrid
+import asyncio
+
+async def process_images_batch(image_urls):
+    vision = AIVision(api_key="YOUR_KEY")
+    results = []
+    
+    # Processar imagens em paralelo
+    for url in image_urls:
+        result = await vision.detect_objects_async(url)
+        results.append({
+            'url': url,
+            'objects': len(result.objects),
+            'labels': [obj.label for obj in result.objects]
+        })
+    
+    # Salvar em DataFrame
+    df = DataGrid.from_dict(results)
+    df.to_parquet('vision_results.parquet')
+    
+    return df
+
+# Executar pipeline
+urls = ["img1.jpg", "img2.jpg", "img3.jpg"]
+df = asyncio.run(process_images_batch(urls))
+print(f"Processadas {len(df)} imagens")</code></pre>
+                </div>
+
+                <h3>Sistema de Autenticação Segura</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">rust</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+                    <pre><code class="language-rust">use arxis::security::{Vault, IdentityManager};
+
+#[tokio::main]
+async fn main() {
+    // Inicializar vault seguro
+    let vault = Vault::new("encryption_key").await;
+    
+    // Gerenciar identidades
+    let identity = IdentityManager::new();
+    
+    // Criar token JWT
+    let token = identity.create_token(
+        user_id: "user123",
+        roles: vec!["admin"],
+        expires_in: 3600,
+    ).unwrap();
+    
+    // Armazenar secret
+    vault.store("api_key", "secret_value").await.unwrap();
+    
+    // Recuperar secret
+    let secret = vault.retrieve("api_key").await.unwrap();
+    
+    println!("Token: {}", token);
+}</code></pre>
+                </div>
+            </section>
+
+            <div style="margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; color: white; text-align: center;">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Pronto para começar?</h3>
+                <p style="margin-bottom: 2rem; opacity: 0.95;">Teste gratuitamente por 14 dias. Sem cartão de crédito.</p>
+                <a href="trial-signup.html" class="btn btn-primary" style="background: white; color: #667eea;">Iniciar Trial Gratuito →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-block').querySelector('code');
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copiado!';
+                setTimeout(() => {
+                    btn.textContent = 'Copiar';
+                }, 2000);
+            });
+        }
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Atualizar active link
+                    document.querySelectorAll('.sidebar-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Teste gratuitamente a Plataforma ARXIS por 14 dias. Acesso completo aos 33 produtos sem cartão de crédito.">
+    <meta name="keywords" content="trial gratuito, teste grátis, ARXIS, AvilaOps, infraestrutura soberana">
+    <title>Trial Gratuito 14 Dias | Plataforma ARXIS - AvilaOps</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <style>
+        .trial-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trial-hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .trial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trial-content {
+            color: white;
+        }
+
+        .trial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .trial-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .trial-subtitle {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .trial-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .trial-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            font-size: 1.1rem;
+        }
+
+        .trial-features li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .trial-form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .trial-form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .trial-form-header h2 {
+            color: #1a1a2e;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trial-form-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .suite-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .suite-option {
+            position: relative;
+        }
+
+        .suite-option input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .suite-option label {
+            display: block;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .suite-option input:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-item strong {
+            display: block;
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .trust-item span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .security-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .security-note .iconoir-shield-check {
+            color: #4caf50;
+            margin-right: 0.25rem;
+        }
+
+        @media (max-width: 968px) {
+            .trial-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .trial-title {
+                font-size: 2.5rem;
+            }
+
+            .suite-selector {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #4caf50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="index.html">
+                <span class="mark">AO</span>
+                <span>AvilaOps | Plataforma ARXIS</span>
+            </a>
+            <div class="header-actions">
+                <a class="btn btn-secondary" href="index.html">← Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="trial-hero">
+        <div class="trial-container">
+            <div class="trial-content">
+                <span class="trial-badge">
+                    <span class="iconoir-gift"></span>
+                    Trial Gratuito 14 Dias
+                </span>
+                <h1 class="trial-title">Teste a Plataforma ARXIS sem compromisso</h1>
+                <p class="trial-subtitle">
+                    Acesso completo aos 33 produtos de infraestrutura soberana. 
+                    Sem cartão de crédito. Cancele quando quiser.
+                </p>
+
+                <ul class="trial-features">
+                    <li>Acesso imediato a todas as 9 suites</li>
+                    <li>Suporte técnico prioritário via chat</li>
+                    <li>Documentação completa e exemplos</li>
+                    <li>APIs ilimitadas durante o trial</li>
+                    <li>Deploy em sua infraestrutura</li>
+                    <li>Sessão de onboarding com especialista</li>
+                </ul>
+
+                <div style="margin-top: 3rem; opacity: 0.9;">
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Empresas que confiam na ARXIS:</strong>
+                    </p>
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                        <span>🏦 Instituições Financeiras</span>
+                        <span>🏛️ Órgãos Públicos</span>
+                        <span>⚡ Indústrias Críticas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trial-form-card">
+                <form id="trialForm">
+                    <div class="trial-form-header">
+                        <h2>Comece seu trial agora</h2>
+                        <p>Preencha os dados abaixo e receba acesso imediato</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Nome completo *</label>
+                        <input type="text" id="name" name="name" required placeholder="João Silva">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email corporativo *</label>
+                        <input type="email" id="email" name="email" required placeholder="joao@empresa.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Empresa *</label>
+                        <input type="text" id="company" name="company" required placeholder="Nome da Empresa">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefone *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+55 11 99999-9999">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Cargo *</label>
+                        <select id="role" name="role" required>
+                            <option value="">Selecione seu cargo</option>
+                            <option value="cto">CTO / CIO</option>
+                            <option value="developer">Desenvolvedor</option>
+                            <option value="architect">Arquiteto de Soluções</option>
+                            <option value="devops">DevOps / SRE</option>
+                            <option value="manager">Gerente / Diretor</option>
+                            <option value="founder">Fundador / CEO</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Suites de interesse (selecione até 3)</label>
+                        <div class="suite-selector">
+                            <div class="suite-option">
+                                <input type="checkbox" id="ai" name="suites" value="ai">
+                                <label for="ai">AI Suite</label>
+                            </div>
+                            <div class="suite-option">
+                                <input type="checkbox" id="data" name="suites" value="data">
+                                <label for="data">Data Suite</label>
+                            </div>
+                            <div class="suite-option">
+                                <input type="checkbox" id="security" name="suites" value="security">
+                                <label for="security">Security Suite</label>
+                            </div>
+                            <div class="suite-option">
+                                <input type="checkbox" id="cloud" name="suites" value="cloud">
+                                <label for="cloud">Cloud Suite</label>
+                            </div>
+                            <div class="suite-option">
+                                <input type="checkbox" id="web" name="suites" value="web">
+                                <label for="web">Web Suite</label>
+                            </div>
+                            <div class="suite-option">
+                                <input type="checkbox" id="premium" name="suites" value="premium">
+                                <label for="premium">Premium Platform</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Iniciar Trial Gratuito →
+                    </button>
+
+                    <div class="security-note">
+                        <span class="iconoir-shield-check"></span>
+                        Seus dados estão seguros. Não compartilhamos informações.
+                    </div>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h2>Trial Ativado com Sucesso!</h2>
+                    <p style="margin: 1.5rem 0; color: #666;">
+                        Enviamos as credenciais de acesso para seu email.<br>
+                        Nossa equipe entrará em contato em até 2 horas.
+                    </p>
+                    <a href="index.html" class="btn btn-primary">Voltar para Home</a>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <strong>14 dias</strong>
+                        <span>Trial gratuito</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>2h</strong>
+                        <span>Tempo de resposta</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>24/7</strong>
+                        <span>Suporte técnico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('trialForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Validar checkboxes (máximo 3)
+            const suites = document.querySelectorAll('input[name="suites"]:checked');
+            if (suites.length > 3) {
+                alert('Por favor, selecione no máximo 3 suites.');
+                return;
+            }
+
+            // Coletar dados do formulário
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                phone: document.getElementById('phone').value,
+                role: document.getElementById('role').value,
+                suites: Array.from(suites).map(s => s.value),
+                timestamp: new Date().toISOString(),
+                source: 'trial-signup-page'
+            };
+
+            console.log('Trial Request:', formData);
+
+            // TODO: Integrar com backend/CRM
+            // await fetch('/api/trial-signup', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+
+            // Mostrar mensagem de sucesso
+            document.querySelector('form').style.display = 'none';
+            document.getElementById('successMessage').classList.add('active');
+
+            // Analytics tracking
+            if (window.trackEvent) {
+                window.trackEvent('trial_signup', {
+                    company: formData.company,
+                    suites: formData.suites.join(',')
+                });
+            }
+        });
+
+        // Limitar seleção de checkboxes
+        document.querySelectorAll('input[name="suites"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checked = document.querySelectorAll('input[name="suites"]:checked');
+                if (checked.length > 3) {
+                    this.checked = false;
+                    alert('Selecione no máximo 3 suites para focar melhor no seu trial.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
