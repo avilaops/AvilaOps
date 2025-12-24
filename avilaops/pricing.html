@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Planos e preços da Plataforma ARXIS - Escolha a suite ideal para sua empresa com trial gratuito de 14 dias.">
+    <meta name="keywords" content="preços ARXIS, planos, pricing, trial gratuito, infraestrutura soberana">
+    <title>Planos e Preços | Plataforma ARXIS - AvilaOps</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <style>
+        .pricing-page {
+            padding: 8rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .toggle-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #667eea;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(30px);
+        }
+
+        .savings-badge {
+            background: #4caf50;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a1a2e;
+        }
+
+        .plan-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 40px;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .price-period {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            min-height: 300px;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            color: #555;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .plan-features li.disabled {
+            opacity: 0.4;
+        }
+
+        .plan-features li.disabled::before {
+            content: '—';
+            color: #ccc;
+        }
+
+        .plan-cta {
+            width: 100%;
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .plan-cta.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .plan-cta.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .plan-cta.secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .plan-cta.secondary:hover {
+            background: #f5f7ff;
+        }
+
+        .comparison-section {
+            margin-top: 6rem;
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .comparison-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #f0f4ff;
+        }
+
+        .comparison-table td {
+            text-align: center;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .feature-check {
+            color: #4caf50;
+            font-size: 1.5rem;
+        }
+
+        .feature-cross {
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+
+        .faq-section {
+            margin-top: 6rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #1a1a2e;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: #666;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .cta-banner {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+            margin-top: 6rem;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-header h1 {
+                font-size: 2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="index.html">
+                <span class="mark">AO</span>
+                <span>AvilaOps | Plataforma ARXIS</span>
+            </a>
+            <div class="header-actions">
+                <a href="docs.html">Documentação</a>
+                <a href="status.html">Status</a>
+                <a class="btn btn-primary" href="trial-signup.html">Trial Gratuito</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pricing-page">
+        <div class="pricing-header">
+            <h1>Planos e Preços Transparentes</h1>
+            <p class="pricing-subtitle">
+                Escolha a suite ideal para sua empresa. Sem taxas ocultas. 
+                Cancele quando quiser. Trial gratuito de 14 dias.
+            </p>
+
+            <div class="pricing-toggle">
+                <span class="toggle-label">Mensal</span>
+                <div class="toggle-switch" id="billingToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+                <span class="toggle-label">Anual</span>
+                <span class="savings-badge">Economize 20%</span>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- DevTools Suite -->
+            <div class="pricing-card">
+                <div class="plan-name">DevTools</div>
+                <div class="plan-description">Para desenvolvedores e pequenas equipes</div>
+                <div class="plan-price">
+                    $<span class="monthly-price">299</span><span class="yearly-price" style="display:none;">239</span>
+                    <span>/mês</span>
+                </div>
+                <p class="price-period">Cobrado mensalmente</p>
+                
+                <ul class="plan-features">
+                    <li>CLI Tools completo</li>
+                    <li>Code Logger & Metrics</li>
+                    <li>SDKs Rust, Python, JS</li>
+                    <li>Até 3 desenvolvedores</li>
+                    <li>100GB de armazenamento</li>
+                    <li>Suporte por email</li>
+                    <li class="disabled">Suporte prioritário 24/7</li>
+                    <li class="disabled">Engenharia dedicada</li>
+                </ul>
+
+                <button class="plan-cta secondary" onclick="window.location.href='trial-signup.html'">
+                    Iniciar Trial Gratuito
+                </button>
+            </div>
+
+            <!-- Data Suite -->
+            <div class="pricing-card">
+                <div class="plan-name">Data Suite</div>
+                <div class="plan-description">Análise e processamento de dados em escala</div>
+                <div class="plan-price">
+                    $<span class="monthly-price">799</span><span class="yearly-price" style="display:none;">639</span>
+                    <span>/mês</span>
+                </div>
+                <p class="price-period">Cobrado mensalmente</p>
+                
+                <ul class="plan-features">
+                    <li>DataGrid Pro acelerado</li>
+                    <li>Analytics Engine real-time</li>
+                    <li>Geo Analytics & Image Toolkit</li>
+                    <li>Até 10 usuários</li>
+                    <li>1TB de armazenamento</li>
+                    <li>APIs ilimitadas</li>
+                    <li>Suporte prioritário</li>
+                    <li class="disabled">Engenharia dedicada</li>
+                </ul>
+
+                <button class="plan-cta secondary" onclick="window.location.href='trial-signup.html'">
+                    Iniciar Trial Gratuito
+                </button>
+            </div>
+
+            <!-- AI Suite -->
+            <div class="pricing-card featured">
+                <div class="featured-badge">⭐ Mais Popular</div>
+                <div class="plan-name">AI Suite</div>
+                <div class="plan-description">Computer Vision e Deep Learning completo</div>
+                <div class="plan-price">
+                    $<span class="monthly-price">999</span><span class="yearly-price" style="display:none;">799</span>
+                    <span>/mês</span>
+                </div>
+                <p class="price-period">Cobrado mensalmente</p>
+                
+                <ul class="plan-features">
+                    <li>AI Vision Pro + GPU</li>
+                    <li>Deep Learning Studio</li>
+                    <li>Smart Clustering & NLP</li>
+                    <li>AI Copilot com streaming</li>
+                    <li>Usuários ilimitados</li>
+                    <li>2TB de armazenamento</li>
+                    <li>APIs ilimitadas</li>
+                    <li>Suporte prioritário 24/7</li>
+                </ul>
+
+                <button class="plan-cta primary" onclick="window.location.href='trial-signup.html'">
+                    Iniciar Trial Gratuito
+                </button>
+            </div>
+
+            <!-- Security Suite -->
+            <div class="pricing-card">
+                <div class="plan-name">Security Suite</div>
+                <div class="plan-description">Criptografia e segurança de elite</div>
+                <div class="plan-price">
+                    $<span class="monthly-price">1,299</span><span class="yearly-price" style="display:none;">1,039</span>
+                    <span>/mês</span>
+                </div>
+                <p class="price-period">Cobrado mensalmente</p>
+                
+                <ul class="plan-features">
+                    <li>Secure Vault & Privacy Shield</li>
+                    <li>Quantum Safe Crypto</li>
+                    <li>Identity Manager JWT</li>
+                    <li>Zero dependências externas</li>
+                    <li>Auditorias trimestrais</li>
+                    <li>Compliance LGPD/GDPR</li>
+                    <li>Suporte prioritário 24/7</li>
+                    <li>Engenharia residente</li>
+                </ul>
+
+                <button class="plan-cta secondary" onclick="window.location.href='trial-signup.html'">
+                    Iniciar Trial Gratuito
+                </button>
+            </div>
+
+            <!-- Cloud Suite -->
+            <div class="pricing-card">
+                <div class="plan-name">Cloud Suite</div>
+                <div class="plan-description">Infraestrutura cloud soberana completa</div>
+                <div class="plan-price">
+                    $<span class="monthly-price">1,499</span><span class="yearly-price" style="display:none;">1,199</span>
+                    <span>/mês</span>
+                </div>
+                <p class="price-period">Cobrado mensalmente</p>
+                
+                <ul class="plan-features">
+                    <li>CloudOS Platform completo</li>
+                    <li>LoadBalance Pro & Service Mesh</li>
+                    <li>DataStore DB & Storage Cloud</li>
+                    <li>Multi-cloud (AWS, Azure, GCP)</li>
+                    <li>Usuários ilimitados</li>
+                    <li>5TB de armazenamento</li>
+                    <li>Suporte prioritário 24/7</li>
+                    <li>Engenharia residente</li>
+                </ul>
+
+                <button class="plan-cta secondary" onclick="window.location.href='trial-signup.html'">
+                    Iniciar Trial Gratuito
+                </button>
+            </div>
+
+            <!-- Premium Platform -->
+            <div class="pricing-card featured">
+                <div class="featured-badge">🏆 Enterprise</div>
+                <div class="plan-name">Premium Platform</div>
+                <div class="plan-description">Todos os módulos + suporte dedicado</div>
+                <div class="plan-price">
+                    $<span class="monthly-price">4,999</span><span class="yearly-price" style="display:none;">3,999</span>
+                    <span>/mês</span>
+                </div>
+                <p class="price-period">Cobrado mensalmente</p>
+                
+                <ul class="plan-features">
+                    <li>Todas as 9 suites incluídas</li>
+                    <li>33 produtos integrados</li>
+                    <li>Dashboard unificado</li>
+                    <li>White-label disponível</li>
+                    <li>Usuários ilimitados</li>
+                    <li>Armazenamento ilimitado</li>
+                    <li>SLA 99.99% garantido</li>
+                    <li>Equipe dedicada 24/7</li>
+                </ul>
+
+                <button class="plan-cta primary" onclick="window.location.href='trial-signup.html'">
+                    Falar com Especialista
+                </button>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <section class="comparison-section">
+            <div class="comparison-header">
+                <h2>Compare Todos os Planos</h2>
+                <p>Veja em detalhes o que está incluído em cada suite</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Recursos</th>
+                        <th>DevTools</th>
+                        <th>Data</th>
+                        <th>AI</th>
+                        <th>Security</th>
+                        <th>Cloud</th>
+                        <th>Premium</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Usuários incluídos</td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>Ilimitado</td>
+                        <td>Ilimitado</td>
+                        <td>Ilimitado</td>
+                        <td>Ilimitado</td>
+                    </tr>
+                    <tr>
+                        <td>Armazenamento</td>
+                        <td>100GB</td>
+                        <td>1TB</td>
+                        <td>2TB</td>
+                        <td>2TB</td>
+                        <td>5TB</td>
+                        <td>Ilimitado</td>
+                    </tr>
+                    <tr>
+                        <td>APIs/mês</td>
+                        <td>10K</td>
+                        <td>Ilimitado</td>
+                        <td>Ilimitado</td>
+                        <td>Ilimitado</td>
+                        <td>Ilimitado</td>
+                        <td>Ilimitado</td>
+                    </tr>
+                    <tr>
+                        <td>Suporte 24/7</td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>SLA 99.99%</td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Engenharia dedicada</td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>White-label</td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Multi-cloud</td>
+                        <td><span class="feature-cross">—</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                        <td><span class="feature-check">✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-header">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tudo que você precisa saber sobre os planos</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como funciona o trial gratuito?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    O trial gratuito dá acesso completo à suite escolhida por 14 dias. 
+                    Não é necessário cartão de crédito para começar. Você pode cancelar 
+                    a qualquer momento sem custo.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Posso trocar de plano depois?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! Você pode fazer upgrade ou downgrade a qualquer momento. 
+                    Os valores são ajustados proporcionalmente no próximo ciclo de cobrança.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Qual a diferença entre mensal e anual?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    O plano anual oferece 20% de desconto e é cobrado uma vez por ano. 
+                    O plano mensal é cobrado todo mês sem compromisso de longo prazo.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Tem taxa de setup ou implementação?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Não! Todos os planos incluem onboarding completo sem custos adicionais. 
+                    Para o plano Premium Platform, oferecemos implementação personalizada 
+                    sem taxa extra.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como funciona o suporte técnico?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Todos os planos incluem suporte por email. A partir do plano Data Suite, 
+                    você tem acesso a suporte prioritário 24/7 via chat e telefone. 
+                    Planos enterprise incluem engenheiro dedicado.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Posso combinar múltiplas suites?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! Você pode contratar múltiplas suites separadamente ou optar pelo 
+                    Premium Platform que inclui todas as 9 suites com desconto significativo.
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <div class="cta-banner">
+            <h2>Pronto para começar?</h2>
+            <p>Teste gratuitamente por 14 dias. Sem cartão de crédito. Cancele quando quiser.</p>
+            <div class="cta-buttons">
+                <a href="trial-signup.html" class="btn btn-primary" style="background:white; color:#667eea;">
+                    Iniciar Trial Gratuito
+                </a>
+                <a href="index.html#contato" class="btn btn-secondary" style="border:2px solid white; color:white;">
+                    Falar com Especialista
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 3rem; color: #999;">
+        <p>&copy; 2025 AvilaOps | Plataforma ARXIS</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="docs.html" style="color: #667eea; margin: 0 1rem;">Documentação</a>
+            <a href="status.html" style="color: #667eea; margin: 0 1rem;">Status</a>
+            <a href="trial-signup.html" style="color: #667eea; margin: 0 1rem;">Trial Gratuito</a>
+        </p>
+    </footer>
+
+    <script>
+        // Billing Toggle
+        const billingToggle = document.getElementById('billingToggle');
+        const monthlyPrices = document.querySelectorAll('.monthly-price');
+        const yearlyPrices = document.querySelectorAll('.yearly-price');
+
+        billingToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const isYearly = this.classList.contains('active');
+            
+            monthlyPrices.forEach(el => el.style.display = isYearly ? 'none' : 'inline');
+            yearlyPrices.forEach(el => el.style.display = isYearly ? 'inline' : 'none');
+            
+            document.querySelectorAll('.price-period').forEach(el => {
+                el.textContent = isYearly ? 'Cobrado anualmente' : 'Cobrado mensalmente';
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const wasActive = this.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                if (!wasActive) {
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Analytics tracking
+        document.querySelectorAll('.plan-cta').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const planName = this.closest('.pricing-card').querySelector('.plan-name').textContent;
+                console.log('Plan clicked:', planName);
+                // Track with your analytics
+            });
+        });
+    </script>
+</body>
+</html>

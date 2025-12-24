@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Casos de uso reais da Plataforma ARXIS - Veja como empresas usam nossa infraestrutura soberana.">
+    <meta name="keywords" content="casos de uso, use cases, ARXIS, exemplos reais, aplicações">
+    <title>Casos de Uso | Plataforma ARXIS - AvilaOps</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <style>
+        .use-cases-page {
+            padding: 8rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .industry-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .industry-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .industry-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .industry-link {
+            color: #667eea;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .use-case-section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .use-case {
+            background: white;
+            border-radius: 20px;
+            padding: 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .use-case:nth-child(even) {
+            direction: rtl;
+        }
+
+        .use-case:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .use-case-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            min-height: 400px;
+        }
+
+        .use-case-image-placeholder {
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .use-case-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .use-case-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .use-case-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .use-case-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .use-case-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 0.25rem;
+        }
+
+        .use-case-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .use-case-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: #555;
+        }
+
+        .use-case-features li::before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .use-case-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .use-case-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 968px) {
+            .use-case {
+                grid-template-columns: 1fr;
+            }
+
+            .use-case:nth-child(even) {
+                direction: ltr;
+            }
+
+            .use-case-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="index.html">
+                <span class="mark">AO</span>
+                <span>AvilaOps | Plataforma ARXIS</span>
+            </a>
+            <div class="header-actions">
+                <a href="docs.html">Documentação</a>
+                <a href="pricing.html">Preços</a>
+                <a href="status.html">Status</a>
+                <a class="btn btn-primary" href="trial-signup.html">Trial Gratuito</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="use-cases-page">
+        <div class="page-header">
+            <h1>Casos de Uso Reais</h1>
+            <p class="page-subtitle">
+                Descubra como empresas de diferentes setores usam a Plataforma ARXIS 
+                para resolver desafios complexos com infraestrutura soberana.
+            </p>
+        </div>
+
+        <section class="industries-grid">
+            <div class="industry-card">
+                <div class="industry-icon">🏦</div>
+                <h3 class="industry-title">Fintech & Banking</h3>
+                <p class="industry-description">
+                    Processamento de transações em tempo real com compliance 
+                    BACEN e segurança bancária.
+                </p>
+                <a href="#fintech" class="industry-link">
+                    Ver casos de uso →
+                </a>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-icon">🏛️</div>
+                <h3 class="industry-title">Governo & Defesa</h3>
+                <p class="industry-description">
+                    Infraestrutura soberana para dados classificados e 
+                    sistemas de missão crítica.
+                </p>
+                <a href="#government" class="industry-link">
+                    Ver casos de uso →
+                </a>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-icon">⚕️</div>
+                <h3 class="industry-title">Saúde & Healthcare</h3>
+                <p class="industry-description">
+                    Processamento de imagens médicas e análise de dados 
+                    com LGPD compliance.
+                </p>
+                <a href="#healthcare" class="industry-link">
+                    Ver casos de uso →
+                </a>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-icon">🏭</div>
+                <h3 class="industry-title">Indústria 4.0</h3>
+                <p class="industry-description">
+                    IoT, edge computing e visão computacional para 
+                    manufatura inteligente.
+                </p>
+                <a href="#industry" class="industry-link">
+                    Ver casos de uso →
+                </a>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-icon">🛒</div>
+                <h3 class="industry-title">E-commerce & Retail</h3>
+                <p class="industry-description">
+                    Recomendações em tempo real e análise de comportamento 
+                    de milhões de usuários.
+                </p>
+                <a href="#retail" class="industry-link">
+                    Ver casos de uso →
+                </a>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-icon">🚗</div>
+                <h3 class="industry-title">Logística & Mobilidade</h3>
+                <p class="industry-description">
+                    Otimização de rotas e rastreamento em tempo real 
+                    com geo-analytics.
+                </p>
+                <a href="#logistics" class="industry-link">
+                    Ver casos de uso →
+                </a>
+            </div>
+        </section>
+
+        <section class="use-case-section" id="fintech">
+            <div class="section-header">
+                <h2>Casos de Uso Detalhados</h2>
+                <p>Exemplos reais de implementação da Plataforma ARXIS</p>
+            </div>
+
+            <!-- Fintech Case -->
+            <div class="use-case">
+                <div class="use-case-image">
+                    <div class="use-case-image-placeholder">🏦</div>
+                </div>
+                <div class="use-case-content">
+                    <span class="use-case-badge">Fintech</span>
+                    <h3 class="use-case-title">Sistema de Detecção de Fraudes em Tempo Real</h3>
+                    <p class="use-case-description">
+                        Fintech brasileira processa 5 milhões de transações diárias usando 
+                        AI Suite para detectar fraudes em menos de 100ms, reduzindo perdas 
+                        em 87% e mantendo compliance com BACEN.
+                    </p>
+
+                    <div class="use-case-stats">
+                        <div class="stat">
+                            <span class="stat-value">5M</span>
+                            <span class="stat-label">Transações/dia</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">87%</span>
+                            <span class="stat-label">Redução fraudes</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">&lt;100ms</span>
+                            <span class="stat-label">Latência</span>
+                        </div>
+                    </div>
+
+                    <ul class="use-case-features">
+                        <li>AI Vision Pro para análise de documentos</li>
+                        <li>Deep Learning Studio para detecção de padrões</li>
+                        <li>DataGrid Pro para processamento em tempo real</li>
+                        <li>Security Suite para criptografia end-to-end</li>
+                    </ul>
+
+                    <a href="trial-signup.html" class="use-case-cta">
+                        Testar esta solução
+                        <span class="iconoir-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Healthcare Case -->
+            <div class="use-case" id="healthcare">
+                <div class="use-case-image">
+                    <div class="use-case-image-placeholder">⚕️</div>
+                </div>
+                <div class="use-case-content">
+                    <span class="use-case-badge">Healthcare</span>
+                    <h3 class="use-case-title">Diagnóstico Assistido por IA para Radiologia</h3>
+                    <p class="use-case-description">
+                        Hospital universitário analisa 10.000+ exames de imagem por mês 
+                        com 94% de precisão, reduzindo tempo de diagnóstico de dias para minutos 
+                        com total conformidade LGPD.
+                    </p>
+
+                    <div class="use-case-stats">
+                        <div class="stat">
+                            <span class="stat-value">10K+</span>
+                            <span class="stat-label">Exames/mês</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">94%</span>
+                            <span class="stat-label">Precisão</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">-80%</span>
+                            <span class="stat-label">Tempo diagnóstico</span>
+                        </div>
+                    </div>
+
+                    <ul class="use-case-features">
+                        <li>AI Vision Pro para análise de raio-X e tomografia</li>
+                        <li>Deep Learning Studio com modelos treinados</li>
+                        <li>Secure Vault para armazenamento LGPD-compliant</li>
+                        <li>Cloud Suite para escalabilidade</li>
+                    </ul>
+
+                    <a href="trial-signup.html" class="use-case-cta">
+                        Testar esta solução
+                        <span class="iconoir-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Industry 4.0 Case -->
+            <div class="use-case" id="industry">
+                <div class="use-case-image">
+                    <div class="use-case-image-placeholder">🏭</div>
+                </div>
+                <div class="use-case-content">
+                    <span class="use-case-badge">Indústria 4.0</span>
+                    <h3 class="use-case-title">Controle de Qualidade Automatizado</h3>
+                    <p class="use-case-description">
+                        Fabricante automotiva inspeciona 100% das peças produzidas em tempo 
+                        real com visão computacional, reduzindo defeitos em 92% e aumentando 
+                        throughput em 35%.
+                    </p>
+
+                    <div class="use-case-stats">
+                        <div class="stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Inspeção</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">-92%</span>
+                            <span class="stat-label">Defeitos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">+35%</span>
+                            <span class="stat-label">Produtividade</span>
+                        </div>
+                    </div>
+
+                    <ul class="use-case-features">
+                        <li>AI Vision Pro para detecção de defeitos</li>
+                        <li>Analytics Engine para telemetria em tempo real</li>
+                        <li>Edge deployment com Cloud Suite</li>
+                        <li>Dashboard de qualidade integrado</li>
+                    </ul>
+
+                    <a href="trial-signup.html" class="use-case-cta">
+                        Testar esta solução
+                        <span class="iconoir-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Government Case -->
+            <div class="use-case" id="government">
+                <div class="use-case-image">
+                    <div class="use-case-image-placeholder">🏛️</div>
+                </div>
+                <div class="use-case-content">
+                    <span class="use-case-badge">Governo</span>
+                    <h3 class="use-case-title">Plataforma de Dados Soberana Nacional</h3>
+                    <p class="use-case-description">
+                        Órgão governamental centraliza dados de 50+ sistemas legados em 
+                        infraestrutura 100% soberana, processando 2TB/dia com auditoria 
+                        completa e zero dependências externas.
+                    </p>
+
+                    <div class="use-case-stats">
+                        <div class="stat">
+                            <span class="stat-value">50+</span>
+                            <span class="stat-label">Sistemas integrados</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">2TB</span>
+                            <span class="stat-label">Dados/dia</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Soberania</span>
+                        </div>
+                    </div>
+
+                    <ul class="use-case-features">
+                        <li>Data Suite para integração de sistemas legados</li>
+                        <li>Security Suite com criptografia pós-quântica</li>
+                        <li>Cloud Suite em infraestrutura on-premise</li>
+                        <li>Auditoria completa e compliance por design</li>
+                    </ul>
+
+                    <a href="trial-signup.html" class="use-case-cta">
+                        Testar esta solução
+                        <span class="iconoir-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Retail Case -->
+            <div class="use-case" id="retail">
+                <div class="use-case-image">
+                    <div class="use-case-image-placeholder">🛒</div>
+                </div>
+                <div class="use-case-content">
+                    <span class="use-case-badge">E-commerce</span>
+                    <h3 class="use-case-title">Recomendações Personalizadas em Tempo Real</h3>
+                    <p class="use-case-description">
+                        Marketplace processa comportamento de 10M+ usuários para gerar 
+                        recomendações personalizadas em &lt;50ms, aumentando conversão 
+                        em 43% e ticket médio em 28%.
+                    </p>
+
+                    <div class="use-case-stats">
+                        <div class="stat">
+                            <span class="stat-value">10M+</span>
+                            <span class="stat-label">Usuários ativos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">+43%</span>
+                            <span class="stat-label">Conversão</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">+28%</span>
+                            <span class="stat-label">Ticket médio</span>
+                        </div>
+                    </div>
+
+                    <ul class="use-case-features">
+                        <li>Smart Clustering para segmentação de usuários</li>
+                        <li>Deep Learning Studio para recomendações</li>
+                        <li>DataGrid Pro para processamento distribuído</li>
+                        <li>Analytics Engine para métricas em tempo real</li>
+                    </ul>
+
+                    <a href="trial-signup.html" class="use-case-cta">
+                        Testar esta solução
+                        <span class="iconoir-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Logistics Case -->
+            <div class="use-case" id="logistics">
+                <div class="use-case-image">
+                    <div class="use-case-image-placeholder">🚗</div>
+                </div>
+                <div class="use-case-content">
+                    <span class="use-case-badge">Logística</span>
+                    <h3 class="use-case-title">Otimização de Rotas em Tempo Real</h3>
+                    <p class="use-case-description">
+                        Transportadora otimiza 5.000+ entregas diárias com geo-analytics 
+                        e IA, reduzindo custos de combustível em 31% e tempo de entrega 
+                        em 24%, com tracking em tempo real.
+                    </p>
+
+                    <div class="use-case-stats">
+                        <div class="stat">
+                            <span class="stat-value">5K+</span>
+                            <span class="stat-label">Entregas/dia</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">-31%</span>
+                            <span class="stat-label">Custos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">-24%</span>
+                            <span class="stat-label">Tempo entrega</span>
+                        </div>
+                    </div>
+
+                    <ul class="use-case-features">
+                        <li>Geo Analytics para otimização de rotas</li>
+                        <li>AI Suite para previsão de demanda</li>
+                        <li>Analytics Engine para tracking em tempo real</li>
+                        <li>Mobile SDKs para motoristas</li>
+                    </ul>
+
+                    <a href="trial-signup.html" class="use-case-cta">
+                        Testar esta solução
+                        <span class="iconoir-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <div style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; color: white; margin-top: 4rem;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Qual é o seu caso de uso?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">
+                Fale com nossos especialistas e descubra como a Plataforma ARXIS 
+                pode resolver os desafios específicos do seu negócio.
+            </p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="trial-signup.html" class="btn btn-primary" style="background:white; color:#667eea; padding: 1.25rem 2.5rem; font-size: 1.1rem; border-radius: 12px; font-weight: 700; text-decoration: none;">
+                    Iniciar Trial Gratuito
+                </a>
+                <a href="index.html#contato" class="btn btn-secondary" style="border:2px solid white; color:white; background:transparent; padding: 1.25rem 2.5rem; font-size: 1.1rem; border-radius: 12px; font-weight: 700; text-decoration: none;">
+                    Agendar Demonstração
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 3rem; color: #999;">
+        <p>&copy; 2025 AvilaOps | Plataforma ARXIS</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="docs.html" style="color: #667eea; margin: 0 1rem;">Documentação</a>
+            <a href="pricing.html" style="color: #667eea; margin: 0 1rem;">Preços</a>
+            <a href="status.html" style="color: #667eea; margin: 0 1rem;">Status</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

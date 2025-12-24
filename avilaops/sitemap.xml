@@ -75,10 +75,18 @@
 
     <!-- Pricing -->
     <url>
-        <loc>https://avilaops.com/pricing</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://avilaops.com/pricing.html</loc>
+        <lastmod>2025-01-21</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.95</priority>
+    </url>
+
+    <!-- Use Cases -->
+    <url>
+        <loc>https://avilaops.com/use-cases.html</loc>
+        <lastmod>2025-01-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
 
     <!-- Blog (if exists) -->
