@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - Avila Ops Store</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --primary: #ff8c00;
+            --secondary: #ffd700;
+            --dark: #0f1117;
+            --darker: #000000;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: #2a2a2a;
+            --success: #00ff00;
+            --gradient: linear-gradient(135deg, #ff8c00 0%, #ffd700 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-form {
+            background: var(--dark);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--darker);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--dark);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+        }
+
+        .info-link {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .info-link:hover {
+            color: var(--primary);
+        }
+
+        .response-time {
+            background: rgba(255, 140, 0, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .response-time strong {
+            color: var(--primary);
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .footer {
+            background: var(--dark);
+            border-top: 2px solid var(--primary);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">⚡ Avila Ops Store</a>
+                <a href="/" class="back-btn">← Back to Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Contact Support</h1>
+            <p>We're here to help. Get in touch with our team.</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="contact-form">
+                <div class="success-message" id="successMessage">
+                    <strong>✓ Message Sent!</strong><br>
+                    We've received your message and will respond within 24 hours.
+                </div>
+
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name *</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject *</label>
+                        <select id="subject" class="form-select" required>
+                            <option value="">Select a topic...</option>
+                            <option value="sales">Sales & Pricing</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="billing">Billing Question</option>
+                            <option value="api">API Integration</option>
+                            <option value="enterprise">Enterprise Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message *</label>
+                        <textarea id="message" class="form-textarea" required placeholder="Describe your question or issue in detail..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3>📧 Email</h3>
+                    <div class="info-item">
+                        <span class="info-icon">💼</span>
+                        <div>
+                            <strong>Sales:</strong><br>
+                            <a href="mailto:sales@avila.inc" class="info-link">sales@avila.inc</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🛠️</span>
+                        <div>
+                            <strong>Support:</strong><br>
+                            <a href="mailto:support@avila.inc" class="info-link">support@avila.inc</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🏢</span>
+                        <div>
+                            <strong>Enterprise:</strong><br>
+                            <a href="mailto:enterprise@avila.inc" class="info-link">enterprise@avila.inc</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>🔗 Quick Links</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📚</span>
+                        <div>
+                            <strong>Documentation:</strong><br>
+                            <a href="https://docs.avila.inc" class="info-link" target="_blank">docs.avila.inc</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">❓</span>
+                        <div>
+                            <strong>FAQ:</strong><br>
+                            <a href="/faq.html" class="info-link">Frequently Asked Questions</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📊</span>
+                        <div>
+                            <strong>Status:</strong><br>
+                            <a href="https://status.avila.inc" class="info-link" target="_blank">status.avila.inc</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>⏱️ Response Times</h3>
+                    <div style="color: var(--text-muted);">
+                        <p style="margin-bottom: 1rem;">We typically respond within:</p>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <div><strong style="color: var(--primary);">Free:</strong> 48-72 hours</div>
+                            <div><strong style="color: var(--primary);">Starter/Pro:</strong> 24 hours</div>
+                            <div><strong style="color: var(--primary);">Business:</strong> 12 hours</div>
+                            <div><strong style="color: var(--primary);">Enterprise:</strong> 1-4 hours</div>
+                        </div>
+                    </div>
+                    <div class="response-time">
+                        <strong>Emergency?</strong> Enterprise customers get 24/7 phone support.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Avila Ops. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMessage');
+            const form = document.getElementById('contactForm');
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Simulate sending (in production, send to backend)
+            setTimeout(() => {
+                // Show success message
+                successMsg.classList.add('show');
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+
+                // Log to console (in production, send to backend)
+                console.log('Contact form submitted:', {
+                    name: event.target.name.value,
+                    email: event.target.email.value,
+                    subject: event.target.subject.value,
+                    message: event.target.message.value,
+                    timestamp: new Date().toISOString()
+                });
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMsg.classList.remove('show');
+                }, 5000);
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1500);
+
+            /* PRODUCTION CODE (uncomment when ready):
+            
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: event.target.name.value,
+                    email: event.target.email.value,
+                    subject: event.target.subject.value,
+                    message: event.target.message.value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                successMsg.classList.add('show');
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            })
+            .catch(error => {
+                alert('Error sending message. Please try again or email us directly.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            });
+            */
+        }
+
+        // Auto-fill subject from URL parameter
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject');
+            if (subject) {
+                document.getElementById('subject').value = subject;
+            }
+        });
+    </script>
+</body>
+</html>

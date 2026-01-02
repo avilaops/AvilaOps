@@ -40,7 +40,7 @@ One-click checkout powered by Stripe for instant access to premium APIs, SaaS pl
    stripe products create \
      --name "Starter Plan" \
      --description "For small teams and growing projects"
-   
+
    stripe prices create \
      --product prod_XXXXX \
      --unit-amount 3900 \
@@ -56,7 +56,7 @@ One-click checkout powered by Stripe for instant access to premium APIs, SaaS pl
    ```javascript
    // Example: Node.js backend with Express
    const stripe = require('stripe')('sk_test_YOUR_SECRET_KEY');
-   
+
    app.post('/api/create-checkout-session', async (req, res) => {
      const session = await stripe.checkout.sessions.create({
        line_items: req.body.items,

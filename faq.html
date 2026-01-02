@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Frequently Asked Questions | Avila Ops Store</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --primary: #ff8c00;
+            --secondary: #ffd700;
+            --dark: #0f1117;
+            --darker: #000000;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: #2a2a2a;
+            --gradient: linear-gradient(135deg, #ff8c00 0%, #ffd700 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .search-box {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--dark);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .faq-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .category-btn {
+            padding: 1rem;
+            background: var(--dark);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            border-color: var(--primary);
+            background: rgba(255, 140, 0, 0.1);
+        }
+
+        .faq-section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .faq-item {
+            background: var(--dark);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 140, 0, 0.5);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .faq-answer-content code {
+            background: var(--darker);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: var(--primary);
+            font-family: monospace;
+        }
+
+        .contact-cta {
+            background: var(--dark);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .contact-cta h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: var(--dark);
+            border-top: 2px solid var(--primary);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .faq-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">⚡ Avila Ops Store</a>
+                <a href="/" class="back-btn">← Back to Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our products and services</p>
+        </div>
+
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search questions..." onkeyup="filterFAQ()">
+        </div>
+
+        <div class="faq-categories">
+            <button class="category-btn active" onclick="filterCategory('all')">All Questions</button>
+            <button class="category-btn" onclick="filterCategory('pricing')">Pricing & Plans</button>
+            <button class="category-btn" onclick="filterCategory('technical')">Technical</button>
+            <button class="category-btn" onclick="filterCategory('billing')">Billing</button>
+        </div>
+
+        <div class="faq-section" data-category="pricing">
+            <h2 class="section-title">💰 Pricing & Plans</h2>
+            
+            <div class="faq-item" data-keywords="free tier limits trial">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What's included in the Free Tier?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        The Free Tier includes 1,000 API requests per month, 1 GB storage, 1 user, community support, and basic analytics. Perfect for testing and small projects. No credit card required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="upgrade downgrade change plan">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Can I upgrade or downgrade my plan?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes! You can upgrade or downgrade at any time. Upgrades take effect immediately. Downgrades will apply at the start of your next billing cycle. Pro-rated credits are applied automatically.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="enterprise custom pricing quote">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How does Enterprise pricing work?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Enterprise pricing starts at $2,999/month and is customized based on your needs. It includes unlimited requests, storage, users, 24/7 dedicated support, and custom SLA. Contact us at <code>enterprise@avila.inc</code> for a quote.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="refund money back guarantee">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What's your refund policy?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We offer a 30-day money-back guarantee on all paid plans. If you're not satisfied, contact us within 30 days of purchase for a full refund, no questions asked.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section" data-category="technical">
+            <h2 class="section-title">🔧 Technical Questions</h2>
+            
+            <div class="faq-item" data-keywords="api key authentication setup">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I get my API key?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        After purchase, you'll receive an email with your API key within 5 minutes. You can also find it in your dashboard at <code>dashboard.avila.inc</code>. Keep your API key secure and never commit it to public repositories.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="rate limit throttle 429">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What are the rate limits?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Rate limits vary by plan:<br>
+                        • Starter: 1,000 requests/minute<br>
+                        • Professional: 5,000 requests/minute<br>
+                        • Business: 10,000 requests/minute<br>
+                        • Enterprise: Custom limits<br>
+                        Rate limit headers are included in all responses.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="documentation docs api reference">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Where can I find the documentation?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Full documentation is available at <a href="https://docs.avila.inc" style="color: var(--primary);">docs.avila.inc</a>. It includes API reference, code examples in multiple languages, tutorials, and troubleshooting guides.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="uptime sla downtime availability">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What's your uptime guarantee?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We guarantee 99.9% uptime for all paid plans. Enterprise plans include custom SLA up to 99.99% with automatic credits for any downtime. Check our status page at <code>status.avila.inc</code>.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section" data-category="billing">
+            <h2 class="section-title">💳 Billing & Payments</h2>
+            
+            <div class="faq-item" data-keywords="payment methods credit card stripe">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What payment methods do you accept?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We accept all major credit cards (Visa, Mastercard, Amex, Discover) via Stripe. Enterprise customers can also pay via bank transfer or purchase order.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="invoice receipt billing">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I get an invoice?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Invoices are automatically emailed to you after each payment. You can also download past invoices from your billing dashboard. Need a custom invoice? Contact <code>billing@avila.inc</code>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="cancel subscription">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I cancel my subscription?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        You can cancel anytime from your dashboard. Your service will continue until the end of your billing period. No cancellation fees. You can always reactivate later.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-keywords="tax vat gst">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do you charge sales tax?
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Sales tax is calculated automatically based on your location and billing address. Enterprise customers can provide a tax exemption certificate.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-cta">
+            <h2>Still have questions?</h2>
+            <p>Our support team is here to help. Get in touch and we'll respond within 24 hours.</p>
+            <a href="/contact.html" class="btn">📧 Contact Support</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Avila Ops. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const item = element.parentElement;
+            const wasOpen = item.classList.contains('open');
+            
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            
+            // Toggle current item
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        function filterCategory(category) {
+            // Update button states
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter sections
+            const sections = document.querySelectorAll('.faq-section');
+            sections.forEach(section => {
+                if (category === 'all' || section.dataset.category === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Clear search
+            document.getElementById('searchInput').value = '';
+        }
+
+        function filterFAQ() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+            let hasResults = false;
+
+            items.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                const keywords = item.dataset.keywords || '';
+                const searchableText = question + ' ' + answer + ' ' + keywords;
+
+                if (searchableText.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show all sections when searching
+            if (searchTerm) {
+                document.querySelectorAll('.faq-section').forEach(section => {
+                    section.style.display = 'block';
+                });
+            }
+        }
+
+        // Auto-expand FAQ from URL hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetFAQ = document.querySelector(hash + ' .faq-question');
+                if (targetFAQ) {
+                    targetFAQ.click();
+                    targetFAQ.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
