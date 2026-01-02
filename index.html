@@ -1,545 +1,835 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AvilaOps | Plataforma ARXIS — infraestrutura soberana de AI, dados, segurança e cloud construída 100% em Rust. 11+ crates publicados no crates.io.">
-    <meta name="keywords" content="ARXIS, Rust, soberania digital, AI, dados, segurança, cloud, crates.io, infraestrutura soberana">
-    <title>AvilaOps | Plataforma ARXIS</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
-    <link rel="stylesheet" href="assets/css/theme.css">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/pages/home.css">
-    <!-- Analytics - ARXIS (100% próprio, privacy-focused) -->
-    <script defer src="assets/js/arxis-analytics.js"></script>
+    <title>Avila Ops Store - Professional Development Tools & Services</title>
+    <meta name="description" content="Purchase premium development tools, API access, and enterprise solutions. One-click checkout with Stripe.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        :root {
+            --primary: #ff8c00;
+            --secondary: #ffd700;
+            --dark: #0f1117;
+            --darker: #000000;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: #2a2a2a;
+            --success: #00ff00;
+            --gradient: linear-gradient(135deg, #ff8c00 0%, #ffd700 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .cart-btn {
+            background: var(--gradient);
+            color: #000;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            background: #000;
+            color: var(--primary);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: radial-gradient(circle at center, rgba(255, 140, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 3rem 0 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: var(--dark);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .product-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(255, 140, 0, 0.2);
+        }
+
+        .product-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .badge-popular {
+            background: linear-gradient(135deg, #00ff00, #00cc00);
+            color: #000;
+        }
+
+        .badge-enterprise {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #000;
+        }
+
+        .badge-starter {
+            background: linear-gradient(135deg, #6b7280, #9ca3af);
+            color: #fff;
+        }
+
+        .product-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price-period {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        .buy-btn:active {
+            transform: translateY(0);
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: var(--dark);
+            border-left: 2px solid var(--primary);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 1999;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .cart-item {
+            background: var(--darker);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cart-total {
+            border-top: 2px solid var(--primary);
+            padding-top: 1rem;
+            margin: 2rem 0;
+        }
+
+        .total-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .total-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--gradient);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 140, 0, 0.4);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-muted);
+        }
+
+        .footer {
+            background: var(--dark);
+            border-top: 2px solid var(--primary);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .loading {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading.show {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <nav>
-            <a class="brand" href="#top">
-                <span class="mark">AO</span>
-                <span>AvilaOps | Plataforma ARXIS</span>
-            </a>
-            <ul class="primary-nav" role="list">
-                <li><a href="#about">Quem somos</a></li>
-                <li><a href="#ecosystem">Ecossistema</a></li>
-                <li><a href="#suites">Suites</a></li>
-                <li><a href="#capabilities">Além dos produtos</a></li>
-                <li><a href="#audience">Mercados</a></li>
-                <li><a href="#pillars">Pilares</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-            <div class="header-actions">
-                <select id="langSelect" data-lang-select aria-label="Selecionar idioma">
-                    <option value="pt-BR">🇧🇷 PT</option>
-                    <option value="en-US">🇺🇸 EN</option>
-                    <option value="es-ES">🇪🇸 ES</option>
-                    <option value="uk-UA">🇺🇦 UA</option>
-                    <option value="ru-RU">🇷🇺 RU</option>
-                </select>
-                <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">🌗</button>
-                <a class="cta-button" href="#contato">Fale com a equipe</a>
-            </div>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">⚡ Avila Ops Store</a>
+                <button class="cart-btn" onclick="toggleCart()">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </nav>
+        </div>
     </header>
 
-    <main id="top">
-        <section class="hero" id="ecosystem">
-            <div class="container hero-inner">
-                <span class="hero-badge">
-                    <span class="iconoir-shield-check"></span>
-                    Soberania Digital • Código 100% Rust • Zero dependências externas
-                </span>
-                <h1 class="hero-title">Infraestrutura completa para orquestrar AI, dados e segurança com precisão matemática.</h1>
-                <p class="hero-subtitle">
-                    A Plataforma ARXIS une 33 produtos avançados em um ecossistema integrado — do aprendizado profundo ao consenso distribuído —
-                    desenhado para equipes que tratam cada bit como ativo crítico.
-                </p>
-                <div class="hero-actions">
-                    <a class="btn btn-primary" href="#suites">Explorar suites</a>
-                    <a class="btn btn-secondary" href="/ai-vision-pro.html">Ver demo AI Vision Pro</a>
-                    <span class="badge">Enterprise-ready • SLAs 24/7</span>
+    <div class="hero">
+        <div class="container">
+            <h1>Professional Development Tools</h1>
+            <p>Get instant access to premium APIs, enterprise solutions, and advanced tooling. One-click checkout powered by Stripe.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">10M+</div>
+                    <div class="stat-label">API Calls/Month</div>
                 </div>
-                <div class="hero-metrics">
-                    <div class="metric-card">
-                        <div class="metric-value">33</div>
-                        <div class="metric-label">Produtos modulares</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">$13,3K</div>
-                        <div class="metric-label">Receita potencial / mês por cliente</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">9</div>
-                        <div class="metric-label">Suites especializadas</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">300+</div>
-                        <div class="metric-label">Integrações e APIs prontas</div>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime SLA</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <section class="section" id="about">
-            <div class="section-header">
-                <h2 class="section-title">Quem somos</h2>
-                <p class="section-subtitle">Somos a AvilaOps | Plataforma ARXIS — engenharia soberana que constrói do átomo ao deploy, unindo criptografia de elite, IA, dados e cloud em uma pilha 100% proprietária.</p>
-            </div>
-            <div class="container about-grid">
-                <article class="card info-card">
-                    <h3>DNA soberano</h3>
-                    <p>Controlamos cada bit da plataforma: bibliotecas próprias, zero dependências externas e segurança auditável matematicamente.</p>
-                    <ul class="info-list">
-                        <li>Stack Rust-first com otimizações AVX-512</li>
-                        <li>Primitivas de criptografia verificáveis</li>
-                        <li>Governança de cadeia digital ponta a ponta</li>
-                    </ul>
-                </article>
-                <article class="card info-card">
-                    <h3>Engenharia integral</h3>
-                    <p>Projetamos ecossistemas completos: do protocolo de rede ao dashboard executivo, sempre com métricas, telemetria e automação embarcadas.</p>
-                    <ul class="info-list">
-                        <li>Orquestração unificada de 33 produtos</li>
-                        <li>Observabilidade, compliance e SLA em código</li>
-                        <li>Playbooks auditáveis para ambientes regulados</li>
-                    </ul>
-                </article>
-                <article class="card info-card">
-                    <h3>Precisão para escalar</h3>
-                    <p>Operamos com precisão matemática: cada suite é construída para latência ultrabaixa, resiliência distribuída e auditoria contínua.</p>
-                    <ul class="info-list">
-                        <li>Benchmarks contínuos em AI, dados e cloud</li>
-                        <li>Políticas de segurança comprovadas em produção</li>
-                        <li>Integrações prontas com 300+ plataformas</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
+    <div class="container">
+        <h2 class="section-title">🚀 SaaS Plans</h2>
+        <div class="products-grid" id="saasProducts"></div>
 
-        <section class="section" id="capabilities">
-            <div class="section-header">
-                <h2 class="section-title">O que entregamos além dos produtos</h2>
-                <p class="section-subtitle">A Plataforma ARXIS não é somente catálogo: combinamos engenharia criptográfica, arquitetura sob medida e operação assistida para garantir soberania digital real.</p>
-            </div>
-            <div class="container capabilities-grid">
-                <article class="card info-card">
-                    <h3>Arquitetura sob medida</h3>
-                    <p>Desenhamos ecossistemas completos combinando suites ARXIS, integrações legadas e requisitos de missão crítica.</p>
-                    <ul class="info-list">
-                        <li>Blueprints de referência personalizados</li>
-                        <li>Automação de deploy multi-cloud e on-prem</li>
-                        <li>Integração segura com ERPs, CRMs e data lakes</li>
-                    </ul>
-                </article>
-                <article class="card info-card">
-                    <h3>Criptografia aplicada</h3>
-                    <p>Implementamos primitivas proprietárias (secp256k1, Curve25519, BLS12-381, Poseidon) com auditoria contínua e hardening ativo.</p>
-                    <ul class="info-list">
-                        <li>Protocolos comprovados contra ataques quânticos</li>
-                        <li>Auditorias criptográficas trimestrais</li>
-                        <li>Gestão de chaves e identidades soberanas</li>
-                    </ul>
-                </article>
-                <article class="card info-card">
-                    <h3>Governança e documentação</h3>
-                    <p>Produzimos guias, playbooks e runbooks para garantir conformidade operacional e repetibilidade de processos.</p>
-                    <ul class="info-list">
-                        <li>Docs vivas por produto e jornada</li>
-                        <li>Playbooks de incidentes e conformidade</li>
-                        <li>KPIs executivos e relatórios de auditoria</li>
-                    </ul>
-                </article>
-                <article class="card info-card">
-                    <h3>Suporte estratégico 24/7</h3>
-                    <p>A equipe AvilaOps acompanha implantação e operação com acompanhamento contínuo e pilotos orientados a resultados.</p>
-                    <ul class="info-list">
-                        <li>Engenharia residente para missões críticas</li>
-                        <li>Monitoramento e resposta a incidentes</li>
-                        <li>Co-design de roadmap com stakeholders</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
+        <h2 class="section-title">🔌 API Access</h2>
+        <div class="products-grid" id="apiProducts"></div>
 
-        <section class="section" id="crates">
-            <div class="section-header">
-                <h2 class="section-title">Bibliotecas Open Source Publicadas</h2>
-                <p class="section-subtitle">11+ crates publicados no crates.io — fundação soberana da Plataforma ARXIS disponível para toda comunidade Rust.</p>
-            </div>
-            <div class="container crates-grid">
-                <article class="card crate-card">
-                    <h3>Foundation Layer (Notebook 1)</h3>
-                    <div class="crate-list">
-                        <a href="https://crates.io/crates/avila-nucleus" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-nucleus</span>
-                            <span class="crate-version">v0.1.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-primitives" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-primitives</span>
-                            <span class="crate-version">v0.1.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-error" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-error</span>
-                            <span class="crate-version">v0.2.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-id" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-id</span>
-                            <span class="crate-version">v0.1.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-time" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-time</span>
-                            <span class="crate-version">v0.1.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-serde" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-serde</span>
-                            <span class="crate-version">v0.2.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-tracing" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-tracing</span>
-                            <span class="crate-version">v0.1.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-rand" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-rand</span>
-                            <span class="crate-version">v0.1.0</span>
-                        </a>
-                    </div>
-                </article>
-                <article class="card crate-card">
-                    <h3>Mathematics Layer (Notebook 2)</h3>
-                    <div class="crate-list">
-                        <a href="https://crates.io/crates/avila-parallel" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-parallel</span>
-                            <span class="crate-version">v0.4.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-fft" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-fft</span>
-                            <span class="crate-version">v0.3.0</span>
-                        </a>
-                        <a href="https://crates.io/crates/avila-math" target="_blank" class="crate-link">
-                            <span class="crate-name">avila-math</span>
-                            <span class="crate-version">v0.1.0</span>
-                        </a>
-                    </div>
-                    <p class="crate-note">🚀 Foundation e Mathematics layers completos — próximos: Data Science, Infrastructure, Advanced layers</p>
-                </article>
-            </div>
-        </section>
+        <h2 class="section-title">🏢 Enterprise Solutions</h2>
+        <div class="products-grid" id="enterpriseProducts"></div>
 
-        <section class="section" id="audience">
-            <div class="section-header">
-                <h2 class="section-title">Para quem construímos</h2>
-                <p class="section-subtitle">Atendemos organizações que tratam dados, modelos e chaves como ativos críticos e precisam de controle total da pilha tecnológica.</p>
+        <h2 class="section-title">🎯 Marketplace Products</h2>
+        <div class="products-grid" id="marketplaceProducts"></div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-total">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="total-label">Total:</span>
+                <span class="total-amount" id="cartTotal">$0</span>
             </div>
-            <div class="container audience-grid">
-                <article class="card audience-card">
-                    <h3>Instituições financeiras &amp; fintechs</h3>
-                    <p>Infraestrutura para bancos digitais, assets e pagamentos que exigem compliance rigoroso e latência previsível.</p>
-                    <ul class="info-list">
-                        <li>Regimes regulatórios (BACEN, CVM, PSD2)</li>
-                        <li>Segurança para open banking e tokenização</li>
-                        <li>Observabilidade de risco em tempo real</li>
-                    </ul>
-                </article>
-                <article class="card audience-card">
-                    <h3>Órgãos públicos e estratégicos</h3>
-                    <p>Soberania digital para governos, defesa e instituições que operam dados classificados e missões contínuas.</p>
-                    <ul class="info-list">
-                        <li>Infraestrutura isolada e auditável</li>
-                        <li>Criptografia pós-quântica e ZK-proofs</li>
-                        <li>Governança documental completa</li>
-                    </ul>
-                </article>
-                <article class="card audience-card">
-                    <h3>Indústrias de missão crítica</h3>
-                    <p>Energia, saúde, logística e manufatura com operações 24/7 e exigência de continuidade garantida.</p>
-                    <ul class="info-list">
-                        <li>Telemetria industrial e edge AI segura</li>
-                        <li>Orquestração resiliente e tolerante a falhas</li>
-                        <li>Playbooks de resposta integrados ao SOC</li>
-                    </ul>
-                </article>
-                <article class="card audience-card">
-                    <h3>Scale-ups data/AI-first</h3>
-                    <p>Empresas que precisam acelerar do laboratório à produção com governança de dados, MLOps e billing inteligentes.</p>
-                    <ul class="info-list">
-                        <li>Pipelines de dados e modelos unificados</li>
-                        <li>Experiências white-label e marketplaces</li>
-                        <li>Monetização assistida por métricas de uso</li>
-                    </ul>
-                </article>
-                <article class="card audience-card">
-                    <h3>Marketplaces e SaaS premium</h3>
-                    <p>Operadores que buscam consolidar catálogo, billing e suporte em uma plataforma soberana com experiência de nível enterprise.</p>
-                    <ul class="info-list">
-                        <li>Dashboard unificado com governança granular</li>
-                        <li>Integração com ERPs e gateways estratégicos</li>
-                        <li>Trials inteligentes e suporte dedicado</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">
+            ⚡ Checkout with Stripe
+        </button>
+    </div>
 
-        <section class="section" id="suites">
-            <div class="section-header">
-                <h2 class="section-title">Suites ARXIS — o arsenal completo</h2>
-                <p class="section-subtitle">Cada suite consolida ferramentas críticas do catálogo AvilaOps, combinando motores de AI, pipelines de dados, criptografia soberana e nuvem de alta performance.</p>
-            </div>
-            <div class="container suite-grid">
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">AI Suite</h3>
-                        <span class="price-tag">$999/mês</span>
-                    </header>
-                    <p class="suite-description">Computer Vision, Deep Learning, NLP e automação assistida com GPU pronta e SDKs Python.</p>
-                    <ul class="suite-products">
-                        <li>AI Vision Pro • Deep Learning Studio</li>
-                        <li>Smart Clustering • Text Processor</li>
-                        <li>AI Copilot com streaming</li>
-                    </ul>
-                    <span class="badge">45 testes em produção</span>
-                </article>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
 
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">Data Suite</h3>
-                        <span class="price-tag">$799/mês</span>
-                    </header>
-                    <p class="suite-description">DataFrames acelerados, telemetria em tempo real e analytics geoespacial numa única malha de dados.</p>
-                    <ul class="suite-products">
-                        <li>DataGrid Pro • Analytics Engine</li>
-                        <li>Geo Analytics • Image Toolkit</li>
-                        <li>Data Reducer &amp; pipelines SQL</li>
-                    </ul>
-                    <span class="badge">10x mais rápido que stacks legadas</span>
-                </article>
-
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">Security Suite</h3>
-                        <span class="price-tag">$1.299/mês</span>
-                    </header>
-                    <p class="suite-description">Criptografia quântica, ZK-proofs e cofres de chaves com política de segurança verificável matematicamente.</p>
-                    <ul class="suite-products">
-                        <li>Secure Vault • Privacy Shield</li>
-                        <li>Quantum Safe Crypto</li>
-                        <li>Identity Manager JWT</li>
-                    </ul>
-                    <span class="badge">Zero dependências externas</span>
-                </article>
-
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">Cloud Suite</h3>
-                        <span class="price-tag">$1.499/mês</span>
-                    </header>
-                    <p class="suite-description">Sistema operacional cloud, balanceador, storage distribuído e service mesh com observabilidade nativa.</p>
-                    <ul class="suite-products">
-                        <li>CloudOS Platform • LoadBalance Pro</li>
-                        <li>Service Mesh • DataStore DB</li>
-                        <li>Storage Cloud • Secret Vault</li>
-                    </ul>
-                    <span class="badge">Compatível multi-cloud</span>
-                </article>
-
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">Web Suite</h3>
-                        <span class="price-tag">$899/mês</span>
-                    </header>
-                    <p class="suite-description">Stack web em Rust com HTTP/3, API Gateway, WebSocket e automação de navegadores sigilosos.</p>
-                    <ul class="suite-products">
-                        <li>Webserver Pro • API Gateway</li>
-                        <li>Websocket Server • Web Framework</li>
-                        <li>Privacy Browser + Onion</li>
-                    </ul>
-                    <span class="badge">Baixa latência garantida</span>
-                </article>
-
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">Orchestration</h3>
-                        <span class="price-tag">$699/mês</span>
-                    </header>
-                    <p class="suite-description">Consenso distribuído, workflow engine e orquestração de serviços para ambientes mission critical.</p>
-                    <ul class="suite-products">
-                        <li>Consensus Engine (Raft)</li>
-                        <li>Service Orchestrator</li>
-                        <li>Workflow Manager</li>
-                    </ul>
-                    <span class="badge">Fault tolerant por design</span>
-                </article>
-
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">Business Suite</h3>
-                        <span class="price-tag">$1.999/mês</span>
-                    </header>
-                    <p class="suite-description">ERP completo com processos financeiros, estoque e CRM integrados ao motor de dados ARXIS.</p>
-                    <ul class="suite-products">
-                        <li>Financeiro, Vendas e Compras</li>
-                        <li>Produção e Estoque conectados</li>
-                        <li>APIs REST + GraphQL</li>
-                    </ul>
-                    <span class="badge">Compatível com premium platform</span>
-                </article>
-
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">DevTools</h3>
-                        <span class="price-tag">$299/mês</span>
-                    </header>
-                    <p class="suite-description">Ferramentas para acelerar engenharia: scaffolding, geração de código e observabilidade distribuída.</p>
-                    <ul class="suite-products">
-                        <li>Dev CLI Tools</li>
-                        <li>Code Logger &amp; Metrics</li>
-                        <li>SDKs Rust • Python • JS</li>
-                    </ul>
-                    <span class="badge">Entrega contínua em CLI</span>
-                </article>
-
-                <article class="suite-card card">
-                    <header>
-                        <h3 class="suite-name">Premium Platform</h3>
-                        <span class="price-tag">$4.999/mês</span>
-                    </header>
-                    <p class="suite-description">Dashboard unificado com todos os módulos integrados, suporte enterprise e governança total.</p>
-                    <ul class="suite-products">
-                        <li>Experience Platform completo</li>
-                        <li>Observabilidade de ponta a ponta</li>
-                        <li>Suporte dedicado 24/7</li>
-                    </ul>
-                    <span class="badge">Modo stealth para missões críticas</span>
-                </article>
-            </div>
-        </section>
-
-        <section class="section" id="pillars">
-            <div class="section-header">
-                <h2 class="section-title">Pilares que definem a AvilaOps</h2>
-                <p class="section-subtitle">Da matemática crua ao deploy em cloud, todo componente segue engenharia soberana, constante e auditável.</p>
-            </div>
-            <div class="container pillars-grid">
-                <article class="pillar-card">
-                    <div class="pillar-icon">🛡️</div>
-                    <h3>Soberania Tecnológica</h3>
-                    <p>Bibliotecas 100% proprietárias, sem dependências externas, implementadas do átomo ao protocolo. Controle absoluto sobre binários e cadeias de suprimentos.</p>
-                </article>
-                <article class="pillar-card">
-                    <div class="pillar-icon">⚙️</div>
-                    <h3>Performance de Silício</h3>
-                    <p>AVX-512, tipagem fixa e otimizações SIMD garantem latência ultra baixa. Cada suite é afinada para extrair o máximo de CPUs, GPUs e TPUs.</p>
-                </article>
-                <article class="pillar-card">
-                    <div class="pillar-icon">🔒</div>
-                    <h3>Segurança de Elite</h3>
-                    <p>Criptografia pós-quântica, ZK-proofs, gestão de identidade e auditoria constante. Tudo para proteger pipelines de dados críticos e modelos sensíveis.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="section" id="clients">
-            <div class="section-header">
-                <h2 class="section-title">Integrações &amp; ecossistema</h2>
-                <p class="section-subtitle">Pronto para operar ao lado das principais plataformas cloud, stacks de dados modernos e protocolos de segurança globais.</p>
-            </div>
-            <div class="container partners-grid">
-                <div class="partner-card">AWS • Azure • GCP</div>
-                <div class="partner-card">PyTorch • TensorFlow • ONNX</div>
-                <div class="partner-card">Kafka • ClickHouse • Snowflake</div>
-                <div class="partner-card">NATS • gRPC • QUIC</div>
-                <div class="partner-card">BLAKE3 • Curve25519 • secp256k1</div>
-                <div class="partner-card">S3 API • OIDC • SAML</div>
-            </div>
-        </section>
-
-        <section class="section" id="roadmap">
-            <div class="section-header">
-                <h2 class="section-title">Roadmap acelerado</h2>
-                <p class="section-subtitle">Entrega contínua com foco em documentação, automação de deploy e experiência premium.</p>
-            </div>
-            <div class="container roadmap-grid">
-                <article class="roadmap-card">
-                    <h4>Lançamentos recentes</h4>
-                    <p>Renomeação de 32 produtos, criação das landing pages modulares e atualização da base de assets.</p>
-                    <ul>
-                        <li>Organização do catálogo ARXIS</li>
-                        <li>Padronização de UI/UX</li>
-                        <li>Arquivamento histórico preservado</li>
-                    </ul>
-                </article>
-                <article class="roadmap-card">
-                    <h4>Próximas entregas</h4>
-                    <p>Documentação pública, automação de deploy em marketplaces e checkouts com trials inteligentes.</p>
-                    <ul>
-                        <li>Docs interativas por produto</li>
-                        <li>Playbooks de deploy AWS/Azure/GCP</li>
-                        <li>Monitoramento tempo real</li>
-                    </ul>
-                </article>
-                <article class="roadmap-card">
-                    <h4>Missão contínua</h4>
-                    <p>Garantir soberania digital para empresas e governos que exigem controle total da pilha tecnológica.</p>
-                    <ul>
-                        <li>Auditorias criptográficas trimestrais</li>
-                        <li>SOC automatizado com IA</li>
-                        <li>Programas de parceria estratégica</li>
-                    </ul>
-                </article>
-            </div>
-            <div class="container cta-banner">
-                <h3>Pronto para montar sua plataforma soberana?</h3>
-                <p>Escolha a suite ideal ou construa seu ecossistema sob medida com o time de arquitetura da AvilaOps.</p>
-                <div class="hero-actions" style="justify-content: center;">
-                    <a class="btn btn-primary" href="#contato">Agendar reunião estratégica</a>
-                    <a class="btn btn-secondary" href="/deep-learning-studio.html">Baixar whitepaper técnico</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="contato">
-            <div class="section-header">
-                <h2 class="section-title">Vamos construir juntos</h2>
-                <p class="section-subtitle">Fale com especialistas que já implantaram a Plataforma ARXIS em ambientes regulados, financeiros e soberanos.</p>
-            </div>
-            <div class="container contact-grid">
-                <div class="contact-card">
-                    <h4>Comercial</h4>
-                    <p><a href="mailto:sales@your-company.com">sales@your-company.com</a></p>
-                    <p><a href="tel:+5517997811471">🇧🇷 +55 17 99781-1471</a></p>
-                    <p><a href="tel:+351910205562">🇵🇹 +351 910 205 562</a></p>
-                </div>
-                <div class="contact-card">
-                    <h4>Documentação</h4>
-                    <p><a href="https://docs.your-company.com" target="_blank" rel="noopener">docs.your-company.com</a></p>
-                    <p><a href="/deep-learning-studio.html">Guias técnicos</a></p>
-                    <p><a href="/ai-vision-pro.html">Demos e benchmarks</a></p>
-                </div>
-                <div class="contact-card">
-                    <h4>Status &amp; suporte</h4>
-                    <p><a href="mailto:support@your-company.com">support@your-company.com</a></p>
-                    <p><a href="https://status.your-company.com" target="_blank" rel="noopener">status em tempo real</a></p>
-                    <p><a href="/privacy">Política de segurança</a></p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container footer-top">
-            <p>&copy; 2025 AvilaOps. Todos os direitos reservados.</p>
-            <nav class="footer-nav" aria-label="Links institucionais">
-                <a href="/docs">Documentação</a>
-                <a href="/pricing">Planos &amp; preços</a>
-                <a href="/privacy">Privacidade</a>
-                <a href="/terms">Termos</a>
-                <a href="/security">Segurança</a>
-            </nav>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Avila Ops. All rights reserved. Powered by Stripe.</p>
         </div>
     </footer>
 
-    <script src="assets/js/core/app.js" defer></script>
-    <script src="assets/js/core/theme.js" defer></script>
+    <script>
+        // Product Database (from avx-monetize module)
+        const products = {
+            saas: [
+                {
+                    id: 'saas-free',
+                    name: 'Free Tier',
+                    description: 'Perfect for getting started and testing',
+                    price: 0,
+                    priceId: null,
+                    features: ['1,000 API requests/month', '1 GB storage', '1 user', 'Community support', 'Basic analytics'],
+                    badge: 'starter',
+                    badgeText: 'STARTER'
+                },
+                {
+                    id: 'saas-starter',
+                    name: 'Starter Plan',
+                    description: 'For small teams and growing projects',
+                    price: 39,
+                    priceId: 'price_starter',
+                    features: ['100,000 API requests/month', '10 GB storage', '5 users', 'Email support', 'Advanced analytics'],
+                    badge: 'starter',
+                    badgeText: 'POPULAR'
+                },
+                {
+                    id: 'saas-pro',
+                    name: 'Professional Plan',
+                    description: 'For professional teams scaling up',
+                    price: 149,
+                    priceId: 'price_pro',
+                    features: ['1M API requests/month', '100 GB storage', '25 users', 'Priority support', 'Custom integrations'],
+                    badge: 'popular',
+                    badgeText: 'MOST POPULAR'
+                },
+                {
+                    id: 'saas-business',
+                    name: 'Business Plan',
+                    description: 'For large teams with high demands',
+                    price: 399,
+                    priceId: 'price_business',
+                    features: ['10M API requests/month', '500 GB storage', '100 users', 'Dedicated support', 'SLA guarantee'],
+                    badge: 'starter',
+                    badgeText: 'BUSINESS'
+                },
+                {
+                    id: 'saas-enterprise',
+                    name: 'Enterprise Plan',
+                    description: 'Custom solution for enterprise needs',
+                    price: 2999,
+                    priceId: 'price_enterprise',
+                    features: ['Unlimited API requests', 'Unlimited storage', 'Unlimited users', '24/7 dedicated support', 'Custom SLA'],
+                    badge: 'enterprise',
+                    badgeText: 'ENTERPRISE'
+                }
+            ],
+            api: [
+                {
+                    id: 'api-basic',
+                    name: 'API Basic',
+                    description: 'Pay-per-use API access with volume discounts',
+                    price: 99,
+                    priceId: 'price_api_basic',
+                    features: ['$0.01 per request', '10% off > 10K requests', 'Rate limit: 1000/min', 'Standard SLA', 'Email support'],
+                    badge: 'starter',
+                    badgeText: 'PAY-PER-USE'
+                },
+                {
+                    id: 'api-premium',
+                    name: 'API Premium',
+                    description: 'High-volume API access with priority',
+                    price: 499,
+                    priceId: 'price_api_premium',
+                    features: ['$0.005 per request', '20% off > 100K requests', 'Rate limit: 10000/min', 'Priority SLA', 'Priority support'],
+                    badge: 'popular',
+                    badgeText: 'BEST VALUE'
+                }
+            ],
+            enterprise: [
+                {
+                    id: 'ent-license',
+                    name: 'Enterprise License',
+                    description: 'Perpetual license with annual support',
+                    price: 9999,
+                    priceId: 'price_ent_license',
+                    features: ['Perpetual license', 'Source code access', '24/7 support', 'Custom SLA', 'On-premise deployment'],
+                    badge: 'enterprise',
+                    badgeText: 'ENTERPRISE'
+                },
+                {
+                    id: 'ent-whitelabel',
+                    name: 'White-Label Solution',
+                    description: 'Fully customizable branded solution',
+                    price: 19999,
+                    priceId: 'price_ent_whitelabel',
+                    features: ['Full white-label rights', 'Source code included', 'Dedicated team', 'Custom development', 'Lifetime updates'],
+                    badge: 'enterprise',
+                    badgeText: 'PREMIUM'
+                }
+            ],
+            marketplace: [
+                {
+                    id: 'mp-plugin-auth',
+                    name: 'Authentication Plugin',
+                    description: 'OAuth2 & JWT authentication system',
+                    price: 199,
+                    priceId: 'price_mp_auth',
+                    features: ['OAuth2 support', 'JWT tokens', 'Multi-provider', 'Rate limiting', 'Documentation'],
+                    badge: 'starter',
+                    badgeText: 'PLUGIN'
+                },
+                {
+                    id: 'mp-plugin-analytics',
+                    name: 'Analytics Dashboard',
+                    description: 'Real-time analytics and reporting',
+                    price: 299,
+                    priceId: 'price_mp_analytics',
+                    features: ['Real-time metrics', 'Custom reports', 'Data export', 'API access', 'White-label ready'],
+                    badge: 'popular',
+                    badgeText: 'PLUGIN'
+                },
+                {
+                    id: 'mp-theme-dark',
+                    name: 'Dark Theme Pack',
+                    description: 'Professional dark theme components',
+                    price: 49,
+                    priceId: 'price_mp_theme',
+                    features: ['50+ components', 'Fully responsive', 'Dark/Light mode', 'Source included', 'Free updates'],
+                    badge: 'starter',
+                    badgeText: 'THEME'
+                }
+            ]
+        };
+
+        // Cart Management
+        let cart = [];
+
+        function renderProducts() {
+            renderProductCategory('saasProducts', products.saas);
+            renderProductCategory('apiProducts', products.api);
+            renderProductCategory('enterpriseProducts', products.enterprise);
+            renderProductCategory('marketplaceProducts', products.marketplace);
+        }
+
+        function renderProductCategory(containerId, items) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = items.map(product => `
+                <div class="product-card">
+                    <span class="product-badge badge-${product.badge}">${product.badgeText}</span>
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-desc">${product.description}</p>
+                    <ul class="product-features">
+                        ${product.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                    <div class="product-price">
+                        <span class="price-amount">$${product.price.toLocaleString()}</span>
+                        <span class="price-period">${product.priceId && product.priceId.includes('ent_') ? '' : '/month'}</span>
+                    </div>
+                    <button class="buy-btn" onclick="addToCart('${product.id}')">
+                        ${product.price === 0 ? '🎁 Start Free' : '⚡ Buy Now'}
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function findProduct(id) {
+            return [...products.saas, ...products.api, ...products.enterprise, ...products.marketplace].find(p => p.id === id);
+        }
+
+        function addToCart(productId) {
+            const product = findProduct(productId);
+            if (!product) return;
+
+            // Check if already in cart
+            if (cart.find(item => item.id === productId)) {
+                alert('This item is already in your cart!');
+                return;
+            }
+
+            cart.push(product);
+            updateCart();
+            
+            // Show success animation
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.textContent = '✓ Added!';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 1000);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            cartCount.textContent = cart.length;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartTotal.textContent = '$0';
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartTotal.textContent = `$${total.toLocaleString()}`;
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+                        <span class="cart-item-price">$${item.price.toLocaleString()}${item.priceId && !item.priceId.includes('ent_') ? '/mo' : ''}</span>
+                        <button onclick="removeFromCart('${item.id}')" style="background: none; border: none; color: #ff4444; cursor: pointer; font-size: 1.2rem;">×</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        // Stripe Integration
+        // Replace with your Stripe publishable key
+        const stripe = Stripe('pk_test_51ABC123...'); // Get from https://dashboard.stripe.com/test/apikeys
+
+        async function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const loading = document.getElementById('loading');
+            loading.classList.add('show');
+
+            try {
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+                const itemsList = cart.map(item => `${item.name} ($${item.price.toLocaleString()})`).join('\n');
+
+                // DEMO MODE - In production, this would create a real Stripe Checkout Session
+                setTimeout(() => {
+                    loading.classList.remove('show');
+                    alert(`🎉 1-Click Checkout Demo\n\n📦 Items:\n${itemsList}\n\n💰 Total: $${total.toLocaleString()}\n\n✅ To activate real payments:\n\n1. Sign up at stripe.com\n2. Get your API keys from Dashboard\n3. Create products in Stripe Dashboard\n4. Replace the Stripe key in this code\n5. Deploy a backend to create sessions\n\nCheckout would redirect to Stripe now!`);
+                    
+                    // Clear cart after "purchase"
+                    cart = [];
+                    updateCart();
+                    toggleCart();
+                }, 1000);
+
+                /* PRODUCTION CODE (uncomment when ready):
+                
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        items: cart.map(item => ({
+                            priceId: item.priceId,
+                            quantity: 1
+                        }))
+                    })
+                });
+
+                const session = await response.json();
+                
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id
+                });
+
+                if (result.error) {
+                    alert(result.error.message);
+                }
+                */
+
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Checkout failed. Please try again.');
+                loading.classList.remove('show');
+            }
+        }
+
+        // Initialize
+        renderProducts();
+
+        // Easter egg: Konami code for 50% discount
+        let konamiIndex = 0;
+        const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        document.addEventListener('keydown', (e) => {
+            if (e.keyCode === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    alert('🎉 Konami Code! 50% discount applied!');
+                    cart.forEach(item => item.price = Math.floor(item.price * 0.5));
+                    updateCart();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+    </script>
 </body>
 </html>
