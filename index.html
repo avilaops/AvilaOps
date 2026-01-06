@@ -608,26 +608,15 @@
                     link: '/parts-marketplace.html'
                 },
                 {
-                    id: 'hotelaria-ai',
+                    id: 'hotelaria-unified',
                     name: 'Hotelaria AI Platform',
-                    description: 'Complete hotel management with AI translation',
-                    price: 199,
-                    priceId: 'price_hotelaria_basic',
-                    features: ['10 rooms management', 'AI Translation (200+ languages)', 'OTA integrations', 'Email support', 'Financial reports'],
-                    badge: 'starter',
+                    description: 'Automate and integrate all your booking platforms in one place',
+                    price: 'From $199',
+                    priceId: null,
+                    features: ['Unify Airbnb, Booking.com & all OTAs', 'AI Translation (200+ languages)', 'Automated housekeeping', 'Financial management', 'Review management', 'See plans →'],
+                    badge: 'popular',
                     badgeText: 'NEW',
-                    link: '/hotelaria.html'
-                },
-                {
-                    id: 'hotelaria-pro',
-                    name: 'Hotelaria AI Pro',
-                    description: 'Professional hotel management for growing properties',
-                    price: 399,
-                    priceId: 'price_hotelaria_pro',
-                    features: ['50 rooms management', 'Unlimited AI translations', 'All OTA integrations', 'Priority support', 'Advanced analytics', 'Custom branding'],
-                    badge: 'starter',
-                    badgeText: 'GROWING',
-                    link: '/hotelaria.html'
+                    link: 'https://hotelaria.avila.inc'
                 },
                 {
                     id: 'saas-free',
@@ -770,7 +759,23 @@
 
         function renderProductCategory(containerId, items) {
             const container = document.getElementById(containerId);
-            container.innerHTML = items.map(product => `
+            container.innerHTML = items.map(product => {
+                const priceDisplay = typeof product.price === 'string' 
+                    ? product.price 
+                    : `$${product.price.toLocaleString()}`;
+                const period = typeof product.price === 'string' || product.price === 0 || (product.priceId && product.priceId.includes('ent_'))
+                    ? '' 
+                    : '/month';
+                const buttonText = product.link && product.link.startsWith('http')
+                    ? '🔗 View Plans'
+                    : product.price === 0 || product.price === 'From $199'
+                    ? '🎁 View Plans'
+                    : '⚡ Buy Now';
+                const buttonAction = product.link && product.link.startsWith('http')
+                    ? `window.open('${product.link}', '_blank')`
+                    : `addToCart('${product.id}')`;
+                
+                return `
                 <div class="product-card">
                     <span class="product-badge badge-${product.badge}">${product.badgeText}</span>
                     <h3 class="product-name">${product.name}</h3>
@@ -779,14 +784,15 @@
                         ${product.features.map(f => `<li>${f}</li>`).join('')}
                     </ul>
                     <div class="product-price">
-                        <span class="price-amount">$${product.price.toLocaleString()}</span>
-                        <span class="price-period">${product.priceId && product.priceId.includes('ent_') ? '' : '/month'}</span>
+                        <span class="price-amount">${priceDisplay}</span>
+                        <span class="price-period">${period}</span>
                     </div>
-                    <button class="buy-btn" onclick="addToCart('${product.id}')">
-                        ${product.price === 0 ? '🎁 Start Free' : '⚡ Buy Now'}
+                    <button class="buy-btn" onclick="${buttonAction}">
+                        ${buttonText}
                     </button>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
 
         function findProduct(id) {
