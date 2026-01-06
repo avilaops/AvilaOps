@@ -42,7 +42,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
     // Map cart items to Stripe line items
     const lineItems = items.map(item => {
       const priceId = PRICE_IDS[item.id];
-      
+
       if (!priceId) {
         throw new Error(`Unknown product: ${item.id}`);
       }
@@ -54,7 +54,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
     });
 
     // Determine if this is a subscription or one-time payment
-    const hasSubscription = items.some(item => 
+    const hasSubscription = items.some(item =>
       item.id.startsWith('saas-') || item.id.startsWith('api-')
     );
 
@@ -142,12 +142,12 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
 // Event handlers
 async function handleSuccessfulCheckout(session) {
   console.log('Checkout completed:', session.id);
-  
+
   // 1. Create customer account
   // 2. Send welcome email with credentials
   // 3. Provision API keys
   // 4. Update database
-  
+
   // Example: Send to your backend
   await fetch(process.env.INTERNAL_API_URL + '/orders', {
     method: 'POST',
@@ -165,7 +165,7 @@ async function handleSuccessfulCheckout(session) {
 
 async function handleSubscriptionCreated(subscription) {
   console.log('Subscription created:', subscription.id);
-  
+
   // 1. Activate subscription features
   // 2. Send onboarding email
   // 3. Update customer tier
@@ -173,7 +173,7 @@ async function handleSubscriptionCreated(subscription) {
 
 async function handleSubscriptionCancelled(subscription) {
   console.log('Subscription cancelled:', subscription.id);
-  
+
   // 1. Revoke API access at period end
   // 2. Send cancellation confirmation
   // 3. Offer win-back incentive
@@ -181,7 +181,7 @@ async function handleSubscriptionCancelled(subscription) {
 
 async function handleInvoicePaymentSucceeded(invoice) {
   console.log('Invoice paid:', invoice.id);
-  
+
   // 1. Send receipt
   // 2. Extend service period
   // 3. Update billing records
@@ -189,7 +189,7 @@ async function handleInvoicePaymentSucceeded(invoice) {
 
 async function handleInvoicePaymentFailed(invoice) {
   console.log('Invoice payment failed:', invoice.id);
-  
+
   // 1. Send dunning email
   // 2. Retry payment
   // 3. Downgrade if retries exhausted
@@ -199,7 +199,7 @@ async function handleInvoicePaymentFailed(invoice) {
 app.get('/api/session/:sessionId', async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.retrieve(req.params.sessionId);
-    
+
     res.json({
       id: session.id,
       status: session.payment_status,

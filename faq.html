@@ -282,7 +282,7 @@
 
         <div class="faq-section" data-category="pricing">
             <h2 class="section-title">💰 Pricing & Plans</h2>
-            
+
             <div class="faq-item" data-keywords="free tier limits trial">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     What's included in the Free Tier?
@@ -330,7 +330,7 @@
 
         <div class="faq-section" data-category="technical">
             <h2 class="section-title">🔧 Technical Questions</h2>
-            
+
             <div class="faq-item" data-keywords="api key authentication setup">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     How do I get my API key?
@@ -383,7 +383,7 @@
 
         <div class="faq-section" data-category="billing">
             <h2 class="section-title">💳 Billing & Payments</h2>
-            
+
             <div class="faq-item" data-keywords="payment methods credit card stripe">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     What payment methods do you accept?
@@ -446,10 +446,10 @@
         function toggleFAQ(element) {
             const item = element.parentElement;
             const wasOpen = item.classList.contains('open');
-            
+
             // Close all items
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-            
+
             // Toggle current item
             if (!wasOpen) {
                 item.classList.add('open');

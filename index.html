@@ -7,7 +7,7 @@
     <meta name="description" content="Purchase premium development tools, API access, and enterprise solutions. One-click checkout with Stripe. Plans from $0 to $19,999.">
     <meta name="keywords" content="API, SaaS, development tools, Stripe, enterprise solutions, white-label, Avila Ops">
     <meta name="author" content="Avila Ops">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://avila.inc/">
@@ -24,7 +24,7 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://avila.inc/">
-    
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://js.stripe.com/v3/"></script>
     <style>
@@ -585,6 +585,28 @@
         // Product Database (from avx-monetize module)
         const products = {
             saas: [
+                {
+                    id: 'hotelaria-ai',
+                    name: 'Hotelaria AI Platform',
+                    description: 'Complete hotel management with AI translation',
+                    price: 199,
+                    priceId: 'price_hotelaria_basic',
+                    features: ['10 rooms management', 'AI Translation (200+ languages)', 'OTA integrations', 'Email support', 'Financial reports'],
+                    badge: 'popular',
+                    badgeText: 'NEW',
+                    link: '/hotelaria.html'
+                },
+                {
+                    id: 'hotelaria-pro',
+                    name: 'Hotelaria AI Pro',
+                    description: 'Professional hotel management for growing properties',
+                    price: 399,
+                    priceId: 'price_hotelaria_pro',
+                    features: ['50 rooms management', 'Unlimited AI translations', 'All OTA integrations', 'Priority support', 'Advanced analytics', 'Custom branding'],
+                    badge: 'popular',
+                    badgeText: 'POPULAR',
+                    link: '/hotelaria.html'
+                },
                 {
                     id: 'saas-free',
                     name: 'Free Tier',

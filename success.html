@@ -247,7 +247,7 @@
 
             document.getElementById('orderId').textContent = orderId;
             document.getElementById('orderDate').textContent = orderDate;
-            
+
             // In production, fetch actual total from session
             const total = sessionStorage.getItem('orderTotal') || '$0';
             document.getElementById('orderTotal').textContent = total;

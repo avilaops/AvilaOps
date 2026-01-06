@@ -386,7 +386,7 @@
     <script>
         function handleSubmit(event) {
             event.preventDefault();
-            
+
             const submitBtn = document.getElementById('submitBtn');
             const successMsg = document.getElementById('successMessage');
             const form = document.getElementById('contactForm');
@@ -399,10 +399,10 @@
             setTimeout(() => {
                 // Show success message
                 successMsg.classList.add('show');
-                
+
                 // Reset form
                 form.reset();
-                
+
                 // Reset button
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Send Message';
@@ -426,7 +426,7 @@
             }, 1500);
 
             /* PRODUCTION CODE (uncomment when ready):
-            
+
             fetch('/api/contact', {
                 method: 'POST',
                 headers: {
