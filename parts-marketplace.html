@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts Marketplace Platform - B2B Heavy Machinery Parts | Avila Ops</title>
+    <meta name="description" content="Custom B2B marketplace platform for heavy machinery parts. Multi-vendor support, inventory management, AI-powered search, and ERP integration.">
+    <meta name="keywords" content="parts marketplace, heavy machinery, B2B ecommerce, inventory management, multi-vendor platform, equipment parts">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avila.inc/parts-marketplace.html">
+    <meta property="og:title" content="Parts Marketplace Platform - Heavy Machinery Parts B2B">
+    <meta property="og:description" content="Complete B2B marketplace solution for heavy machinery parts with AI-powered search and multi-vendor support.">
+    <meta property="og:image" content="https://avila.inc/assets/parts-og.png">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        :root {
+            --primary: #ff8c00;
+            --secondary: #ffd700;
+            --dark: #0f1117;
+            --darker: #000000;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: #2a2a2a;
+            --success: #00ff00;
+            --gradient: linear-gradient(135deg, #ff8c00 0%, #ffd700 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 900px;
+            margin: 0 auto 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--dark);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .pricing {
+            padding: 4rem 0;
+            background: var(--dark);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--darker);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .plan-name {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1rem 0;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 2rem 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-features li:before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .cta-btn {
+            background: var(--gradient);
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .demo {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .demo-cta {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .demo-cta:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .use-cases {
+            padding: 4rem 0;
+            background: var(--dark);
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .use-case {
+            background: var(--darker);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .use-case h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: var(--dark);
+            border-top: 2px solid var(--primary);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .pricing-grid,
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="container nav">
+            <a href="/" class="logo">Avila Ops</a>
+            <a href="/" class="back-btn">← Back to Store</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge">🏭 B2B MARKETPLACE</div>
+            <h1>Parts Marketplace Platform</h1>
+            <p>Complete B2B marketplace solution for heavy machinery parts. Multi-vendor support, AI-powered search, inventory management, and seamless ERP integration. Built for distributors, dealers, and manufacturers.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Enterprise Features</h2>
+            <p class="section-subtitle">Everything you need to run a professional parts marketplace</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>AI-Powered Search</h3>
+                    <p>Intelligent search with part number matching, cross-reference lookup, compatibility checking, and visual search. Find the right part instantly even with partial information.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏪</div>
+                    <h3>Multi-Vendor Platform</h3>
+                    <p>Support multiple suppliers and manufacturers. Each vendor has their own dashboard, inventory management, and analytics. Commission-based or subscription pricing models.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Inventory Management</h3>
+                    <p>Real-time stock tracking, low-stock alerts, automatic reorder points, warehouse management, and batch tracking. Sync with your existing ERP system.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Dynamic Pricing</h3>
+                    <p>Automated pricing rules based on quantity, customer tier, market conditions, and competitor pricing. Volume discounts and special promotions included.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Quote System</h3>
+                    <p>RFQ (Request for Quote) management with automated responses, quote comparison, negotiation tools, and conversion tracking. Perfect for B2B sales.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Order Management</h3>
+                    <p>Complete order lifecycle tracking from quote to delivery. Integration with shipping carriers, real-time tracking, and automated notifications.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>ERP Integration</h3>
+                    <p>Seamless integration with SAP, Oracle, Microsoft Dynamics, and custom ERP systems. Real-time data sync for orders, inventory, and pricing.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multi-Language & Currency</h3>
+                    <p>Support for multiple languages, currencies, and regional pricing. Perfect for international operations and global supply chains.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Real-time dashboards with sales metrics, inventory turnover, vendor performance, customer behavior, and predictive analytics for demand forecasting.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>B2B Security</h3>
+                    <p>Role-based access control, customer-specific pricing, secure payment processing, and SOC 2 compliance. Perfect for enterprise security requirements.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Apps</h3>
+                    <p>Native iOS and Android apps for vendors and customers. Scan barcodes, check inventory, place orders, and manage quotes on the go.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>White-Label Ready</h3>
+                    <p>Fully customizable branding with your logo, colors, and domain. API-first architecture allows unlimited customization and integrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <div class="container">
+            <h2 class="section-title">Perfect For</h2>
+            <p class="section-subtitle">Built for the heavy machinery industry</p>
+            
+            <div class="use-case-grid">
+                <div class="use-case">
+                    <h4>🏗️ Construction Equipment</h4>
+                    <p>Parts for excavators, bulldozers, loaders, cranes, and all heavy construction machinery. Cross-reference compatibility and OEM part matching.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>🚜 Agricultural Machinery</h4>
+                    <p>Tractors, harvesters, planters, and farming equipment parts. Seasonal pricing and bulk ordering for farming operations.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>🚛 Commercial Trucks</h4>
+                    <p>Heavy-duty truck parts, trailers, and commercial vehicle components. Fleet management integration available.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>⛏️ Mining Equipment</h4>
+                    <p>Mining machinery parts with critical spare tracking, emergency ordering, and specialized logistics support.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>🏭 Industrial Equipment</h4>
+                    <p>Manufacturing machinery, production line equipment, and industrial automation parts with technical specifications.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>🔧 Multi-Brand Dealers</h4>
+                    <p>Sell parts from multiple manufacturers with unified inventory, pricing, and customer management across all brands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Flexible Pricing</h2>
+            <p class="section-subtitle">Scale as your business grows</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="plan-name">Basic</h3>
+                    <div class="plan-price">$499<span>/month</span></div>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Small distributors & dealers</p>
+                    
+                    <ul class="plan-features">
+                        <li>Up to 500 parts catalog</li>
+                        <li>5 vendors/suppliers</li>
+                        <li>Basic search & filters</li>
+                        <li>Inventory management</li>
+                        <li>Quote system</li>
+                        <li>Order tracking</li>
+                        <li>Email support</li>
+                        <li>2 admin users</li>
+                        <li>Basic analytics</li>
+                    </ul>
+                    
+                    <button class="cta-btn" onclick="checkout('price_parts_basic')">Get Started</button>
+                </div>
+
+                <div class="pricing-card popular">
+                    <span class="plan-badge">MOST POPULAR</span>
+                    <h3 class="plan-name">Professional</h3>
+                    <div class="plan-price">$999<span>/month</span></div>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Growing operations</p>
+                    
+                    <ul class="plan-features">
+                        <li>Unlimited parts catalog</li>
+                        <li>Unlimited vendors</li>
+                        <li>AI-powered search</li>
+                        <li>Multi-language support</li>
+                        <li>Advanced inventory</li>
+                        <li>Automated pricing rules</li>
+                        <li>ERP integration (basic)</li>
+                        <li>Priority support</li>
+                        <li>10 admin users</li>
+                        <li>Advanced analytics</li>
+                        <li>Mobile apps</li>
+                        <li>API access</li>
+                    </ul>
+                    
+                    <button class="cta-btn" onclick="checkout('price_parts_pro')">Get Started</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">Custom</div>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Large operations</p>
+                    
+                    <ul class="plan-features">
+                        <li>Everything in Professional</li>
+                        <li>White-label option</li>
+                        <li>Custom ERP integration</li>
+                        <li>On-premise deployment</li>
+                        <li>Dedicated support team</li>
+                        <li>SLA guarantee</li>
+                        <li>Custom features</li>
+                        <li>Training included</li>
+                        <li>Unlimited users</li>
+                        <li>Source code access</li>
+                        <li>Multi-region hosting</li>
+                        <li>Compliance support</li>
+                    </ul>
+                    
+                    <a href="/contact.html" class="cta-btn" style="display: block; text-align: center; text-decoration: none; padding-top: 1rem;">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Schedule a personalized demo or request a quote</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/contact.html" class="demo-cta">📅 Schedule Demo</a>
+                <a href="/contact.html" class="demo-cta">💬 Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Avila Ops. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="/" style="color: var(--primary); text-decoration: none;">Home</a> | 
+                <a href="/contact.html" style="color: var(--primary); text-decoration: none;">Contact</a> | 
+                <a href="https://docs.avila.inc" style="color: var(--primary); text-decoration: none;">Docs</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const stripe = Stripe('pk_test_51QbJ1DRpTZP9RGzgFNexmGgUBWGb8UbXhVEqXlYfT7Q9YpJmPaE8zgHQSmxs3pnKnU47fZaSxmQtjIRN5oU73aVk00WMDh2B9Y');
+
+        function checkout(priceId) {
+            stripe.redirectToCheckout({
+                lineItems: [{ price: priceId, quantity: 1 }],
+                mode: 'subscription',
+                successUrl: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}',
+                cancelUrl: window.location.origin + '/cancel.html',
+            }).then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
+        }
+
+        console.log('🏭 Parts Marketplace Platform - Product page loaded');
+    </script>
+</body>
+</html>
